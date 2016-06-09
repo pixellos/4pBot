@@ -1,20 +1,20 @@
 using System;
-namespace pBot
+namespace pBot.Model.Commands
 {
 
-	public class MessageStructure
+	public class Command
 	{
 		public string Sender { get; }
+		public bool IsNegation { get; }
 		public string ActionName { get; }
 		public string[] Parameters { get; }
 
-		public MessageStructure(string sender, string actionName, params string[] parameters)
+		public Command(string sender, string actionName, bool isNegation, params string[] parameters)
 		{
 			Sender = sender;
+			IsNegation = isNegation;
 			ActionName = actionName;
 			Parameters = parameters;
 		}
-
 	}
-
 }

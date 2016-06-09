@@ -1,11 +1,14 @@
 ﻿using System;
-namespace pBot
+
+namespace pBot.Model.Commands
 {
-	public class ICommandRecognizer
+	public interface ICommandInvoker
 	{
-		public ICommandRecognizer()
-		{
-		}
+		/// <summary>
+		/// Invokes the command.
+		/// </summary>
+		/// <returns>The response</returns>
+		string InvokeCommand(Command command);
+		string AddCommand(Command command, Action<Command> action);
 	}
 }
-

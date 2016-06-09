@@ -33,7 +33,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="ModuleTest.cs" />
+    <Compile Include="TestsConstatnts.cs" />
+    <Compile Include="CommandInvokerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
