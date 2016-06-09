@@ -1,5 +1,6 @@
 ﻿using System;
-namespace pBot
+
+namespace pBot.Model.Commands
 {
 	public interface ICommandMarshaller
 	{

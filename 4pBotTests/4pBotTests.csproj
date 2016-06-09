@@ -36,6 +36,7 @@
     <Compile Include="ModuleTest.cs" />
     <Compile Include="TestsConstatnts.cs" />
     <Compile Include="CommandInvokerTest.cs" />
+    <Compile Include="CommandMarshallerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

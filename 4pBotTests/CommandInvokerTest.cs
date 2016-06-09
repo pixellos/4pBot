@@ -4,13 +4,18 @@ using pBot.Model.Commands;
 namespace pBotTests
 {
 	[TestFixture()]
-	public class CommandInvokerTest
+	public class MyCommandInvokerTest
 	{
 		Command command = new Command("Test", "TestAction", false);
+		string ExpectedResult = "Test";
+
 		ICommandInvoker commandInvoker;
-		public CommandInvokerTest()
+		[Test]
+		public void InvokeTemporaryCommand()
 		{
-			commandInvoker.InvokeCommand(command)
+			commandInvoker.AddTemporaryCommand(command, x => { return ExpectedResult; });
+
+			Assert.Equals(commandInvoker.InvokeCommand(command), ExpectedResult);
 		}
 	}
 }
