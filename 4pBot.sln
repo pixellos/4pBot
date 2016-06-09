@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4pBot", "4pBot\4pBot.csproj", "{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4pBotTests", "4pBotTests\4pBotTests.csproj", "{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}.Debug|x86.ActiveCfg = Debug|x86
+		{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}.Debug|x86.Build.0 = Debug|x86
+		{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}.Release|x86.ActiveCfg = Release|x86
+		{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}.Release|x86.Build.0 = Release|x86
+		{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}.Debug|x86.Build.0 = Debug|Any CPU
+		{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}.Release|x86.ActiveCfg = Release|Any CPU
+		{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
