@@ -28,8 +28,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +40,7 @@
     <Compile Include="TestsConstatnts.cs" />
     <Compile Include="CommandInvokerTest.cs" />
     <Compile Include="CommandMarshallerTest.cs" />
+    <Compile Include="MarshallerDataForTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

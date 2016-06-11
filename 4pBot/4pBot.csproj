@@ -9,6 +9,7 @@
     <RootNamespace>pBot</RootNamespace>
     <AssemblyName>4pBot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationManifest>CommandInvoker.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,6 +97,9 @@
     <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces">
       <HintPath>..\packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.2.2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -111,6 +115,9 @@
     <Compile Include="Model\Commands\ICommandInvoker.cs" />
     <Compile Include="Model\Commands\Command.cs" />
     <Compile Include="Model\Commands\ICommandMarshaller.cs" />
+    <Compile Include="Dependencies\AutofacSetup.cs" />
+    <Compile Include="Model\Commands\General\CommandMarshaller.cs" />
+    <Compile Include="Model\Commands\General\CommandInvoker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -119,7 +126,8 @@
     <Folder Include="Connection\" />
     <Folder Include="Model\" />
     <Folder Include="Model\Commands\" />
-    <Folder Include="Model\Commands\New Folder\" />
+    <Folder Include="Dependencies\" />
+    <Folder Include="Model\Commands\General\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

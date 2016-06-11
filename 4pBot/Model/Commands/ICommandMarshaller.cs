@@ -1,4 +1,5 @@
 ﻿using System;
+using pBot.Model.Commands;
 
 namespace pBot.Model.Commands
 {

@@ -1,6 +1,8 @@
 ﻿using System;
 using NUnit.Framework;
 using pBot.Model.Commands;
+using Autofac;
+using System.Collections;
 
 namespace pBotTests
 {
@@ -8,13 +10,19 @@ namespace pBotTests
 	public class CommandMarshallerTest
 	{
 		ICommandMarshaller marshaller;
-		public void CheckMarshalling_Author()
+		public CommandMarshallerTest()
 		{
-			var command = marshaller.GetCommand(TestsConstatnts.Show_Author);
-			Assert.Equals
+			var container = pBot.AutofacSetup.GetContainer();
+			marshaller = container.Resolve<ICommandMarshaller>();
 		}
 
-
+		[Test, TestCaseSource(typeof(MarshallerDataForTest), "TestCases")]
+		public Command CheckMarshalling_Show_Author(string str)
+		{
+			return marshaller.GetCommand(str);
+		}
 	}
 }
+
+
 
