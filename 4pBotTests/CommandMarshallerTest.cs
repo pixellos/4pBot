@@ -13,6 +13,7 @@ namespace pBotTests
 		public CommandMarshallerTest()
 		{
 			var container = pBot.AutofacSetup.GetContainer();
+
 			marshaller = container.Resolve<ICommandMarshaller>();
 		}
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
-using pBot.Commands.General;
 using pBot.Model.Commands;
+using pBot.Model.Commands.General;
 
 namespace pBot
 {
@@ -11,6 +11,7 @@ namespace pBot
 		{
 			var builder = new ContainerBuilder();
 			builder.RegisterType<CommandMarshaller>().As<ICommandMarshaller>();
+			builder.RegisterType<CommandInvoker>().As<Model.Commands.ICommandInvoker>();
 			return builder.Build();
 		}
 	}

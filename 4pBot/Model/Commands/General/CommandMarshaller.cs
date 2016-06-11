@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using pBot.Commands;
+
 using pBot.Model;
 using pBot.Model.Commands;
 using System.Collections.Generic;
 
-namespace pBot.Commands.General
+namespace pBot.Model.Commands.General
 {
 	public class CommandMarshaller : ICommandMarshaller
 	{

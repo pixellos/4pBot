@@ -4,7 +4,7 @@ using System.Linq;
 namespace pBot.Model.Commands
 {
 	/// <summary>
-	/// * string should mean any
+	/// Empty string mean any value
 	/// </summary>
 	public class Command
 	{
@@ -12,6 +12,9 @@ namespace pBot.Model.Commands
 		{
 			return new Command("", "", false);
 		}
+
+		public static string Any => String.Empty;
+
 		public string Sender { get; }
 		public bool IsNegation { get; }
 		public string ActionName { get; }
@@ -25,20 +28,29 @@ namespace pBot.Model.Commands
 			Parameters = parameters;
 		}
 
+	    public static bool operator ==(Command command1, Command command2)
+	    {
+	        bool isActionNamesEquals = command1.ActionName.Equals(command2.ActionName);
+	        bool isNegationEquals = command1.IsNegation.Equals(command2.IsNegation);
+	        bool isSenderEquals = command1.Sender.Equals(command2.Sender) || command1.Sender.Equals(Any) ||
+	                              command2.Sender.Equals(Any);
 
-		public override bool Equals(object obj)
-		{
-			if (obj is Command)
-			{
-				return ((Command)obj).ActionName.Equals(this.ActionName)
-									 && ((Command)obj).IsNegation == IsNegation
-									 && ((Command)obj).Parameters.SequenceEqual(Parameters)
-									 && ((Command)obj).Sender.Equals(Sender);
+	        return isSenderEquals && isNegationEquals && isActionNamesEquals;
+	    }
 
-			}
-			return base.Equals(obj);
-		}
+	    public static bool operator !=(Command command1, Command command2)
+	    {
+	        return !(command1 == command2);
+	    }
+
+	    public override bool Equals(object obj)
+	    {
+	        if (obj is Command)
+	        {
+	            return this == (Command) obj;
+	        }
+	        return base.Equals(obj);
+	    }
 	}
-
 }
 

@@ -1,9 +1,11 @@
 ﻿using System;
-
+using static pBot.Model.Commands.CommandDelegates;
 namespace pBot.Model.Commands
 {
+
 	public interface ICommandInvoker
 	{
+
 		/// <summary>
 		/// Invokes the command.
 		/// </summary>
@@ -11,11 +13,10 @@ namespace pBot.Model.Commands
 		string InvokeCommand(Command command);
 
 		/// <summary>
-		/// Adds the temporary command
+		/// Adds the temporary command. It wont be stored out of current session.
 		/// </summary>
-		/// <returns>The temporary command. It wont be stored out of current session.</returns>
-		/// <param name="command"></param>
+		/// <param name="command">Command</param>
 		/// <param name="func">In: Command, Out: String, action invoked when command match</param>
-		string AddTemporaryCommand(Command command, Func<Command, string> func);
+		void AddTemporaryCommand(Command command, CommandAction func);
 	}
 }

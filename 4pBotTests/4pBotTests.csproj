@@ -41,6 +41,7 @@
     <Compile Include="CommandInvokerTest.cs" />
     <Compile Include="CommandMarshallerTest.cs" />
     <Compile Include="MarshallerDataForTest.cs" />
+    <Compile Include="InvokerDataForTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
