@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,6 +8,7 @@
     <RootNamespace>pBotTests</RootNamespace>
     <AssemblyName>4pBotTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationManifest>SOCheckerTests.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,12 +37,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Commands\CommandEquality\CommandTest.cs" />
     <Compile Include="ModuleTest.cs" />
-    <Compile Include="TestsConstatnts.cs" />
-    <Compile Include="CommandInvokerTest.cs" />
-    <Compile Include="CommandMarshallerTest.cs" />
-    <Compile Include="MarshallerDataForTest.cs" />
-    <Compile Include="InvokerDataForTest.cs" />
+    <Compile Include="Model\Commands\CommandInvokerTest.cs" />
+    <Compile Include="Model\Commands\CommandMarshallerTest.cs" />
+    <Compile Include="Model\Commands\MarshallerDataForTest.cs" />
+    <Compile Include="Model\Commands\InvokerDataForTest.cs" />
+    <Compile Include="Model\ComunicateService\XmppTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -52,5 +54,6 @@
       <Name>4pBot</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

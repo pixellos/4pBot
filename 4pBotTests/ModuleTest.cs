@@ -1,21 +1,31 @@
 ﻿using NUnit.Framework;
 using System;
 using pBot.Model.Commands;
+using Autofac;
+using pBot;
+using pBot.Model.Commands.General;
+
 namespace pBotTests
 {
 	[TestFixture()]
 	public class Test
 	{
-		ICommandMarshaller CommandMarshaler;
-		ICommandInvoker CommandInvoker;
-
-		public string TestCase(string command)
+		Xmpp xmpp = pBot.AutofacSetup.GetContainer().Resolve<Xmpp>();
+		[SetUp]
+		public void SetUp()
 		{
-			var Command = CommandMarshaler.GetCommand(command);
+			xmpp = pBot.AutofacSetup.GetContainer().Resolve<Xmpp>();
+		}
 
-			var result = CommandInvoker.InvokeCommand(Command);
+		[Test]
+		public void Action_ResultIsNot_DefaultResult()
+		{
+			var msg = "Pixel Bot, Check SO C#";
 
-			return result;
+			var command = xmpp.Marshaller.GetCommand(msg);
+			var response = xmpp.Invoker.InvokeCommand(command);
+
+			Assert.AreNotEqual(CommandInvoker.ActionNotFound,response);
 		}
 	}
 }
