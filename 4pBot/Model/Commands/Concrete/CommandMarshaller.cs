@@ -29,10 +29,10 @@ namespace pBot.Model.Commands.General
 				return Command.Empty();
 			}
 
-			bool isNegate = false;
-			if (splittedText.Remove(NegateString))
+			var isNegate = Command.CommandType.Default;
+			if (splittedText.RemoveAll(x=>x.Equals(NegateString,StringComparison.InvariantCultureIgnoreCase)) > 0)
 			{
-				isNegate = true;
+				isNegate = Command.CommandType.Negation;
 			}
 
 			var user = GetUser(splittedText);

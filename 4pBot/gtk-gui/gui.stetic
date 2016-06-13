@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+  </configuration>
   <import>
-    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/4pBot.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="400 300">
@@ -9,8 +11,15 @@
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
+    <signal name="HiddenEvent" handler="OnHiddenEvent" />
     <child>
-      <placeholder />
+      <widget class="Gtk.Button" id="button2">
+        <property name="MemberName" />
+        <property name="CanFocus">True</property>
+        <property name="Type">TextOnly</property>
+        <property name="Label" translatable="yes">GtkButton</property>
+        <property name="UseUnderline">True</property>
+      </widget>
     </child>
   </widget>
 </stetic-interface>
