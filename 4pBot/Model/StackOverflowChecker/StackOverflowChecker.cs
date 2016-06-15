@@ -1,22 +1,39 @@
 ﻿using System;
-using StackExchange.StacMan;
 using System.Linq;
+using System.Net;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 using pBot.Model.Commands;
-using System.Text;
-using GLib;
-using System.Collections.Generic;
+using StackExchange.StacMan;
 
-namespace pBot
+namespace pBot.Model.StackOverflowChecker
 {
+    public class StackOverflowHtmlChecker
+    {
+        public static string GetSingleSORequestWithTagAsParameter(Command command)
+        {
+            var html = new HtmlDocument();
+            var escapedTag = command.Parameters[1].Replace("#","%23");
+
+            html.LoadHtml(
+                new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}"));
+
+            var question = html.DocumentNode.Descendants()
+                .Where(node => node.GetAttributeValue("class", "").Equals("question-summary")).First();
+
+            var firstQuestion =question.Descendants().Where(x => x.GetAttributeValue("class", "").Equals("question-hyperlink")).First();
+
+            return $"{firstQuestion.InnerText}, [www.stackoverflow.com{firstQuestion.Attributes["href"].Value}]";
+        }
+    }
+
 	public class StackOverflowChecker
 	{
 		public StackOverflowChecker()
 		{
 			var clinet = new StacManClient();
-
-			var response = clinet.Questions.GetWithNoAnswers("stackoverflow", tagged: "C#", order: Order.Desc, page: 1, pagesize: 1).Result;
-			var first = response.Data.Items.First();
-		}
+		    clinet.MaxSimultaneousRequests = 1;
+        }
 
 		public static string GetSingleSORequestWithTagAsParameter(Command command)
 		{
@@ -31,6 +48,12 @@ namespace pBot
 			}
 
 			var response = clinet.Questions.GetWithNoAnswers("stackoverflow", tagged: Tags, order: Order.Desc, page: 1, pagesize: 1).Result;
+
+		    if (response.Data.Items == null)
+		    {
+		        return response.Error.Message;
+		    }
+
 			var first = response.Data.Items.FirstOrDefault();
 
 		    if (first == null)

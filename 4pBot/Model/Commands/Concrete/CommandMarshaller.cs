@@ -1,23 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-using pBot.Model;
-using pBot.Model.Commands;
-using System.Collections.Generic;
-
-namespace pBot.Model.Commands.General
+namespace pBot.Model.Commands.Concrete
 {
 	public class CommandMarshaller : ICommandMarshaller
 	{
-		public CommandMarshaller()
-		{
-		}
-
 		public const string NegateString = "don't";
 
 		public Command GetCommand(string text)
 		{
-
 			var splittedText = text.Split(' ').ToList();
 
 			if (splittedText[1].Equals("Bot,"))
@@ -30,7 +22,8 @@ namespace pBot.Model.Commands.General
 			}
 
 			var isNegate = Command.CommandType.Default;
-			if (splittedText.RemoveAll(x=>x.Equals(NegateString,StringComparison.InvariantCultureIgnoreCase)) > 0)
+
+            if (splittedText.RemoveAll(x=>x.Equals(NegateString,StringComparison.InvariantCultureIgnoreCase)) > 0)
 			{
 				isNegate = Command.CommandType.Negation;
 			}
@@ -38,12 +31,8 @@ namespace pBot.Model.Commands.General
 			var user = GetUser(splittedText);
 			var action = GetAction(splittedText);
 			var parameters = GetParams(splittedText);
-			return new Command(
-				user,
-				action,
-				isNegate,
-				parameters);
-		}
+			return new Command(user, action, isNegate, parameters);
+		 }
 
 		string[] GetParams(List<string> commandStrings)
 		{

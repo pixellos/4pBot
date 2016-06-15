@@ -1,20 +1,25 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Gtk;
 using System.Threading.Tasks;
+using pBot.Dependencies;
+using pBot.Model.ComunicateService;
+
 namespace pBot
 {
 	class MainClass
 	{
 		public static void Main(string[] args)
 		{
-			IContainer container = pBot.AutofacSetup.GetContainer();
+			IContainer container = AutofacSetup.GetContainer();
 
-			var xmpp = container.Resolve<Xmpp>();
-			Application.Init();
+			var xmpp = container.Resolve<IXmpp>();
+            
+            Application.Init();
+            MainWindow window = new MainWindow(xmpp);
 
-			MainWindow win = new MainWindow(xmpp);
-            win.Hide();
-			Application.Run();
+            window.Hide();
+            Application.Run();
 		}
 	}
 }

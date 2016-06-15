@@ -1,33 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using static pBot.Model.Commands.CommandDelegates;
 
-namespace pBot.Model.Commands.General
+namespace pBot.Model.Commands.Concrete
 {
 	public class CommandInvoker : ICommandInvoker
 	{
-		public CommandInvoker()
+		public CommandInvoker(Dictionary<Command, CommandDelegates.CommandAction> commandsToCommandAction)
 		{
-
-		}
-		public CommandInvoker(Dictionary<Command, CommandAction> commands)
-		{
-			commandToAction = commands;
+			_commandToCommandActionAction = commandsToCommandAction;
 		}
 
 		public void AddTemporaryCommand(Command command, CommandDelegates.CommandAction func)
 		{
-			commandToAction.Add(command, func);
+			_commandToCommandActionAction.Add(command, func);
 		}
 
-
-		Dictionary<Command, CommandAction> commandToAction = new Dictionary<Command, CommandAction>();
+		Dictionary<Command, CommandDelegates.CommandAction> _commandToCommandActionAction = new Dictionary<Command, CommandDelegates.CommandAction>();
 	    public static readonly string ActionNotFound = "Action not found";
 
 	    public string InvokeCommand(Command command)
 		{
-			var action = commandToAction.FirstOrDefault(x => x.Key == command).Value;
-			if (action == null)
+			var action = _commandToCommandActionAction.FirstOrDefault(x => x.Key == command).Value;
+
+            if (action == null)
 			{
 				return ActionNotFound;
 			}

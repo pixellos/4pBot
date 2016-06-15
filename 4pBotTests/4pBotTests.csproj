@@ -28,6 +28,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
@@ -38,11 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Commands\CommandEquality\CommandTest.cs" />
-    <Compile Include="ModuleTest.cs" />
-    <Compile Include="Model\Commands\CommandInvokerTest.cs" />
-    <Compile Include="Model\Commands\CommandMarshallerTest.cs" />
-    <Compile Include="Model\Commands\MarshallerDataForTest.cs" />
-    <Compile Include="Model\Commands\InvokerDataForTest.cs" />
+    <Compile Include="Model\Commands\Marshaller\CommandMarshallerConst.cs" />
+    <Compile Include="Model\ComunicateService\BuildInDictionaryActionsTests.cs" />
+    <Compile Include="Model\Commands\Invoker\CommandInvokerTest.cs" />
+    <Compile Include="Model\Commands\Marshaller\CommandMarshallerTest.cs" />
+    <Compile Include="Model\Commands\Invoker\InvokerDataForTest.cs" />
     <Compile Include="Model\ComunicateService\XmppTest.cs" />
   </ItemGroup>
   <ItemGroup>
