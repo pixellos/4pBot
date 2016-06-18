@@ -32,15 +32,21 @@ namespace pBot.Model.Commands
 
 		public Command(string sender, string actionName, CommandType commandType, params string[] parameters)
 		{
+		    if (sender == null || actionName == null || parameters == null)
+		    {
+		        throw new ArgumentNullException();
+		    }
+
 			Sender = sender;
 			TypeOfCommand = commandType;
 			ActionName = actionName;
 			Parameters = parameters;
 		}
 
+
 	    public static bool operator ==(Command command1, Command command2)
 	    {
-	        bool isActionNamesEquals = command1?.ActionName.Equals(command2?.ActionName,StringComparison.OrdinalIgnoreCase) ?? false;
+            bool isActionNamesEquals =  command2.ActionName.Equals(Any) || command1.ActionName.Equals(Any) || (command1.ActionName.Equals(command2.ActionName,StringComparison.OrdinalIgnoreCase) ) ;
 
 	        bool isNegationEquals = command1.TypeOfCommand.Equals(command2.TypeOfCommand)
                 || command1.TypeOfCommand == CommandType.Any
@@ -48,25 +54,30 @@ namespace pBot.Model.Commands
 
 	        bool isSenderEquals = command1.Sender.Equals(command2.Sender, StringComparison.OrdinalIgnoreCase) || command1.Sender.Equals(Any) ||
 	                              command2.Sender.Equals(Any);
-	        bool areParametersEqual = true;
 
-	        if (command1.Parameters.Length != command2.Parameters.Length)
-	        {
-	            return false;
-	        }
+            bool areParametersEqual = true;
 
-	        for (int i = 0; i < command1.Parameters.Count(); i++)
+	        for (int i = 0; i < command1.Parameters.Length|| i < command2.Parameters.Length; i++)
 	        {
-	            if (command1.Parameters[i] == null || command2.Parameters[i] == null)
+                if (command1.Parameters.Length <= i || command2.Parameters.Length <= i)
 	            {
-	                areParametersEqual = false;
+                    if (command1.Parameters.Length <= i && command2.Parameters?[i] == Any)
+                    {
+                        break;
+                    }
+                    if (command2.Parameters.Length <= i && command1.Parameters?[i] == Any)
+                    {
+                            break;
+                    }
+                    areParametersEqual = false;
 	                break;
 	            }
-	            if (command1.Parameters[i] == Any || command2.Parameters[i] == Any)
+
+                if (command1.Parameters[i] == Any || command2.Parameters[i] == Any)
 	            {
 	                continue;
 	            }
-
+                
                 areParametersEqual = command1.Parameters[i].Equals(command2.Parameters[i],StringComparison.OrdinalIgnoreCase);
 	        }
 

@@ -1,7 +1,5 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Gtk;
-using System.Threading.Tasks;
 using pBot.Dependencies;
 using pBot.Model.ComunicateService;
 

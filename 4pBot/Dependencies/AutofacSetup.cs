@@ -3,6 +3,7 @@ using Autofac;
 using pBot.Model;
 using pBot.Model.Commands;
 using pBot.Model.Commands.Concrete;
+using pBot.Model.Commands.RegexMarshaller;
 using pBot.Model.ComunicateService;
 using pBot.Model.StackOverflowChecker;
 using pBot.Model._4pChecker;
@@ -17,7 +18,7 @@ namespace pBot.Dependencies
 		    if (Container == null)
 		    {
                 var builder = new ContainerBuilder();
-                builder.RegisterType<CommandMarshaller>().As<ICommandMarshaller>();
+                builder.RegisterType<RegexParser>().As<ICommandParser>();
                 builder.Register(x => new Dictionary<Command, CommandDelegates.CommandAction>(BuildInCommands.Commands)).AsSelf();
 
                 builder.RegisterType<CommandInvoker>().UsingConstructor(
