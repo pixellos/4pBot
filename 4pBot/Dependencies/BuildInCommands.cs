@@ -27,7 +27,8 @@ namespace pBot.Dependencies
             {   new Command(Command.Any,"?",Command.CommandType.Any,Command.Any) , command => "Available commands:\n" +
                                                                                             "Command, parameters, additional parameters\n" +
                                                                                             "Check (SO|4P) (C#/Java/Haskell/Etc...) //One time webpage check \n" +
-                                                                                            "Auto (from 5 to 2^31 integer) ([Check ...]|[Show ...]) //Auto check"   }
+                                                                                            "Auto (from 5 to 2^31 integer) ([Check ...]|[Show ...]) //Auto check\n" +
+                                                                                              "Subscribe ([Check ...]|[Show ...]|[Auto...]) //your personal info feed "   }
         };
 
         private static CommandDelegates.CommandAction ChangeRoom => command => AutofacSetup.GetContainer().Resolve<IXmpp>().ChangeRoom(command);

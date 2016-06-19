@@ -81,11 +81,30 @@ namespace pBot.Model.Core
 	        return isSenderEquals && isNegationEquals && isActionNamesEquals && areParametersEqual;
 	    }
 
+	    public bool Equals(Command command)
+	    {
+	        return this == command;
+	    }
+
+	    public override bool Equals(object obj)
+	    {
+	        if (obj is Command)
+	        {
+	            return Equals((Command) obj);
+	        }
+
+	        return base.Equals(obj);
+	    }
+
 	    public static bool operator !=(Command command1, Command command2)
 	    {
 	        return !(command1 == command2);
 	    }
 
+	    public override string ToString()
+	    {
+	        return $"{Sender} {ActionName} {TypeOfCommand} {string.Join(" ",Parameters)}";
+	    } 
 	}
 }
 

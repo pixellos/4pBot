@@ -14,7 +14,8 @@ namespace pBotTests.Model.ComunicateService
 		IXmpp xmpp;
         Repeater repeater = new Repeater();
 	    ICommandInvoker Invoker;
-		[SetUp]
+
+        [SetUp]
 		public void SetUp()
 		{
 		    xmpp = Substitute.For<IXmpp>();
@@ -22,8 +23,10 @@ namespace pBotTests.Model.ComunicateService
             repeater = new Repeater()
             {
                 Xmpp = xmpp,
-                CommandInvoker = Invoker
+                CommandInvoker = Invoker,
+                CachedResponse =  new CachedResponse()
             };
+
 		    //AutofacSetup.GetContainer().Resolve<Xmpp>();
 		}
 

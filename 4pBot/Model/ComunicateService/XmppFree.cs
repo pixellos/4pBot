@@ -31,6 +31,7 @@ namespace pBot.Model.ComunicateService
             clientConnection.Open();
             clientConnection.OnLogin += JoinRoom;
             clientConnection.OnMessage += HandleMessage;
+            
             clientConnection.OnWriteXml += DebugConsoleWrite;
         }
 
@@ -44,9 +45,13 @@ namespace pBot.Model.ComunicateService
             if (command != Command.Empty() && startupDate < Stamp)
             {
                 string response = Invoker.InvokeCommand(command);
-                if (response != null)
+                if (response != null && msg.Type == MessageType.groupchat)
                 {
                     SendIfNotNull(response);
+                }
+                if (response != null && msg.Type == MessageType.chat)
+                {
+                    PrivateSend(nickName,response);
                 }
             }
         }
