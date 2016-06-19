@@ -163,26 +163,28 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="MainWindow.cs" />
     <Compile Include="gtk-gui\MainWindow.cs" />
-    <Compile Include="Model\4pChecker\4pChecker.cs" />
-    <Compile Include="Model\4pChecker\ApiKey.cs" />
-    <Compile Include="Model\4pChecker\JSONModel.cs" />
-    <Compile Include="Model\Commands\RegexMarshaller\RegexParser.cs" />
+    <Compile Include="Model\Commands\4pChecker\4pChecker.cs" />
+    <Compile Include="Model\Commands\4pChecker\ApiKey.cs" />
+    <Compile Include="Model\Commands\4pChecker\JSONModel.cs" />
+    <Compile Include="Model\Commands\HighLevel\CachedResponse.cs" />
+    <Compile Include="Model\Commands\HighLevel\CommandCachedResponse.cs" />
+    <Compile Include="Model\Commands\HighLevel\CommandHelper.cs" />
+    <Compile Include="Model\Commands\HighLevel\Subscription.cs" />
+    <Compile Include="Model\Core\RegexParser.cs" />
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
-    <Compile Include="Model\ComunicateService\MarshallerExtensions.cs" />
+    <Compile Include="Model\ComunicateService\ParserExtensions.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
-    <Compile Include="Model\StackOverflowChecker\StackOverflowHtmlChecker.cs" />
+    <Compile Include="Model\Commands\StackOverflowChecker\StackOverflowHtmlChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Commands\ICommandInvoker.cs" />
-    <Compile Include="Model\Commands\Command.cs" />
-    <Compile Include="Model\Commands\ICommandParser.cs" />
+    <Compile Include="Model\Core\ICommandInvoker.cs" />
+    <Compile Include="Model\Core\Command.cs" />
+    <Compile Include="Model\Core\ICommandParser.cs" />
     <Compile Include="Dependencies\AutofacSetup.cs" />
-    <Compile Include="Model\Commands\Concrete\CommandParser.cs" />
-    <Compile Include="Model\Commands\Concrete\CommandInvoker.cs" />
-    <Compile Include="Model\Commands\CommandDelegates.cs" />
-    <Compile Include="Model\ComunicateService\Xmpp.cs" />
-    <Compile Include="Model\StackOverflowChecker\StackOverflowChecker.cs" />
-    <Compile Include="Model\AutoRepeater.cs" />
+    <Compile Include="Model\Core\CommandInvoker.cs" />
+    <Compile Include="Model\Core\CommandDelegates.cs" />
+    <Compile Include="Model\Commands\StackOverflowChecker\StackOverflowChecker.cs" />
+    <Compile Include="Model\Commands\HighLevel\Repeater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -191,9 +193,7 @@
     <None Include="Properties\PublishProfiles\4pBot.pubxml" />
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Connection\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>

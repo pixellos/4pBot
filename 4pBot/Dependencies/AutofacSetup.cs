@@ -2,11 +2,10 @@
 using Autofac;
 using pBot.Model;
 using pBot.Model.Commands;
-using pBot.Model.Commands.Concrete;
-using pBot.Model.Commands.RegexMarshaller;
+using pBot.Model.Commands.HighLevel;
+using pBot.Model.Commands._4pChecker;
 using pBot.Model.ComunicateService;
-using pBot.Model.StackOverflowChecker;
-using pBot.Model._4pChecker;
+using pBot.Model.Core;
 
 namespace pBot.Dependencies
 {
@@ -25,8 +24,10 @@ namespace pBot.Dependencies
                     () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>())).As<ICommandInvoker>();
 
                 builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
+
+                builder.RegisterType<Subscription>().PropertiesAutowired().AsSelf().SingleInstance();
                 builder.RegisterType<_4pChecker>().PropertiesAutowired().AsSelf().SingleInstance();
-                builder.RegisterType<AutoRepeater>().PropertiesAutowired().AsSelf().SingleInstance();
+                builder.RegisterType<Repeater>().PropertiesAutowired().AsSelf().SingleInstance();
 
                 Container = builder.Build();
             }
