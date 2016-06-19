@@ -17,14 +17,15 @@ namespace pBot.Dependencies
 		    if (Container == null)
 		    {
                 var builder = new ContainerBuilder();
+                builder.RegisterType<CachedResponse>().AsSelf();
                 builder.RegisterType<RegexParser>().As<ICommandParser>();
+
                 builder.Register(x => new Dictionary<Command, CommandDelegates.CommandAction>(BuildInCommands.Commands)).AsSelf();
 
                 builder.RegisterType<CommandInvoker>().UsingConstructor(
                     () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>())).As<ICommandInvoker>();
 
                 builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
-
                 builder.RegisterType<Subscription>().PropertiesAutowired().AsSelf().SingleInstance();
                 builder.RegisterType<_4pChecker>().PropertiesAutowired().AsSelf().SingleInstance();
                 builder.RegisterType<Repeater>().PropertiesAutowired().AsSelf().SingleInstance();

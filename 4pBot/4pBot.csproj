@@ -166,13 +166,12 @@
     <Compile Include="Model\Commands\4pChecker\4pChecker.cs" />
     <Compile Include="Model\Commands\4pChecker\ApiKey.cs" />
     <Compile Include="Model\Commands\4pChecker\JSONModel.cs" />
-    <Compile Include="Model\Commands\HighLevel\CachedResponse.cs" />
-    <Compile Include="Model\Commands\HighLevel\CommandCachedResponse.cs" />
-    <Compile Include="Model\Commands\HighLevel\CommandHelper.cs" />
+    <Compile Include="Model\Commands\Helpers\CommandHelper.cs" />
+    <Compile Include="Model\Commands\Helpers\ParserExtensions.cs" />
     <Compile Include="Model\Commands\HighLevel\Subscription.cs" />
+    <Compile Include="Model\Core\CachedResponse.cs" />
     <Compile Include="Model\Core\RegexParser.cs" />
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
-    <Compile Include="Model\ComunicateService\ParserExtensions.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
     <Compile Include="Model\Commands\StackOverflowChecker\StackOverflowHtmlChecker.cs" />
     <Compile Include="Program.cs" />
