@@ -13,7 +13,7 @@ namespace pBotTests.Model.Commands.CommandEquality
         [SetUp]
         public void SetUp()
         {
-            cachedResponse = pBot.Dependencies.AutofacSetup.GetContainer().Resolve<CachedResponse>();
+            cachedResponse = new CachedResponse();
         }
 
 
@@ -31,7 +31,7 @@ namespace pBotTests.Model.Commands.CommandEquality
         {
             cachedResponse.InitializeCommand(CommandMarshallerConst.Show_Author_Command);
             cachedResponse.Remove(CommandMarshallerConst.Show_Author_Command);
-            Assert.True(cachedResponse.IsAnyInCacheMatchingCommand(CommandMarshallerConst.Show_Author_Command));
+            Assert.False(cachedResponse.IsAnyInCacheMatchingCommand(CommandMarshallerConst.Show_Author_Command));
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace pBotTests.Model.Commands.CommandEquality
             cachedResponse.SetLastResponse(CommandMarshallerConst.Show_Author_Command, "Test");
 
             string expectedNull = "";
-            cachedResponse.DoWhenResponseIsNotLikeLastResponse(CommandMarshallerConst.Show_Author_Command, "Test", x =>
+            cachedResponse.DoWhenResponseIsNotLikeLastResponse(CommandMarshallerConst.Show_Author_Command, null , x =>
             {
                 expectedNull = x;
                 Assert.Pass();
