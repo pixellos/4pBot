@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 
 namespace pBot.Model.Core
 {
     public class CachedResponse
     {
-        public Dictionary<Command,string> Cache  = new Dictionary<Command, string>();
+        Dictionary<Command,string> Cache  = new Dictionary<Command, string>();
 
-        public bool IsAnyInCacheMatchingCommand(Command command)
+        public ImmutableDictionary<Command, string> ReadOnlyCache => Cache.ToImmutableDictionary();
+
+        public bool ContainsCommand(Command command)
         {
             return Cache.Any(x => x.Key == command);
         }
@@ -25,7 +28,7 @@ namespace pBot.Model.Core
 
         public void DoWhenResponseIsNotLikeLastResponse(Command command, string response, Action<string> action)
         {
-            if (! IsAnyInCacheMatchingCommand(command))
+            if (! ContainsCommand(command))
             {
                 InitializeCommand(command);
             }
@@ -42,7 +45,7 @@ namespace pBot.Model.Core
             return Cache.SingleOrDefault(x => x.Key == command).Value;
         }
 
-        public void InitializeCommand(Command command)
+        void InitializeCommand(Command command)
         {
             Cache.Add(command, "");
         }

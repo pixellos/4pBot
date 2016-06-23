@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Model\Commands\CommandEquality\CommandTests.cs" />
     <Compile Include="Model\Commands\Cache\CacheTest.cs" />
-    <Compile Include="Model\Commands\HighLevel\RepeaterTest.cs" />
+    <Compile Include="Model\Commands\HighLevel\BaseRepeaterTest.cs" />
     <Compile Include="Model\Commands\HighLevel\SubscriptionTest.cs" />
     <Compile Include="Model\Commands\Marshaller\CommandMarshallerConst.cs" />
     <Compile Include="Model\ComunicateService\BuildInDictionaryActionsTests.cs" />

@@ -33,7 +33,7 @@ namespace pBot.Dependencies
 
         private static CommandDelegates.CommandAction ChangeRoom => command => AutofacSetup.GetContainer().Resolve<IXmpp>().ChangeRoom(command);
         private static CommandDelegates.CommandAction RepeatCommand => command => AutofacSetup.GetContainer().Resolve<Repeater>().DealWithRepeating(command);
-        private static CommandDelegates.CommandAction SubscribeCommand => command => AutofacSetup.GetContainer().Resolve<Subscription>().CommandSubscribe(command);
+        private static CommandDelegates.CommandAction SubscribeCommand => command => AutofacSetup.GetContainer().Resolve<Subscription>().DealWithRepeating(command);
         private static CommandDelegates.CommandAction Current => command => AutofacSetup.GetContainer().Resolve<Repeater>().GetCurrentTasks();
     }
 }

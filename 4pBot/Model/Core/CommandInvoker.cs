@@ -11,6 +11,10 @@ namespace pBot.Model.Core
 			_commandToCommandActionAction = commandsToCommandAction;
 		}
 
+	    public CommandInvoker()
+	    {
+	        
+	    }
 
 	    public void AddTemporaryCommand(Command command, CommandDelegates.CommandAction func)
 		{
