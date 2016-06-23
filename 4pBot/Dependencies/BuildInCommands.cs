@@ -24,11 +24,12 @@ namespace pBot.Dependencies
                     Command.Any,Command.Any,Command.Any,Command.Any,Command.Any,Command.Any), RepeatCommand },
             {   new Command(Command.Any,"Room",Command.CommandType.Any,Command.Any), ChangeRoom},
             {new Command(Command.Any,"Subscribe",Command.CommandType.Any,Command.Any,Command.Any,Command.Any,Command.Any,Command.Any), SubscribeCommand },
-            {   new Command(Command.Any,"?",Command.CommandType.Any,Command.Any) , command => "Available commands:\n" +
-                                                                                            "Command, parameters, additional parameters\n" +
-                                                                                            "Check (SO|4P) (C#/Java/Haskell/Etc...) //One time webpage check \n" +
-                                                                                            "Auto (from 5 to 2^31 integer) ([Check ...]|[Show ...]) //Auto check\n" +
-                                                                                              "Subscribe ([Check ...]|[Show ...]|[Auto...]) //your personal info feed "   }
+            {   new Command(Command.Any,"?",Command.CommandType.Any,Command.Any) , command => 
+            "Available commands:\n" +
+            "Command, parameters, additional parameters\n" +
+            "Check (SO|4P) (C#/Java/Haskell/Etc...) //One time webpage check \n" +
+            "Auto (from 5 to 2^31 integer) ([Check ...]|[Show ...]) //Auto check\n" +
+            "Subscribe ([Check ...]|[Show ...]) //your personal info feed "   }
         };
 
         private static CommandDelegates.CommandAction ChangeRoom => command => AutofacSetup.GetContainer().Resolve<IXmpp>().ChangeRoom(command);

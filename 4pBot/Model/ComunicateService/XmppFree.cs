@@ -4,6 +4,7 @@ using agsXMPP;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 using pBot.Model.Commands.Helpers;
+using pBot.Model.Constants;
 using pBot.Model.Core;
 
 namespace pBot.Model.ComunicateService
@@ -23,8 +24,8 @@ namespace pBot.Model.ComunicateService
             clientConnection = new XmppClientConnection()
             {
                 AutoPresence = true,
-                Password = "123456",
-                Username = "bot4p",
+                Password = Identity.Password,
+                Username = Identity.UserName,
                 Server = "4programmers.net",
             };
 
@@ -102,6 +103,8 @@ namespace pBot.Model.ComunicateService
         public string ChangeRoom(Command command)
         {
             mucManager.LeaveRoom(RoomName + "@conference.4programmers.net", "Bot");
+
+            startupDate = DateTime.Now; 
 
             RoomName = command.Parameters[0];
             JoinRoom();

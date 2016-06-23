@@ -40,3 +40,4 @@ Thumbs.db
 *.dotCover
 4pBot/Model/4pChecker/ApiKey.cs
 /4pBot/Model/Commands/4pChecker/ApiKey.cs
+/4pBot/Model/Constants/Identity.cs

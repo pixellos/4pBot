@@ -1,15 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
+using Google.Apis.Services;
 using Newtonsoft.Json;
 using pBot.Model.Core;
+using Google.Apis.Urlshortener.v1;
+using Google.Apis.Urlshortener.v1.Data;
 
 namespace pBot.Model.Commands._4pChecker
 {
 	class _4pChecker
 	{
-		private static readonly string _4pAdress = ApiKey.Key;
+        private static readonly string _4pAdress = ApiKey.Key;
 		private static readonly Dictionary<string, string> NameToID = new Dictionary<string, string>()
 		{
 			{"Delphi i Pascal", "1"},
@@ -80,7 +84,9 @@ namespace pBot.Model.Commands._4pChecker
 			{"51","Python"},
 		};
 
-        public static string GetForumId(string str)
+	    private static string _s;
+
+	    public static string GetForumId(string str)
 		{
 			return NameToID.First(x => x.Key.ToLower().Contains(str.ToLower())).Value;
 		}
@@ -116,6 +122,18 @@ namespace pBot.Model.Commands._4pChecker
                 .TrimEnd('_');
 		}
 
+	    private static string GetShortUrl(string longUrl)
+	    {
+            var url = new Url();
+	        url.LongUrl = longUrl;
+	        Url returnValue = new UrlshortenerService(new BaseClientService.Initializer() {ApiKey = "AIzaSyDxVEUf6ZXnRckEnZeLTpHw5bVA5YORqNk" }) .Url.Insert(url).Execute();
+
+	        return returnValue.Id;
+	    }
+
+        private static string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) => 
+            $"http://forum.4programmers.net/{GetForumUrl(jsonForumId)}/{jsonTopicId}-{MagicWith4PSubject(jsonSubject)}";
+
 		public static string GetNewestPost(Command command)
 		{
 			var forumId = GetForumId(command.Parameters[1]);
@@ -124,12 +142,11 @@ namespace pBot.Model.Commands._4pChecker
 			RootObject obj = JsonConvert.DeserializeObject<RootObject>(MagicWithJson(json));
 
 			var element = obj.Main.First();
-			var tags = element.tags.Aggregate(" ", (current, tag) => current + (tag + ","));
+			var tags = element.tags.Aggregate(" ", (current, tag) => current + (tag + ", "));
 
-		    return
-		        $"[{Regex.Unescape(element.subject)}, {tags}] " +
-		        $" przez {element.first_post.user.name}" + " " + 
-		        $"http://forum.4programmers.net/{GetForumUrl(forumId)}/{element.topic_id}-{MagicWith4PSubject(element.subject)}";
+		    return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
+		        $"przez {element.first_post.user.name}: " + 
+                GetShortUrl(make4pUrlFromJson(forumId, element.topic_id.ToString() ,element.subject)) ;
 		}
 	}
 }
