@@ -124,11 +124,11 @@ namespace pBot.Model.Commands._4pChecker
 			RootObject obj = JsonConvert.DeserializeObject<RootObject>(MagicWithJson(json));
 
 			var element = obj.Main.First();
-			var tags = element.tags.Aggregate("", (current, tag) => current + (tag + ","));
+			var tags = element.tags.Aggregate(" ", (current, tag) => current + (tag + ","));
 
 		    return
 		        $"[{Regex.Unescape(element.subject)}, {tags}] " +
-		        $" przez {element.first_post.user.name}" +
+		        $" przez {element.first_post.user.name}" + " " + 
 		        $"http://forum.4programmers.net/{GetForumUrl(forumId)}/{element.topic_id}-{MagicWith4PSubject(element.subject)}";
 		}
 	}
