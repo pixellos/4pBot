@@ -3,10 +3,11 @@ using pBot.Model.ComunicateService;
 
 namespace pBot
 {
-    public partial class MainWindow : Gtk.Window
+    public partial class MainWindow : Window
     {
         private IXmpp xmpp;
-        public MainWindow(IXmpp xmpp) : base(Gtk.WindowType.Toplevel)
+
+        public MainWindow(IXmpp xmpp) : base(WindowType.Toplevel)
         {
             Build();
         }

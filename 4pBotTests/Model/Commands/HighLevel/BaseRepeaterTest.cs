@@ -1,50 +1,58 @@
 ﻿using System;
-using Autofac;
 using NSubstitute;
 using NUnit.Framework;
-using pBot.Dependencies;
 using pBot.Model.Commands.HighLevel;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
 
 namespace pBotTests.Model.Commands.HighLevel
 {
-    [TestFixture()]
+    [TestFixture]
     public class BaseRepeaterTests
     {
+        [SetUp]
+        public void Setup()
+        {
+            repeater = new Repeater
+            {
+                CachedResponse = new CachedResponse(),
+                CommandInvoker = new CommandInvoker(),
+                Xmpp = Substitute.For<IXmpp>()
+            };
+        }
+
         private RepeaterBase repeater;
 
-        static Command MockCommand = new Command("Test", "Test", Command.CommandType.Default,"Test");
+        private static readonly Command MockCommand = new Command("Test", "Test", Command.CommandType.Default, "Test");
         private static string MockResponse = "TestResponse";
 
-        static Command ItReturnsMockCommand()
+        private static Command ItReturnsMockCommand()
         {
             return MockCommand;
         }
 
-        [SetUp]
-        public void Setup()
-        {
-            repeater = new Repeater() {CachedResponse = new CachedResponse(),CommandInvoker = new CommandInvoker(), Xmpp = Substitute.For<IXmpp>()};
-        }
+        private readonly Command RepeatingCommand = new Command("Someone", "Auto", Command.CommandType.Default, "5",
+            "Test", "Test", "Test"); // Inside is MockCommand
+
+        private readonly Command AnotherRepeatingCommand = new Command("Someone", "Auto", Command.CommandType.Default,
+            "5", "Test", "Test", "NotTest"); // Inside is MockCommand
 
         [Test]
-        public void ThrowsExceptionWhenCommandIsntHighLevel()
+        public void CheckRepeatingTasksLineCountFor2Deals()
         {
-            Assert.Throws<System.ArgumentException>(
-                () =>
-                {
-                    repeater.DealWithRepeating(MockCommand);
-                });
-        }
+            var expectedLines = 6; //2 for help, 2 per "Deal"
+            repeater.DealWithRepeating(RepeatingCommand);
+            repeater.DealWithRepeating(AnotherRepeatingCommand);
 
-        Command RepeatingCommand = new Command("Someone","Auto",Command.CommandType.Default,"5","Test","Test","Test"); // Inside is MockCommand
-        Command AnotherRepeatingCommand = new Command("Someone","Auto",Command.CommandType.Default,"5","Test","Test","NotTest"); // Inside is MockCommand
+            var countOfLines = repeater.GetCurrentTasks().Split('\n').Length;
+
+            Assert.AreEqual(expectedLines, countOfLines, repeater.GetCurrentTasks());
+        }
 
         [Test]
         public void CheckRepeatingTasksLineCountForOneDeal()
         {
-            int expectedLines = 4; //2 for help, 2 per "Deal"
+            var expectedLines = 4; //2 for help, 2 per "Deal"
 
             repeater.DealWithRepeating(RepeatingCommand);
             var countOfLines = repeater.GetCurrentTasks().Split('\n').Length;
@@ -53,18 +61,10 @@ namespace pBotTests.Model.Commands.HighLevel
         }
 
         [Test]
-        public void CheckRepeatingTasksLineCountFor2Deals()
+        public void ThrowsExceptionWhenCommandIsntHighLevel()
         {
-            int expectedLines = 6; //2 for help, 2 per "Deal"
-            repeater.DealWithRepeating(RepeatingCommand);
-            repeater.DealWithRepeating(AnotherRepeatingCommand);
-
-            var countOfLines = repeater.GetCurrentTasks().Split('\n').Length;
-
-            Assert.AreEqual(expectedLines,countOfLines,repeater.GetCurrentTasks());
+            Assert.Throws<ArgumentException>(
+                () => { repeater.DealWithRepeating(MockCommand); });
         }
-
- 
     }
 }
-

@@ -10,7 +10,11 @@ namespace pBot.Model.Commands._4pChecker
         {
             var url = new Url();
             url.LongUrl = longUrl;
-            Url returnValue = new UrlshortenerService(new BaseClientService.Initializer() {ApiKey = "AIzaSyDxVEUf6ZXnRckEnZeLTpHw5bVA5YORqNk" }) .Url.Insert(url).Execute();
+            var returnValue =
+                new UrlshortenerService(new BaseClientService.Initializer
+                {
+                    ApiKey = "AIzaSyDxVEUf6ZXnRckEnZeLTpHw5bVA5YORqNk"
+                }).Url.Insert(url).Execute();
 
             return returnValue.Id;
         }

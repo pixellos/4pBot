@@ -1,5 +1,4 @@
 ﻿using System;
-using pBot.Model.Commands;
 using agsXMPP;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
@@ -11,48 +10,87 @@ namespace pBot.Model.ComunicateService
 {
     public class XmppFree : IXmpp
     {
-        public ICommandParser Parser { get; set; }
-        public ICommandInvoker Invoker { get; set; }
-
-        private XmppClientConnection clientConnection;
-        private DateTime startupDate = DateTime.Now;
-        private MucManager mucManager;
         private static string RoomName = "help";
+
+        private readonly XmppClientConnection clientConnection;
+        private MucManager mucManager;
+        private DateTime startupDate = DateTime.Now;
 
         public XmppFree()
         {
-            clientConnection = new XmppClientConnection()
+            clientConnection = new XmppClientConnection
             {
                 AutoPresence = true,
                 Password = Identity.Password,
                 Username = Identity.UserName,
-                Server = "4programmers.net",
+                Server = "4programmers.net"
             };
 
             clientConnection.Open();
             clientConnection.OnLogin += JoinRoom;
             clientConnection.OnMessage += HandleMessage;
-            
+
             clientConnection.OnWriteXml += DebugConsoleWrite;
+        }
+
+        public ICommandParser Parser { get; set; }
+        public ICommandInvoker Invoker { get; set; }
+
+        public void SendIfNotNull(string message)
+        {
+            if (message != null)
+            {
+                clientConnection.Send(new Message
+                {
+                    Type = MessageType.groupchat,
+                    Body = message,
+                    To = RoomName + Server(),
+                    From = clientConnection.MyJID
+                });
+            }
+        }
+
+        public void PrivateSend(string user, string message)
+        {
+            clientConnection.Send(
+                new Message
+                {
+                    Type = MessageType.chat,
+                    Body = message,
+                    To = RoomName + Server() + "/" + user,
+                    From = clientConnection.MyJID
+                }
+                );
+        }
+
+        public string ChangeRoom(Command command)
+        {
+            mucManager.LeaveRoom(RoomName + "@conference.4programmers.net", "Bot");
+
+            startupDate = DateTime.Now;
+
+            RoomName = command.Parameters[0];
+            JoinRoom();
+            return "Joined";
         }
 
         private void HandleMessage(object sender, Message msg)
         {
-            DateTime Stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
+            var Stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
 
             var nickName = msg?.From.Resource ?? "Undefined";
 
             var command = Parser.GetCommandFromUserNameAndMessage(nickName, msg.Body);
             if (command != Command.Empty() && startupDate < Stamp)
             {
-                string response = Invoker.InvokeCommand(command);
+                var response = Invoker.InvokeCommand(command);
                 if (response != null && msg.Type == MessageType.groupchat)
                 {
                     SendIfNotNull(response);
                 }
                 if (response != null && msg.Type == MessageType.chat)
                 {
-                    PrivateSend(nickName,response);
+                    PrivateSend(nickName, response);
                 }
             }
         }
@@ -68,47 +106,9 @@ namespace pBot.Model.ComunicateService
             mucManager.JoinRoom(RoomName + Server(), "Bot");
         }
 
-        public void SendIfNotNull(string message)
-        {
-            if (message != null)
-            {
-                clientConnection.Send(new Message()
-                {
-                    Type = MessageType.groupchat,
-                    Body = message,
-                    To = RoomName + Server(),
-                    From = clientConnection.MyJID
-                });
-            }
-        }
-
         private static string Server()
         {
             return "@conference.4programmers.net";
-        }
-
-        public void PrivateSend(string user, string message)
-        {
-            clientConnection.Send(
-                new Message()
-                {
-                    Type = MessageType.chat,
-                    Body = message,
-                    To = RoomName + Server() + "/" + user,
-                    From = clientConnection.MyJID
-                }
-                );
-        }
-
-        public string ChangeRoom(Command command)
-        {
-            mucManager.LeaveRoom(RoomName + "@conference.4programmers.net", "Bot");
-
-            startupDate = DateTime.Now; 
-
-            RoomName = command.Parameters[0];
-            JoinRoom();
-            return "Joined";
         }
     }
 }

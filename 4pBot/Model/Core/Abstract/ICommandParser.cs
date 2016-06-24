@@ -1,8 +1,7 @@
 ﻿namespace pBot.Model.Core
 {
-	public interface ICommandParser
-	{
-		Command GetCommand(string author, string text);
-	}
+    public interface ICommandParser
+    {
+        Command GetCommand(string author, string text);
+    }
 }
-

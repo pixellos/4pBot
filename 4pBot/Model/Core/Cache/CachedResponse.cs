@@ -7,7 +7,7 @@ namespace pBot.Model.Core
 {
     public class CachedResponse
     {
-        Dictionary<Command,string> Cache  = new Dictionary<Command, string>();
+        private readonly Dictionary<Command, string> Cache = new Dictionary<Command, string>();
 
         public ImmutableDictionary<Command, string> ReadOnlyCache => Cache.ToImmutableDictionary();
 
@@ -16,9 +16,9 @@ namespace pBot.Model.Core
             return Cache.Any(x => x.Key == command);
         }
 
-        public bool IsResponseUnique(Command command,string response)
+        public bool IsResponseUnique(Command command, string response)
         {
-            return ! Cache.Single(x=>x.Key == command).Value.Equals( response);
+            return !Cache.Single(x => x.Key == command).Value.Equals(response);
         }
 
         public void SetLastResponse(Command command, string response)
@@ -28,7 +28,7 @@ namespace pBot.Model.Core
 
         public void DoWhenResponseIsNotLikeLastResponse(Command command, string response, Action<string> action)
         {
-            if (! ContainsCommand(command))
+            if (!ContainsCommand(command))
             {
                 InitializeCommand(command);
             }
@@ -45,7 +45,7 @@ namespace pBot.Model.Core
             return Cache.SingleOrDefault(x => x.Key == command).Value;
         }
 
-        void InitializeCommand(Command command)
+        private void InitializeCommand(Command command)
         {
             Cache.Add(command, "");
         }

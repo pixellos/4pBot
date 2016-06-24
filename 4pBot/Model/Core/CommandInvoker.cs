@@ -1,39 +1,39 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using pBot.Model.Commands.HighLevel;
 
 namespace pBot.Model.Core
 {
-	public class CommandInvoker : ICommandInvoker
-	{
-		public CommandInvoker(Dictionary<Command, CommandDelegates.CommandAction> commandsToCommandAction)
-		{
-			_commandToCommandActionAction = commandsToCommandAction;
-		}
+    public class CommandInvoker : ICommandInvoker
+    {
+        public static readonly string ActionNotFound = "Action not found";
 
-	    public CommandInvoker()
-	    {
-	    }
+        private readonly Dictionary<Command, CommandDelegates.CommandAction> _commandToCommandActionAction =
+            new Dictionary<Command, CommandDelegates.CommandAction>();
 
-	    public void AddTemporaryCommand(Command command, CommandDelegates.CommandAction func)
-		{
-			_commandToCommandActionAction.Add(command, func);
-		}
+        public CommandInvoker(Dictionary<Command, CommandDelegates.CommandAction> commandsToCommandAction)
+        {
+            _commandToCommandActionAction = commandsToCommandAction;
+        }
 
-		Dictionary<Command, CommandDelegates.CommandAction> _commandToCommandActionAction = new Dictionary<Command, CommandDelegates.CommandAction>();
-	    public static readonly string ActionNotFound = "Action not found";
+        public CommandInvoker()
+        {
+        }
 
-	    public string InvokeCommand(Command command)
-		{
-			var action = _commandToCommandActionAction.FirstOrDefault(x => x.Key == command).Value;
+        public void AddTemporaryCommand(Command command, CommandDelegates.CommandAction func)
+        {
+            _commandToCommandActionAction.Add(command, func);
+        }
+
+        public string InvokeCommand(Command command)
+        {
+            var action = _commandToCommandActionAction.FirstOrDefault(x => x.Key == command).Value;
 
             if (action == null)
-			{
-				return ActionNotFound;
-			}
+            {
+                return ActionNotFound;
+            }
 
-			return action(command);
-		}
-	}
+            return action(command);
+        }
+    }
 }
-

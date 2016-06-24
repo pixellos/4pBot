@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using pBot.Model.Commands.Helpers;
 using pBot.Model.ComunicateService;
@@ -10,16 +9,16 @@ namespace pBot.Model.Commands.HighLevel
     public abstract class RepeaterBase
     {
         public const string ErrorNotifyAdminPlease = "Error, notify admin please;";
+
+        protected Action<Command, string> StringAction;
         public ICommandInvoker CommandInvoker { get; set; }
         public CachedResponse CachedResponse { get; set; }
-
-        protected Action<Command,string> StringAction;
 
 
         private static int GetDelayValue(Command command)
         {
-            var delayValue = Int32.Parse(command.Parameters[0])*1000;
-            if (Int32.Parse(command.Parameters[0]) < 1)
+            var delayValue = int.Parse(command.Parameters[0])*1000;
+            if (int.Parse(command.Parameters[0]) < 1)
             {
                 delayValue = 5000;
             }
@@ -29,7 +28,7 @@ namespace pBot.Model.Commands.HighLevel
         public string GetCurrentTasks()
         {
             var response = "Current commands and tasks:\n";
-            foreach (KeyValuePair<Command, string> keyValuePair in CachedResponse.ReadOnlyCache)
+            foreach (var keyValuePair in CachedResponse.ReadOnlyCache)
             {
                 response +=
                     $"Command action: {keyValuePair.Key.ActionName}, sender: {keyValuePair.Key.Sender}, I: {keyValuePair.Key.Parameters[0]}, II: {keyValuePair.Key.Parameters[1]}\n" +
@@ -40,13 +39,14 @@ namespace pBot.Model.Commands.HighLevel
 
         public string DealWithRepeating(Command rootCommand)
         {
-            var childCommand = CommandHelper.GetCommandFromParameters(rootCommand);
+            var childCommand = rootCommand.GetCommandFromParameters();
 
-            if (rootCommand.TypeOfCommand == Command.CommandType.Default || rootCommand.TypeOfCommand == Command.CommandType.Any )
+            if (rootCommand.TypeOfCommand == Command.CommandType.Default ||
+                rootCommand.TypeOfCommand == Command.CommandType.Any)
             {
-                if (! CachedResponse.ContainsCommand(childCommand))
+                if (!CachedResponse.ContainsCommand(childCommand))
                 {
-                    CachedResponse.SetLastResponse(childCommand,"");
+                    CachedResponse.SetLastResponse(childCommand, "");
                     Task.Run(
                         () => DoRequest(childCommand, GetDelayValue(rootCommand)));
                     return "Request has been Added!";
@@ -72,26 +72,22 @@ namespace pBot.Model.Commands.HighLevel
             {
                 var response = CommandInvoker.InvokeCommand(command);
 
-                if (! CachedResponse.ContainsCommand(command))
+                if (!CachedResponse.ContainsCommand(command))
                 {
                     return;
                 }
-                else
-                {
-                    CachedResponse.DoWhenResponseIsNotLikeLastResponse(command,response, msg => StringAction(command, msg));
-                }
+                CachedResponse.DoWhenResponseIsNotLikeLastResponse(command, response, msg => StringAction(command, msg));
             }
         }
     }
 
     public class Repeater : RepeaterBase
     {
-        public IXmpp Xmpp { get; set; }
-
-        public Repeater() : base()
+        public Repeater()
         {
             StringAction = (command, msg) => Xmpp.SendIfNotNull(msg);
         }
+
+        public IXmpp Xmpp { get; set; }
     }
 }
-

@@ -5,19 +5,19 @@ using pBot.Model.ComunicateService;
 
 namespace pBot
 {
-	class MainClass
-	{
-		public static void Main(string[] args)
-		{
-			IContainer container = AutofacSetup.GetContainer();
+    internal class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            var container = AutofacSetup.GetContainer();
 
-			var xmpp = container.Resolve<IXmpp>();
-            
+            var xmpp = container.Resolve<IXmpp>();
+
             Application.Init();
-            MainWindow window = new MainWindow(xmpp);
+            var window = new MainWindow(xmpp);
 
             window.Hide();
             Application.Run();
-		}
-	}
+        }
+    }
 }
