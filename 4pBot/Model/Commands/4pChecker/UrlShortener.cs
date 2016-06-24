@@ -1,6 +1,7 @@
 using Google.Apis.Services;
 using Google.Apis.Urlshortener.v1;
 using Google.Apis.Urlshortener.v1.Data;
+using pBot.Model.Constants;
 
 namespace pBot.Model.Commands._4pChecker
 {
@@ -13,7 +14,7 @@ namespace pBot.Model.Commands._4pChecker
             var returnValue =
                 new UrlshortenerService(new BaseClientService.Initializer
                 {
-                    ApiKey = "AIzaSyDxVEUf6ZXnRckEnZeLTpHw5bVA5YORqNk"
+                    ApiKey = Identity.GoogleApiKey
                 }).Url.Insert(url).Execute();
 
             return returnValue.Id;
