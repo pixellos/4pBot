@@ -18,12 +18,11 @@ namespace pBot.Model.Commands.StackOverflowChecker
 
             html.LoadHtml(
                 new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}"));
-
-            var question = html.DocumentNode.Descendants()
-                .Where(node => node.GetAttributeValue("class", "").Equals("question-summary")).First();
-
             try
             {
+                var question = html.DocumentNode.Descendants()
+                .Where(node => node.GetAttributeValue("class", "").Equals("question-summary")).First();
+          
                 var firstQuestion = question.Descendants().First(x => x.GetAttributeValue("class", "").Equals("question-hyperlink"));
                 return $"{firstQuestion.InnerText}, [www.stackoverflow.com{firstQuestion.Attributes["href"].Value}]";
             }

@@ -203,6 +203,7 @@
     <Compile Include="Model\Commands\4pChecker\4pChecker.cs" />
     <Compile Include="Model\Commands\4pChecker\ApiKey.cs" />
     <Compile Include="Model\Commands\4pChecker\JSONModel.cs" />
+    <Compile Include="Model\Commands\4pChecker\UrlShortener.cs" />
     <Compile Include="Model\Commands\Helpers\CommandHelper.cs" />
     <Compile Include="Model\Commands\Helpers\ParserExtensions.cs" />
     <Compile Include="Model\Commands\HighLevel\Subscription.cs" />

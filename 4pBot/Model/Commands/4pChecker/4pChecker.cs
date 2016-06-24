@@ -122,16 +122,7 @@ namespace pBot.Model.Commands._4pChecker
                 .TrimEnd('_');
 		}
 
-	    private static string GetShortUrl(string longUrl)
-	    {
-            var url = new Url();
-	        url.LongUrl = longUrl;
-	        Url returnValue = new UrlshortenerService(new BaseClientService.Initializer() {ApiKey = "AIzaSyDxVEUf6ZXnRckEnZeLTpHw5bVA5YORqNk" }) .Url.Insert(url).Execute();
-
-	        return returnValue.Id;
-	    }
-
-        private static string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) => 
+	    private static string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) => 
             $"http://forum.4programmers.net/{GetForumUrl(jsonForumId)}/{jsonTopicId}-{MagicWith4PSubject(jsonSubject)}";
 
 		public static string GetNewestPost(Command command)
@@ -145,8 +136,7 @@ namespace pBot.Model.Commands._4pChecker
 			var tags = element.tags.Aggregate(" ", (current, tag) => current + (tag + ", "));
 
 		    return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
-		        $"przez {element.first_post.user.name}: " + 
-                GetShortUrl(make4pUrlFromJson(forumId, element.topic_id.ToString() ,element.subject)) ;
+		        $"przez {element.first_post.user.name}: " + UrlShortener.GetShortUrl(make4pUrlFromJson(forumId, element.topic_id.ToString() ,element.subject)) ;
 		}
 	}
 }
