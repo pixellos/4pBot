@@ -207,6 +207,13 @@
     <Compile Include="Model\Commands\Helpers\CommandHelper.cs" />
     <Compile Include="Model\Commands\Helpers\ParserExtensions.cs" />
     <Compile Include="Model\Commands\HighLevel\Subscription.cs" />
+    <Compile Include="Model\Command\Argument.cs" />
+    <Compile Include="Model\Command\ArgumentOptions.cs" />
+    <Compile Include="Model\Command\Block.cs" />
+    <Compile Include="Model\Command\Builder.cs" />
+    <Compile Include="Model\Command\Command.cs" />
+    <Compile Include="Model\Command\Mask.cs" />
+    <Compile Include="Model\Command\Parser.cs" />
     <Compile Include="Model\Constants\Identity.cs" />
     <Compile Include="Model\Core\Cache\CachedResponse.cs" />
     <Compile Include="Model\Commands\Parser\RegexParser.cs" />

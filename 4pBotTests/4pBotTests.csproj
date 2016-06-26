@@ -46,6 +46,7 @@
     <Compile Include="Model\Commands\HighLevel\BaseRepeaterTest.cs" />
     <Compile Include="Model\Commands\HighLevel\SubscriptionTest.cs" />
     <Compile Include="Model\Commands\Marshaller\CommandMarshallerConst.cs" />
+    <Compile Include="Model\Commands\Parser\AdvancedParser.cs" />
     <Compile Include="Model\ComunicateService\BuildInDictionaryActionsTests.cs" />
     <Compile Include="Model\Commands\Invoker\CommandInvokerTest.cs" />
     <Compile Include="Model\Commands\Marshaller\CommandMarshallerTest.cs" />
