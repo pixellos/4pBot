@@ -1,5 +1,6 @@
 using System;
 using pBot.Model.Commands.Parser.Advanced;
+using pBot.Model.Commands.Parser.Command;
 
 namespace pBot.Model.Commands.Parser
 {
@@ -37,7 +38,7 @@ namespace pBot.Model.Commands.Parser
         {
             const string separatorPattern = @"\W";
             block.RegexString += regexComparer + separatorPattern;
-            block.Arguments.Add(new CommandArgument(argumentOptions,sectionName));
+            block.Arguments.Add(new Argument(argumentOptions,sectionName));
             block.SampleInput += sampleInput + " ";
             block.Description += description;
             return block;

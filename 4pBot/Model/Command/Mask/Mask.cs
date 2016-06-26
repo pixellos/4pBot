@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using pBot.Model.Commands.Parser.Advanced;
+using pBot.Model.Commands.Parser.Command;
 
 namespace pBot.Model.Commands.Parser
 {
@@ -9,7 +10,7 @@ namespace pBot.Model.Commands.Parser
         public readonly string Description;
         public readonly string SampleInput;
 
-        public readonly IReadOnlyList<CommandArgument> NameOfArgument;
+        public readonly IReadOnlyList<Argument> NameOfArgument;
 
         public readonly string RegexString;
 

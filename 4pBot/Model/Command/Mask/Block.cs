@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using pBot.Model.Commands.Parser.Advanced;
+using pBot.Model.Commands.Parser.Command;
 
 namespace pBot.Model.Commands.Parser
 {
     public class Block
     {
-        internal List<CommandArgument> Arguments = new List<CommandArgument>();
+        internal List<Argument> Arguments = new List<Argument>();
 
         internal string Description = "";
         internal string SampleInput = "";

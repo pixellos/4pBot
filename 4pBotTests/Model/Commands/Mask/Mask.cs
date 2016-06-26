@@ -7,7 +7,7 @@ using pBot.Model.Commands.Parser;
 namespace pBotTests.Model.Commands.Parser
 {
     [TestFixture]
-    public class AdvancedParser
+    public class Mask
     {
         private const string Code = "Code";
         private const string Something = "Something";
@@ -25,7 +25,7 @@ namespace pBotTests.Model.Commands.Parser
         }
 
         [Test,TestCaseSource(nameof(SampleInputMatchRegexString))]
-        public void IsSampleInputMatchingWithRegex(Mask mask)
+        public void IsSampleInputMatchingWithRegex(pBot.Model.Commands.Parser.Mask mask)
         {
             Regex regex = new Regex(mask.RegexString);
             var result = regex.Match(mask.SampleInput);
@@ -48,7 +48,7 @@ namespace pBotTests.Model.Commands.Parser
             }
         }
         [Test,TestCaseSource(nameof(SampleInputCorrectMatch))]
-        public void IsMatchedSampleIsCorrect(Mask mask,string group, string estimatedMatch)
+        public void IsMatchedSampleIsCorrect(pBot.Model.Commands.Parser.Mask mask,string group, string estimatedMatch)
         {
             Regex regex = new Regex(mask.RegexString);
             var result = regex.Match(mask.SampleInput);
