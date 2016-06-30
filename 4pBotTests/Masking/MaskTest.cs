@@ -17,9 +17,9 @@ namespace pBotTests.Masking
         {
             get
             {
-                yield return new TestCaseData(Builder.Prepare().Bot().FinalizeCommand());
-                yield return new TestCaseData(Builder.Prepare().Bot().Bot().FinalizeCommand());
-                yield return new TestCaseData(Builder.Prepare().Bot().ThenWord(Something,SampleInput).FinalizeCommand());
+                yield return new TestCaseData(Builder.Bot().FinalizeCommand());
+                yield return new TestCaseData(Builder.Bot().Bot().FinalizeCommand());
+                yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).ThenRequried(SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand());

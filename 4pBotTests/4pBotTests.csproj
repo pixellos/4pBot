@@ -53,6 +53,7 @@
     <Compile Include="Marshaller\CommandMarshallerTest.cs" />
     <Compile Include="Invoker\InvokerDataForTest.cs" />
     <Compile Include="ComunicateService\XmppTest.cs" />
+    <Compile Include="Order\Doer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

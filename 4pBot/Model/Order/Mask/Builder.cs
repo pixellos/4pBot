@@ -5,18 +5,27 @@ namespace pBot.Model.Order.Mask
 {
     public static class Builder // I'm assuming that every part of command except optional 
     {
+        [Obsolete("Use Bot() instead")]
         public static Block Prepare()
         {
             return new Block();
         }
 
+
+        [Obsolete("Use Bot() instead")]
         public static Block Bot(this Block block)
         {
             string regexComparer = @"Bot";
             string botNick = "Bot Nick";
             string Bot = nameof(Bot);
 
-            return block.AddToCommandBlock(regexComparer, botNick, Bot, Bot,ArgumentOptions.Core, String.Empty);
+            return block.AddToCommandBlock(regexComparer, botNick, Bot, Bot, ArgumentOptions.Core, String.Empty);
+        }
+
+        public static Block Bot()
+        {
+            var block = new Block();
+            return block.Bot();
         }
 
         public static Block ThenNonWhiteSpaceString(this Block block, string sectionName, string sampleInput)
