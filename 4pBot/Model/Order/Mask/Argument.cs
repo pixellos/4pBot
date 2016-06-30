@@ -1,4 +1,4 @@
-﻿namespace pBot.Model.Commands.Parser.Command
+﻿namespace pBot.Model.Order.Mask
 {
     public class Argument
     {

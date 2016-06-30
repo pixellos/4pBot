@@ -1,10 +1,8 @@
 using System;
-using pBot.Model.Commands.Parser.Advanced;
-using pBot.Model.Commands.Parser.Command;
 
-namespace pBot.Model.Commands.Parser
+namespace pBot.Model.Order.Mask
 {
-    public static class CommandBuilder // I'm assuming that every part of command except optional 
+    public static class Builder // I'm assuming that every part of command except optional 
     {
         public static Block Prepare()
         {
@@ -13,11 +11,11 @@ namespace pBot.Model.Commands.Parser
 
         public static Block Bot(this Block block)
         {
-            string regexComparer = @"\w+";
+            string regexComparer = @"Bot";
             string botNick = "Bot Nick";
             string Bot = nameof(Bot);
 
-            return block.AddToCommandBlock(regexComparer, botNick, Bot, Bot,ArgumentOptions.Core);
+            return block.AddToCommandBlock(regexComparer, botNick, Bot, Bot,ArgumentOptions.Core, String.Empty);
         }
 
         public static Block ThenNonWhiteSpaceString(this Block block, string sectionName, string sampleInput)
@@ -34,12 +32,12 @@ namespace pBot.Model.Commands.Parser
             return block.AddToCommandBlock($@"(?<{sectionName}>((\S+\s*)+))", $"Everything to {sectionName}", sectionName, sampleInput,ArgumentOptions.Optional);
         }
 
-        private static Block AddToCommandBlock(this Block block, string regexComparer, string description, string sectionName, string sampleInput,ArgumentOptions argumentOptions)
+        private static Block AddToCommandBlock(this Block block, string regexComparer, string description, string sectionName, string sampleInput,ArgumentOptions argumentOptions,string preSampleInputSeparator = " ")
         {
-            const string separatorPattern = @"\W";
+            const string separatorPattern = @"\W*";
+            block.SampleInput += preSampleInputSeparator + sampleInput;
             block.RegexString += regexComparer + separatorPattern;
             block.Arguments.Add(new Argument(argumentOptions,sectionName));
-            block.SampleInput += sampleInput + " ";
             block.Description += description;
             return block;
         }

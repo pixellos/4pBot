@@ -1,4 +1,6 @@
-﻿namespace pBot.Model.Core
+﻿using pBot.Model.Core.Data;
+
+namespace pBot.Model.Core.Abstract
 {
     public interface ICommandInvoker
     {
@@ -6,7 +8,7 @@
         ///     Invokes the command.
         /// </summary>
         /// <returns>The response</returns>
-        string InvokeCommand(Command command);
+        string InvokeCommand(Data.Command command);
 
 
         /// <summary>
@@ -14,6 +16,6 @@
         /// </summary>
         /// <param name="command">Command</param>
         /// <param name="func">In: Command, Out: String, action invoked when command match</param>
-        void AddTemporaryCommand(Command command, CommandDelegates.CommandAction func);
+        void AddTemporaryCommand(Data.Command command, CommandDelegates.CommandAction func);
     }
 }

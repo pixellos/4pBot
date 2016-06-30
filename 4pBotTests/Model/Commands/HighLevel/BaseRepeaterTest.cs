@@ -4,6 +4,8 @@ using NUnit.Framework;
 using pBot.Model.Commands.HighLevel;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
+using pBot.Model.Core.Cache;
+using pBot.Model.Core.Data;
 
 namespace pBotTests.Model.Commands.HighLevel
 {
@@ -24,7 +26,6 @@ namespace pBotTests.Model.Commands.HighLevel
         private RepeaterBase repeater;
 
         private static readonly Command MockCommand = new Command("Test", "Test", Command.CommandType.Default, "Test");
-        private static string MockResponse = "TestResponse";
 
         private static Command ItReturnsMockCommand()
         {

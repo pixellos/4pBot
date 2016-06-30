@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using pBot.Model.Core.Abstract;
 
 namespace pBot.Model.Core
 {
@@ -7,10 +8,10 @@ namespace pBot.Model.Core
     {
         public static readonly string ActionNotFound = "Action not found";
 
-        private readonly Dictionary<Command, CommandDelegates.CommandAction> _commandToCommandActionAction =
-            new Dictionary<Command, CommandDelegates.CommandAction>();
+        private readonly Dictionary<Data.Command, CommandDelegates.CommandAction> _commandToCommandActionAction =
+            new Dictionary<Data.Command, CommandDelegates.CommandAction>();
 
-        public CommandInvoker(Dictionary<Command, CommandDelegates.CommandAction> commandsToCommandAction)
+        public CommandInvoker(Dictionary<Data.Command, CommandDelegates.CommandAction> commandsToCommandAction)
         {
             _commandToCommandActionAction = commandsToCommandAction;
         }
@@ -19,12 +20,12 @@ namespace pBot.Model.Core
         {
         }
 
-        public void AddTemporaryCommand(Command command, CommandDelegates.CommandAction func)
+        public void AddTemporaryCommand(Data.Command command, CommandDelegates.CommandAction func)
         {
             _commandToCommandActionAction.Add(command, func);
         }
 
-        public string InvokeCommand(Command command)
+        public string InvokeCommand(Data.Command command)
         {
             var action = _commandToCommandActionAction.FirstOrDefault(x => x.Key == command).Value;
 

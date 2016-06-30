@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using pBot.Model.Core;
+using pBot.Model.Core.Cache;
 using pBotTests.Model.Commands.Marshaller;
 
-namespace pBotTests.Model.Commands.CommandEquality
+namespace pBotTests.Model.Commands.Cache
 {
     [TestFixture]
     public class CacheTest

@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Dynamic;
-using pBot.Model.Commands.Parser.Advanced;
-using pBot.Model.Commands.Parser.Command;
 
-namespace pBot.Model.Commands.Parser
+namespace pBot.Model.Order.Mask
 {
     public class Block
     {

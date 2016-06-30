@@ -1,4 +1,5 @@
-using pBot.Model.Core;
+using pBot.Model.Core.Data;
+using pBot.Model.Core.Abstract;
 
 namespace pBot.Model.Commands.Helpers
 {

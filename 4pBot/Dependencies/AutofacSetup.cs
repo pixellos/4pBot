@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using Autofac;
 using pBot.Model.Commands.HighLevel;
+using pBot.Model.Commands.Parser;
 using pBot.Model.Commands._4pChecker;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
+using pBot.Model.Core.Abstract;
+using pBot.Model.Core.Cache;
+using pBot.Model.Core.Data;
 
 namespace pBot.Dependencies
 {

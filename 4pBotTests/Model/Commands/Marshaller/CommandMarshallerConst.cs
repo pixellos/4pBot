@@ -1,4 +1,5 @@
 ﻿using pBot.Model.Core;
+using pBot.Model.Core.Data;
 
 namespace pBotTests.Model.Commands.Marshaller
 {

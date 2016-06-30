@@ -1,4 +1,4 @@
-﻿using pBot.Model.Core;
+﻿using pBot.Model.Core.Data;
 
 namespace pBot.Model.ComunicateService
 {

@@ -1,7 +1,6 @@
 using System.ComponentModel;
-using Matrix.Xmpp.Jingle.Apps.Rtp;
 
-namespace pBot.Model.Commands.Parser
+namespace pBot.Model.Order.Mask
 {
     public enum ArgumentOptions
     {

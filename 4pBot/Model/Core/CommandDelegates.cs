@@ -1,3 +1,5 @@
+using pBot.Model.Core.Data;
+
 namespace pBot.Model.Core
 {
     public static class CommandDelegates

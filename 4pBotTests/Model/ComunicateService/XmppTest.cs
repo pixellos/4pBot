@@ -3,6 +3,9 @@ using NUnit.Framework;
 using pBot.Model.Commands.HighLevel;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
+using pBot.Model.Core.Abstract;
+using pBot.Model.Core.Cache;
+using pBot.Model.Core.Data;
 
 namespace pBotTests.Model.ComunicateService
 {

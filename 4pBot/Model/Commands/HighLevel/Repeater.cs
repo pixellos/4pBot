@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using pBot.Model.Commands.Helpers;
 using pBot.Model.ComunicateService;
-using pBot.Model.Core;
+using pBot.Model.Core.Data;
+using pBot.Model.Core.Abstract;
+using pBot.Model.Core.Cache;
 
 namespace pBot.Model.Commands.HighLevel
 {

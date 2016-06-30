@@ -1,10 +1,11 @@
 ﻿using System.Text.RegularExpressions;
+using pBot.Model.Core.Abstract;
 
-namespace pBot.Model.Core
+namespace pBot.Model.Commands.Parser
 {
     internal class RegexParser : ICommandParser
     {
-        public Command GetCommand(string author, string text)
+        public Core.Data.Command GetCommand(string author, string text)
         {
             var parser =
                 new Regex(
@@ -15,7 +16,7 @@ namespace pBot.Model.Core
 
             if (!parseResult.Success)
             {
-                return Command.Empty();
+                return Core.Data.Command.Empty();
             }
 
             var actionString = parseResult.Groups["Action"].Value;
@@ -23,9 +24,9 @@ namespace pBot.Model.Core
             var parameterGroup = parseResult.Groups["Parameters"];
             var parameterString = GetParameters(parameterGroup);
 
-            return new Command(author,
+            return new Core.Data.Command(author,
                 actionString,
-                isNegation ? Command.CommandType.Negation : Command.CommandType.Default,
+                isNegation ? Core.Data.Command.CommandType.Negation : Core.Data.Command.CommandType.Default,
                 parameterString);
         }
 
@@ -33,7 +34,7 @@ namespace pBot.Model.Core
         {
             if (!parameterGroup.Success)
             {
-                return new[] {Command.Any};
+                return new[] {Core.Data.Command.Any};
             }
             var parameterCount = parameterGroup.Captures.Count;
 

@@ -5,6 +5,7 @@ using pBot.Model.Commands.StackOverflowChecker;
 using pBot.Model.Commands._4pChecker;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
+using pBot.Model.Core.Data;
 
 namespace pBot.Dependencies
 {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using NUnit.Framework;
 using pBot.Model.Core;
+using pBot.Model.Core.Data;
 
 namespace pBotTests.Model.Commands.Invoker
 {

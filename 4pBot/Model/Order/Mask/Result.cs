@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace pBot.Model.Commands.Parser.Advanced
+namespace pBot.Model.Order.Mask
 {
-    class Result
+    public class Result
     {
-        private Mask _commandMask;
+        private readonly Mask _commandMask;
         private readonly string _fromString;
 
         public Dictionary<string, string> MatchedResult { get; }

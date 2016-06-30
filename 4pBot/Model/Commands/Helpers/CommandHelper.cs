@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using pBot.Model.Core;
+using pBot.Model.Core.Data;
 
 namespace pBot.Model.Commands.Helpers
 {

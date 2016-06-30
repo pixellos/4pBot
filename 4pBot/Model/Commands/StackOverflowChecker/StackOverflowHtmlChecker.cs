@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Net;
 using HtmlAgilityPack;
-using pBot.Model.Core;
+using pBot.Model.Core.Data;
 using static System.Web.HttpUtility;
 
 namespace pBot.Model.Commands.StackOverflowChecker

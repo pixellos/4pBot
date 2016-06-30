@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using pBot.Model.Core;
+using pBot.Model.Core.Data;
 
 namespace pBot.Model.Commands._4pChecker
 {
@@ -81,7 +81,6 @@ namespace pBot.Model.Commands._4pChecker
             {"51", "Python"}
         };
 
-        private static string _s;
 
         public static string GetForumId(string str)
         {

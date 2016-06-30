@@ -1,6 +1,6 @@
 using System;
 
-namespace pBot.Model.Core
+namespace pBot.Model.Core.Data
 {
     /// <summary>
     ///     Empty string mean any value
