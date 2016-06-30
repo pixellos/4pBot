@@ -6,11 +6,18 @@ using pBot.Model.Commands._4pChecker;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
 using pBot.Model.Core.Data;
+using pBot.Model.Order;
+using pBot.Model.Order.Mask;
 
 namespace pBot.Dependencies
 {
     public class BuildInCommands
     {
+        public static void InitializeOrderer()
+        {
+            OrderDoer orderDoer = new OrderDoer();
+        }
+
         public static Dictionary<Command, CommandDelegates.CommandAction> Commands = new Dictionary
             <Command, CommandDelegates.CommandAction>
         {

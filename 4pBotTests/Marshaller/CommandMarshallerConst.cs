@@ -1,7 +1,6 @@
-﻿using pBot.Model.Core;
-using pBot.Model.Core.Data;
+﻿using pBot.Model.Core.Data;
 
-namespace pBotTests.Model.Commands.Marshaller
+namespace pBotTests.Marshaller
 {
     public class CommandMarshallerConst
     {

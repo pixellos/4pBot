@@ -1,17 +1,10 @@
-﻿using NUnit.Framework;
-using NUnit.Common;
-using NUnit.Framework.Api;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
 using pBot.Model.Order.Mask;
-using static pBot.Model.Order.Mask.Builder;
 
-namespace pBotTests.Model.Commands.MaskTests
+namespace pBotTests.Masking
 {
     [TestFixture]
     public class Parser
@@ -21,27 +14,25 @@ namespace pBotTests.Model.Commands.MaskTests
             get
             {
                 yield return new TestCaseData(
-                    Prepare().Bot().FinalizeCommand(), "Bot ").
+                    Builder.Prepare().Bot().FinalizeCommand(), "Bot ").
                     Returns(new Dictionary<string,string>()
                 {
                     ["Bot"] = ""
                 });
 
-                yield return new TestCaseData(Prepare().Bot().ThenWord("SomeWord", "Example").FinalizeCommand(),"Bot test ").Returns(new Dictionary<string,string>()
+                yield return new TestCaseData(Builder.Prepare().Bot().ThenWord("SomeWord", "Example").FinalizeCommand(),"Bot test ").Returns(new Dictionary<string,string>()
                 {
                     ["Bot"] = "",
                     ["SomeWord"] = "test"
                 });
 
-                yield return new TestCaseData(Prepare().Bot().ThenNonWhiteSpaceString("Q","1234").FinalizeCommand(), "Bot 8796381147869adsa").Returns(new Dictionary<string, string>()
+                yield return new TestCaseData(Builder.Prepare().Bot().ThenNonWhiteSpaceString("Q","1234").FinalizeCommand(), "Bot 8796381147869adsa").Returns(new Dictionary<string, string>()
                 {
                     ["Bot"] = "",
                     ["Q"] = "8796381147869adsa"
                 });
 
-             
-
-                yield return new TestCaseData(Prepare().Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").FinalizeCommand(), "Bot test trata rata").Returns(new Dictionary<string, string>()
+                yield return new TestCaseData(Builder.Prepare().Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").FinalizeCommand(), "Bot test trata rata").Returns(new Dictionary<string, string>()
                 {
                     ["Bot"] = "",
                     ["SomeWord"] = "test",
@@ -67,7 +58,7 @@ namespace pBotTests.Model.Commands.MaskTests
         [Test]
         public void MatchTest_Throw_FormatException_When_StringHasIncorrectFormat()
         {
-            var mask = Prepare().Bot().FinalizeCommand();
+            var mask = Builder.Prepare().Bot().FinalizeCommand();
             var incorrectInput = "Bo312ts some chat message :D :P#$@#$23k43io2j44";
 
             Assert.Throws<FormatException>(() => mask.Parse("TES", incorrectInput));

@@ -1,4 +1,5 @@
 using System;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace pBot.Model.Order.Mask
 {
@@ -22,6 +23,13 @@ namespace pBot.Model.Order.Mask
         {
             return block.AddToCommandBlock($@"(?<{sectionName}>\S+)", $"Non whitespace string to {sectionName}", sectionName, sampleInput,ArgumentOptions.Required);
         }
+
+        public static Block ThenRequried(this Block block, string requestedInput)
+        {
+            return block.AddToCommandBlock($"{requestedInput}", $"Requried {requestedInput}", requestedInput,
+                requestedInput, ArgumentOptions.Core);
+        }
+
         public static Block ThenWord(this Block block, string sectionName, string sampleInput)
         {
             return block.AddToCommandBlock($@"(?<{sectionName}>\w+)", $"String to {sectionName}", sectionName, sampleInput,ArgumentOptions.Required);

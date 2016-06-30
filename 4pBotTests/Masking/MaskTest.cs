@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using NUnit.Framework;
 using pBot.Model.Order.Mask;
 
-namespace pBotTests.Model.Commands.Masking
+namespace pBotTests.Masking
 {
     [TestFixture]
     public class MaskTest
@@ -21,6 +21,7 @@ namespace pBotTests.Model.Commands.Masking
                 yield return new TestCaseData(Builder.Prepare().Bot().Bot().FinalizeCommand());
                 yield return new TestCaseData(Builder.Prepare().Bot().ThenWord(Something,SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).FinalizeCommand());
+                yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).ThenRequried(SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand());
             }
         }

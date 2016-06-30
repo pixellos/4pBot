@@ -5,7 +5,7 @@ using pBot.Model.Core;
 using pBot.Model.Core.Abstract;
 using pBot.Model.Core.Data;
 
-namespace pBotTests.Model.Commands.Invoker
+namespace pBotTests.Invoker
 {
     [TestFixture]
     public class MyCommandInvokerTest

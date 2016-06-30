@@ -7,7 +7,7 @@ using pBot.Model.Core;
 using pBot.Model.Core.Cache;
 using pBot.Model.Core.Data;
 
-namespace pBotTests.Model.Commands.HighLevel
+namespace pBotTests.HighLevel
 {
     [TestFixture]
     public class BaseRepeaterTests

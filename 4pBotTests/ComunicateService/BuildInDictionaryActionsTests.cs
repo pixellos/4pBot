@@ -6,7 +6,7 @@ using pBot.Dependencies;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
 
-namespace pBotTests.Model.ComunicateService
+namespace pBotTests.ComunicateService
 {
     [TestFixture]
     public class IntegrationTests

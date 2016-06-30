@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using NUnit.Framework;
-using pBot.Model.Core;
 using pBot.Model.Core.Data;
 
-namespace pBotTests.Model.Commands.CommandEquality
+namespace pBotTests.CommandEquality
 {
     [TestFixture]
     public class CommandTest

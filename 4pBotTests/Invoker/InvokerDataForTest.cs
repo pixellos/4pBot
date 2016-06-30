@@ -3,7 +3,7 @@ using NUnit.Framework;
 using pBot.Model.Core;
 using pBot.Model.Core.Data;
 
-namespace pBotTests.Model.Commands.Invoker
+namespace pBotTests.Invoker
 {
     internal static class InvokerDataForTest
     {

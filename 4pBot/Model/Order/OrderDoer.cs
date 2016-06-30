@@ -11,7 +11,7 @@ namespace pBot.Model.Order
     {
         Dictionary<Mask.Mask,Func<Result,string>> Dictionary = new Dictionary<Mask.Mask, Func<Result, string>>();
 
-        public void AddMask(Mask.Mask mask, Func<Result, string> func)
+        public void AddTemporaryCommand(Mask.Mask mask, Func<Result, string> func)
         {
             Dictionary.Add(mask,func);
         }
@@ -20,7 +20,7 @@ namespace pBot.Model.Order
         /// Return null when result should not be send
         /// </summary>
         /// <returns>Status response</returns>
-        public string CheckMessage(string author, string text)
+        public string InvokeCommand(string author, string text)
         {
             foreach (var record in Dictionary)
             {
