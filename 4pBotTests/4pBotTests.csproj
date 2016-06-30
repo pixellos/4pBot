@@ -41,18 +41,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Commands\CommandEquality\CommandTests.cs" />
-    <Compile Include="Model\Commands\Cache\CacheTest.cs" />
-    <Compile Include="Model\Commands\HighLevel\BaseRepeaterTest.cs" />
-    <Compile Include="Model\Commands\HighLevel\SubscriptionTest.cs" />
-    <Compile Include="Model\Commands\Marshaller\CommandMarshallerConst.cs" />
-    <Compile Include="Model\Commands\Masking\MaskTest.cs" />
-    <Compile Include="Model\Commands\Masking\Parser.cs" />
-    <Compile Include="Model\ComunicateService\BuildInDictionaryActionsTests.cs" />
-    <Compile Include="Model\Commands\Invoker\CommandInvokerTest.cs" />
-    <Compile Include="Model\Commands\Marshaller\CommandMarshallerTest.cs" />
-    <Compile Include="Model\Commands\Invoker\InvokerDataForTest.cs" />
-    <Compile Include="Model\ComunicateService\XmppTest.cs" />
+    <Compile Include="CommandEquality\CommandTests.cs" />
+    <Compile Include="Cache\CacheTest.cs" />
+    <Compile Include="HighLevel\BaseRepeaterTest.cs" />
+    <Compile Include="HighLevel\SubscriptionTest.cs" />
+    <Compile Include="Marshaller\CommandMarshallerConst.cs" />
+    <Compile Include="Masking\MaskTest.cs" />
+    <Compile Include="Masking\Parser.cs" />
+    <Compile Include="ComunicateService\BuildInDictionaryActionsTests.cs" />
+    <Compile Include="Invoker\CommandInvokerTest.cs" />
+    <Compile Include="Marshaller\CommandMarshallerTest.cs" />
+    <Compile Include="Invoker\InvokerDataForTest.cs" />
+    <Compile Include="ComunicateService\XmppTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

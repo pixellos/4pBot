@@ -220,6 +220,7 @@
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
     <Compile Include="Model\Commands\StackOverflowChecker\StackOverflowHtmlChecker.cs" />
+    <Compile Include="Model\Order\OrderDoer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Core\Abstract\ICommandInvoker.cs" />
