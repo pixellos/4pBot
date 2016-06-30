@@ -9,11 +9,11 @@ namespace pBot.Model.Commands.StackOverflowChecker
 {
     public class StackOverflowHtmlChecker
     {
-        public static string GetSingleSORequestWithTagAsParameter(Command command)
+        public static string GetSingleSORequestWithTagAsParameter(string unescapedTag)
         {
             var html = new HtmlDocument();
 
-            var escapedTag = HtmlEncode(command.Parameters[1]);
+            var escapedTag = HtmlEncode(unescapedTag);
 
             html.LoadHtml(
                 new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}"));
@@ -31,6 +31,11 @@ namespace pBot.Model.Commands.StackOverflowChecker
                 Console.WriteLine($"{exception.Message} at StackOverFlowChecker");
                 return "Sorry, I can't find your request :(";
             }
+        }
+
+        public static string GetSingleSORequestWithTagAsParameter(Command command)
+        {
+            return GetSingleSORequestWithTagAsParameter(command.Parameters[1]);
         }
     }
 }

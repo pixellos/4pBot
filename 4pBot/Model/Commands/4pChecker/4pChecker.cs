@@ -121,10 +121,10 @@ namespace pBot.Model.Commands._4pChecker
         private static string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
             $"http://forum.4programmers.net/{GetForumUrl(jsonForumId)}/{jsonTopicId}-{MagicWith4PSubject(jsonSubject)}";
 
-        public static string GetNewestPost(Command command)
+        public static string GetNewestPost(string forumId)
         {
-            var forumId = GetForumId(command.Parameters[1]);
-            var json = new WebClient().DownloadString(_4pAdress + forumId);
+            var jsonForumId = GetForumId(forumId);
+           var json = new WebClient().DownloadString(_4pAdress + jsonForumId);
 
             var obj = JsonConvert.DeserializeObject<RootObject>(MagicWithJson(json));
 
@@ -133,7 +133,12 @@ namespace pBot.Model.Commands._4pChecker
 
             return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
                    $"przez {element.first_post.user.name}: " +
-                   UrlShortener.GetShortUrl(make4pUrlFromJson(forumId, element.topic_id.ToString(), element.subject));
+                   UrlShortener.GetShortUrl(make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
+        }
+
+        public static string GetNewestPost(Command command)
+        {
+            return GetNewestPost(command.Parameters[1]);
         }
     }
 }

@@ -66,11 +66,15 @@ namespace pBot.Model.ComunicateService
 
         public string ChangeRoom(Command command)
         {
+            return ChangeRoom(command.Parameters[0]);
+        }
+        public string ChangeRoom(string roomName)
+        {
             mucManager.LeaveRoom(RoomName + "@conference.4programmers.net", "Bot");
 
             startupDate = DateTime.Now;
 
-            RoomName = command.Parameters[0];
+            RoomName = roomName;
             JoinRoom();
             return "Joined";
         }
