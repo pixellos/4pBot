@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using Autofac;
-using BotOrder.Abstract.Abstract;
-using BotOrder.Old.Core;
-using BotOrder.Old.Core.Cache;
-using BotOrder.Old.Core.Data;
 using pBot.Model.ComunicateService;
 using pBot.Model.Functions.HighLevel;
+using pBot.Model.Functions.StackOverflowChecker;
 using pBot.Model.Functions._4pChecker;
 
 namespace pBot.Dependencies
@@ -19,19 +16,10 @@ namespace pBot.Dependencies
             if (Container != null) return Container;
 
             var builder = new ContainerBuilder();
-            builder.RegisterType<CachedResponse<Command,string>>().AsSelf();
-            builder.RegisterType<RegexParser>().As<ICommandParser>();
 
-            builder.Register(x => Controllers.ControllerInitialize()).AsSelf();
-
-            builder.RegisterType<CommandInvoker>().UsingConstructor(
-                () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>()))
-                .As<ICommandInvoker>();
-
+            builder.Register(x => Controllers.ControllerInitialize()).AsSelf().SingleInstance();
             builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
-            builder.RegisterType<Subscription>().PropertiesAutowired().AsSelf().SingleInstance();
-            builder.RegisterType<_4pChecker>().PropertiesAutowired().AsSelf().SingleInstance();
-            builder.RegisterType<Repeater>().PropertiesAutowired().AsSelf().SingleInstance();
+            
 
             Container = builder.Build();
             return Container;

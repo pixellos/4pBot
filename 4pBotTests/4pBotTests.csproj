@@ -41,18 +41,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandEquality\CommandTests.cs" />
-    <Compile Include="Cache\CacheTest.cs" />
-    <Compile Include="HighLevel\BaseRepeaterTest.cs" />
-    <Compile Include="HighLevel\SubscriptionTest.cs" />
-    <Compile Include="Marshaller\CommandMarshallerConst.cs" />
     <Compile Include="Masking\MaskTest.cs" />
     <Compile Include="Masking\Parser.cs" />
-    <Compile Include="ComunicateService\BuildInDictionaryActionsTests.cs" />
-    <Compile Include="Invoker\CommandInvokerTest.cs" />
-    <Compile Include="Marshaller\CommandMarshallerTest.cs" />
-    <Compile Include="Invoker\InvokerDataForTest.cs" />
-    <Compile Include="ComunicateService\XmppTest.cs" />
     <Compile Include="Order\Doer.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
-using BotOrder.Old.Core.Data;
 using Newtonsoft.Json;
 
 namespace pBot.Model.Functions._4pChecker
@@ -84,7 +84,10 @@ namespace pBot.Model.Functions._4pChecker
 
         public static string GetForumId(string str)
         {
+          
             return NameToID.First(x => x.Key.ToLower().Contains(str.ToLower())).Value;
+            
+           
         }
 
         public static string GetForumUrl(string id)
@@ -123,22 +126,25 @@ namespace pBot.Model.Functions._4pChecker
 
         public static string GetNewestPost(string forumId)
         {
-            var jsonForumId = GetForumId(forumId);
-           var json = new WebClient().DownloadString(_4pAdress + jsonForumId);
+            try
+            {
+                var jsonForumId = GetForumId(forumId);
+                var json = new WebClient().DownloadString(_4pAdress + jsonForumId);
 
-            var obj = JsonConvert.DeserializeObject<RootObject>(MagicWithJson(json));
+                var obj = JsonConvert.DeserializeObject<RootObject>(MagicWithJson(json));
 
-            var element = obj.Main.First();
-            var tags = element.tags.Aggregate(" ", (current, tag) => current + tag + ", ");
+                var element = obj.Main.First();
+                var tags = element.tags.Aggregate(" ", (current, tag) => current + tag + ", ");
 
-            return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
-                   $"przez {element.first_post.user.name}: " +
-                   UrlShortener.GetShortUrl(make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
+                return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
+                       $"przez {element.first_post.user.name}: " +
+                       UrlShortener.GetShortUrl(make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
+            }
+            catch (InvalidOperationException exception)
+            {
+                return "There is no matching forum id! Check your spelling";
+            }
         }
 
-        public static string GetNewestPost(Command command)
-        {
-            return GetNewestPost(command.Parameters[1]);
-        }
     }
 }

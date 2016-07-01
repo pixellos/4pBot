@@ -4,8 +4,6 @@ using agsXMPP;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 using BotOrder;
-using BotOrder.Abstract.Abstract;
-using BotOrder.Old.Core.Data;
 using pBot.Model.Constants;
 
 namespace pBot.Model.ComunicateService
@@ -35,7 +33,6 @@ namespace pBot.Model.ComunicateService
             clientConnection.OnWriteXml += DebugConsoleWrite;
         }
 
-        public ICommandParser Parser { get; set; }
         public OrderDoer Invoker { get; set; }
 
 
@@ -66,10 +63,6 @@ namespace pBot.Model.ComunicateService
                 );
         }
 
-        public string ChangeRoom(Command command)
-        {
-            return ChangeRoom(command.Parameters[0]);
-        }
         public string ChangeRoom(string roomName)
         {
             mucManager.LeaveRoom(RoomName + "@conference.4programmers.net", "Bot");

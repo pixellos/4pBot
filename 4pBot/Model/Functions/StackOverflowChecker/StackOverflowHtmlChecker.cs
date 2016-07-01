@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Web;
-using BotOrder.Old.Core.Data;
 using HtmlAgilityPack;
 using pBot.Model.Functions._4pChecker;
 
@@ -34,9 +33,5 @@ namespace pBot.Model.Functions.StackOverflowChecker
             }
         }
 
-        public static string GetSingleSORequestWithTagAsParameter(Command command)
-        {
-            return GetSingleSORequestWithTagAsParameter(command.Parameters[1]);
-        }
     }
 }

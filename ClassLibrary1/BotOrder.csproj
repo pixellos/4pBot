@@ -45,19 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Abstract\ICommandInvoker.cs" />
-    <Compile Include="Abstract\Abstract\ICommandParser.cs" />
     <Compile Include="Mask\Argument.cs" />
     <Compile Include="Mask\ArgumentOptions.cs" />
     <Compile Include="Mask\Block.cs" />
     <Compile Include="Mask\Builder.cs" />
     <Compile Include="Mask\Mask.cs" />
     <Compile Include="Mask\Result.cs" />
-    <Compile Include="Old\Core\Cache\CachedResponse.cs" />
-    <Compile Include="Old\Core\CommandDelegates.cs" />
-    <Compile Include="Old\Core\CommandInvoker.cs" />
-    <Compile Include="Old\Core\Data\Command.cs" />
-    <Compile Include="Old\Core\Data\RegexParser.cs" />
     <Compile Include="OrderDoer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
