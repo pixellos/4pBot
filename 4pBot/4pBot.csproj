@@ -222,7 +222,7 @@
     <Compile Include="Dependencies\AutofacSetup.cs" />
     <Compile Include="Model\Core\CommandInvoker.cs" />
     <Compile Include="Model\Core\CommandDelegates.cs" />
-    <Compile Include="Model\Functions\HighLevel\Repeater.cs" />
+    <Compile Include="Model\Functions\HighLevel\CommandRepeater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

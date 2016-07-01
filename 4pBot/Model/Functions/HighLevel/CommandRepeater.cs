@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using pBot.Model.ComunicateService;
+using pBot.Model.Core.Data;
 using pBot.Model.Core.Abstract;
 using pBot.Model.Core.Cache;
-using pBot.Model.Core.Data;
 using pBot.Model.Functions.Helpers;
 
-namespace pBot.Model.Functions.HighLevel
+namespace pBot.Model.Commands.HighLevel
 {
     public abstract class RepeaterBase
     {
@@ -14,7 +14,8 @@ namespace pBot.Model.Functions.HighLevel
 
         protected Action<Command, string> StringAction;
         public ICommandInvoker CommandInvoker { get; set; }
-        public CachedResponse<Command,string> CachedResponse { get; set; }
+        public CachedResponse<Command, string> CachedResponse { get; set; }
+
 
         private static int GetDelayValue(Command command)
         {
@@ -45,7 +46,7 @@ namespace pBot.Model.Functions.HighLevel
             if (rootCommand.TypeOfCommand == Command.CommandType.Default ||
                 rootCommand.TypeOfCommand == Command.CommandType.Any)
             {
-                if (!CachedResponse.ContainsTBase(childCommand))
+                if (!CachedResponse.ContainsKey(childCommand))
                 {
                     CachedResponse.SetLastResponse(childCommand, "");
                     Task.Run(
@@ -57,7 +58,7 @@ namespace pBot.Model.Functions.HighLevel
 
             if (rootCommand.TypeOfCommand == Command.CommandType.Negation)
             {
-                if (CachedResponse.ContainsTBase(childCommand))
+                if (CachedResponse.ContainsKey(childCommand))
                 {
                     CachedResponse.Remove(childCommand);
                     return "Request has been removed";
@@ -73,7 +74,7 @@ namespace pBot.Model.Functions.HighLevel
             {
                 var response = CommandInvoker.InvokeCommand(command);
 
-                if (!CachedResponse.ContainsTBase(command))
+                if (!CachedResponse.ContainsKey(command))
                 {
                     return;
                 }

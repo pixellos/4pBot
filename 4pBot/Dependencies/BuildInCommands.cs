@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Autofac;
 using BotOrder;
+using pBot.Model.Commands.HighLevel;
 using static BotOrder.Mask.Builder;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;

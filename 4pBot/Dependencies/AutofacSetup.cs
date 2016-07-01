@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Autofac;
+using pBot.Model.Commands.HighLevel;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
 using pBot.Model.Core.Abstract;

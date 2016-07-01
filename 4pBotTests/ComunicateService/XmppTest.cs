@@ -1,5 +1,6 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
+using pBot.Model.Commands.HighLevel;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core.Abstract;
 using pBot.Model.Core.Cache;
@@ -16,7 +17,7 @@ namespace pBotTests.ComunicateService
         {
             xmpp = Substitute.For<IXmpp>();
             Invoker = Substitute.For<ICommandInvoker>();
-            repeater = new Repeater
+            _commandRepeater = new Repeater
             {
                 Xmpp = xmpp,
                 CommandInvoker = Invoker,
@@ -27,14 +28,14 @@ namespace pBotTests.ComunicateService
         }
 
         private IXmpp xmpp;
-        private Repeater repeater = new Repeater();
+        private Repeater _commandRepeater = new Repeater();
         private ICommandInvoker Invoker;
 
         [Test]
         public void Test()
         {
-            repeater.DealWithRepeating(new Command("test", "Auto", Command.CommandType.Any, "10", "Check", "SO", "C#"));
-            repeater.DealWithRepeating(new Command("test", "Auto", Command.CommandType.Negation, "10", "Check", "SO",
+            _commandRepeater.DealWithRepeating(new Command("test", "Auto", Command.CommandType.Any, "10", "Check", "SO", "C#"));
+            _commandRepeater.DealWithRepeating(new Command("test", "Auto", Command.CommandType.Negation, "10", "Check", "SO",
                 "C#"));
         }
     }

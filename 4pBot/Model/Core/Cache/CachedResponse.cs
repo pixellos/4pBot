@@ -10,12 +10,12 @@ namespace pBot.Model.Core.Cache
     public interface ICache<TBase,TResult>
     {
         ImmutableDictionary<TBase, TResult> ReadOnlyCache { get; }
-        bool ContainsTBase(TBase TBase);
+        bool ContainsKey(TBase TBase);
         bool IsResponseUnique(TBase TBase, TResult TResult);
         void SetLastResponse(TBase TBase, TResult TResult);
         void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action);
         TResult GetCacheValue(TBase TBase);
-        void InitializeTBase(TBase TBase);
+        void InitializeKey(TBase TBase);
         void Remove(TBase TBase);
     }
 
@@ -25,12 +25,10 @@ namespace pBot.Model.Core.Cache
 
         public ImmutableDictionary<TBase, TResult> ReadOnlyCache => Cache.ToImmutableDictionary();
 
-        public bool ContainsTBase(TBase TBase)
+        public bool ContainsKey(TBase TBase)
         {
             return Cache.Any(x => x.Key == TBase);
         }
-
-
 
         public bool IsResponseUnique(TBase TBase, TResult TResult)
         {
@@ -44,9 +42,9 @@ namespace pBot.Model.Core.Cache
 
         public void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action)
         {
-            if (!ContainsTBase(TBase))
+            if (!ContainsKey(TBase))
             {
-                InitializeTBase(TBase);
+                InitializeKey(TBase);
             }
 
             if (IsResponseUnique(TBase, TResult))
@@ -63,7 +61,7 @@ namespace pBot.Model.Core.Cache
 
 
 
-        public void InitializeTBase(TBase TBase)
+        public void InitializeKey(TBase TBase)
         {
             Cache.Add(TBase, default(TResult));
         }

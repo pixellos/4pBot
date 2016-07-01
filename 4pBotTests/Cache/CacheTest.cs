@@ -48,7 +48,7 @@ namespace pBotTests.Cache
         {
             cachedResponse.SetLastResponse(CommandMarshallerConst.Show_Author_Command, "");
             cachedResponse.Remove(CommandMarshallerConst.Show_Author_Command);
-            Assert.False(cachedResponse.ContainsTBase(CommandMarshallerConst.Show_Author_Command));
+            Assert.False(cachedResponse.ContainsKey(CommandMarshallerConst.Show_Author_Command));
         }
     }
 }
