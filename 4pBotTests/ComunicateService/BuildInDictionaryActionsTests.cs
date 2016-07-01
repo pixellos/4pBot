@@ -29,7 +29,7 @@ namespace pBotTests.ComunicateService
                 yield return new TestCaseData("Pixel", "Bot, don't Auto 10 Check 4p C#");
             }
         }
-
+        /*
         [Test, TestCaseSource(nameof(ExistAtDictionary))] //
         public void Action_Exist_AtDictionary(string author, string msg)
         {
@@ -38,6 +38,6 @@ namespace pBotTests.ComunicateService
 
             Console.WriteLine($"Response: {response}");
             Assert.AreNotEqual(CommandInvoker.ActionNotFound, response);
-        }
+        }*/
     }
 }

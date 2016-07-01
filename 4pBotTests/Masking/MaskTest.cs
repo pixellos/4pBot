@@ -3,7 +3,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 using pBot.Model.Order.Mask;
-
+using static pBot.Model.Order.Mask.Builder;
 namespace pBotTests.Masking
 {
     [TestFixture]
@@ -17,12 +17,11 @@ namespace pBotTests.Masking
         {
             get
             {
-                yield return new TestCaseData(Builder.Bot().FinalizeCommand());
-                yield return new TestCaseData(Builder.Bot().Bot().FinalizeCommand());
-                yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).FinalizeCommand());
-                yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).FinalizeCommand());
-                yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).ThenRequried(SampleInput).FinalizeCommand());
-                yield return new TestCaseData(Builder.Prepare().ThenWord(Something,SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand());
+                yield return new TestCaseData(Bot().FinalizeCommand());
+                yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).FinalizeCommand());
+                yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).FinalizeCommand());
+                yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).ThenRequried(SampleInput).FinalizeCommand());
+                yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand());
             }
         }
 
@@ -44,9 +43,9 @@ namespace pBotTests.Masking
         {
             get
             {
-                yield return new TestCaseData(Builder.Prepare().Bot().ThenWord(Something, SampleInput).FinalizeCommand(),Something,SampleInput);
-                yield return new TestCaseData(Builder.Prepare().ThenWord(Something, SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand(),Code, @"var x = new x();");
-                yield return new TestCaseData(Builder.Prepare().ThenWord(Something, SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand(),"Something","Input");
+                yield return new TestCaseData(Bot().ThenWord(Something, SampleInput).FinalizeCommand(),Something,SampleInput);
+                yield return new TestCaseData(Bot().ThenWord(Something, SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand(),Code, @"var x = new x();");
+                yield return new TestCaseData(Bot().ThenWord(Something, SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand(),"Something","Input");
             }
         }
         [Test,TestCaseSource(nameof(SampleInputCorrectMatch))]

@@ -28,7 +28,7 @@ namespace pBot.Model.Order.Mask
 
         public Result Parse(string author, string text)
         {
-            Regex regex = new Regex(RegexString);
+            Regex regex = new Regex(RegexString, RegexOptions.IgnoreCase);
 
             var result = regex.Match(text);
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using agsXMPP;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
@@ -6,6 +7,7 @@ using pBot.Model.Commands.Helpers;
 using pBot.Model.Constants;
 using pBot.Model.Core.Data;
 using pBot.Model.Core.Abstract;
+using pBot.Model.Order;
 
 namespace pBot.Model.ComunicateService
 {
@@ -35,7 +37,8 @@ namespace pBot.Model.ComunicateService
         }
 
         public ICommandParser Parser { get; set; }
-        public ICommandInvoker Invoker { get; set; }
+        public OrderDoer Invoker { get; set; }
+
 
         public void SendIfNotNull(string message)
         {
@@ -75,6 +78,7 @@ namespace pBot.Model.ComunicateService
             startupDate = DateTime.Now;
 
             RoomName = roomName;
+            Task.Delay(1000);
             JoinRoom();
             return "Joined";
         }
@@ -85,10 +89,9 @@ namespace pBot.Model.ComunicateService
 
             var nickName = msg?.From.Resource ?? "Undefined";
 
-            var command = Parser.GetCommandFromUserNameAndMessage(nickName, msg.Body);
-            if (command != Command.Empty() && startupDate < Stamp)
+            if (startupDate < Stamp)
             {
-                var response = Invoker.InvokeCommand(command);
+                var response = Invoker.InvokeCommand(nickName,msg.Body);
                 if (response != null && msg.Type == MessageType.groupchat)
                 {
                     SendIfNotNull(response);

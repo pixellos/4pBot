@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net;
 using HtmlAgilityPack;
+using pBot.Model.Commands._4pChecker;
 using pBot.Model.Core.Data;
 using static System.Web.HttpUtility;
 
@@ -24,7 +25,7 @@ namespace pBot.Model.Commands.StackOverflowChecker
 
                 var firstQuestion =
                     question.Descendants().First(x => x.GetAttributeValue("class", "").Equals("question-hyperlink"));
-                return $"{firstQuestion.InnerText}, [www.stackoverflow.com{firstQuestion.Attributes["href"].Value}]";
+                return $"{firstQuestion.InnerText} {UrlShortener.GetShortUrl($"www.stackoverflow.com{firstQuestion.Attributes["href"].Value}")}";
             }
             catch (InvalidOperationException exception)
             {

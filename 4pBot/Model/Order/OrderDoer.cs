@@ -16,6 +16,12 @@ namespace pBot.Model.Order
             Dictionary.Add(mask,func);
         }
 
+
+        public string GetHelpAboutAllCommands()
+        {
+            return Dictionary.Aggregate("", (current, func) => current + ($"Description: {func.Key.Description} ||" + $"Sample input: {func.Key.SampleInput}\n"));
+        }
+
         /// <summary>
         /// Return null when result should not be send
         /// </summary>

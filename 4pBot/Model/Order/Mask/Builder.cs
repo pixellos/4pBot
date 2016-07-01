@@ -1,18 +1,17 @@
 using System;
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace pBot.Model.Order.Mask
 {
     public static class Builder // I'm assuming that every part of command except optional 
     {
-        [Obsolete("Use Bot() instead")]
         public static Block Prepare()
         {
-            return new Block();
+            return new Block() {RegexString = @"^"};
         }
 
-
-        [Obsolete("Use Bot() instead")]
+        [Obsolete("Use Bot() instead without Prepare()")]
         public static Block Bot(this Block block)
         {
             string regexComparer = @"Bot";
@@ -24,7 +23,7 @@ namespace pBot.Model.Order.Mask
 
         public static Block Bot()
         {
-            var block = new Block();
+            var block = Prepare();
             return block.Bot();
         }
 
@@ -55,7 +54,7 @@ namespace pBot.Model.Order.Mask
             block.SampleInput += preSampleInputSeparator + sampleInput;
             block.RegexString += regexComparer + separatorPattern;
             block.Arguments.Add(new Argument(argumentOptions,sectionName));
-            block.Description += description;
+            block.Description += description + " ";
             return block;
         }
 

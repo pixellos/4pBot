@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Autofac;
 using pBot.Model.Commands.HighLevel;
 using pBot.Model.Commands.StackOverflowChecker;
@@ -8,14 +9,37 @@ using pBot.Model.Core;
 using pBot.Model.Core.Data;
 using pBot.Model.Order;
 using pBot.Model.Order.Mask;
-
+using static pBot.Model.Order.Mask.Builder;
+using Microsoft.CodeAnalysis.CSharp;
 namespace pBot.Dependencies
 {
     public class BuildInCommands
     {
-        public static void InitializeOrderer()
+
+        public static OrderDoer InitializeOrderer()
         {
             OrderDoer orderDoer = new OrderDoer();
+
+            var TagString = "Tag";
+            orderDoer.AddTemporaryCommand(
+                Bot().ThenRequried("SO").ThenNonWhiteSpaceString(TagString,"C#").FinalizeCommand(),
+                x=>StackOverflowHtmlChecker.GetSingleSORequestWithTagAsParameter(x.MatchedResult[TagString]));
+
+            orderDoer.AddTemporaryCommand(
+                Bot().ThenRequried("4P").ThenNonWhiteSpaceString(TagString,"C++").FinalizeCommand(),
+                x=>_4pChecker.GetNewestPost(x.MatchedResult[TagString]));
+
+            orderDoer.AddTemporaryCommand(
+           Bot().ThenRequried("Room").ThenWord("RoomName", "Help").FinalizeCommand(),
+           x => ChangesRoom(x.MatchedResult["RoomName"]));
+
+
+            orderDoer.AddTemporaryCommand(
+                Bot().ThenRequried("?").FinalizeCommand(),
+                x=>orderDoer.GetHelpAboutAllCommands());
+
+       
+            return orderDoer;
         }
 
         public static Dictionary<Command, CommandDelegates.CommandAction> Commands = new Dictionary
@@ -56,6 +80,11 @@ namespace pBot.Dependencies
 
         private static CommandDelegates.CommandAction ChangeRoom
             => command => AutofacSetup.GetContainer().Resolve<IXmpp>().ChangeRoom(command);
+
+
+        private static Func<string,string> ChangesRoom
+            => str => AutofacSetup.GetContainer().Resolve<IXmpp>().ChangeRoom(str);
+
 
         private static CommandDelegates.CommandAction RepeatCommand
             => command => AutofacSetup.GetContainer().Resolve<Repeater>().DealWithRepeating(command);

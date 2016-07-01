@@ -27,6 +27,8 @@ namespace pBot.Dependencies
                 builder.Register(x => new Dictionary<Command, CommandDelegates.CommandAction>(BuildInCommands.Commands))
                     .AsSelf();
 
+                builder.Register(x => BuildInCommands.InitializeOrderer()).AsSelf();
+
                 builder.RegisterType<CommandInvoker>().UsingConstructor(
                     () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>()))
                     .As<ICommandInvoker>();
@@ -40,6 +42,5 @@ namespace pBot.Dependencies
             }
             return Container;
         }
-       
     }
 }
