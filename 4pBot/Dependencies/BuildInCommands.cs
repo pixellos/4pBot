@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
+using BotOrder;
+using static BotOrder.Mask.Builder;
 using pBot.Model.Commands.HighLevel;
 using pBot.Model.Commands.StackOverflowChecker;
 using pBot.Model.Commands._4pChecker;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
 using pBot.Model.Core.Data;
-using pBot.Model.Order;
-using pBot.Model.Order.Mask;
-using static pBot.Model.Order.Mask.Builder;
-using Microsoft.CodeAnalysis.CSharp;
+
 namespace pBot.Dependencies
 {
     public class BuildInCommands
@@ -30,14 +29,12 @@ namespace pBot.Dependencies
                 x=>_4pChecker.GetNewestPost(x.MatchedResult[TagString]));
 
             orderDoer.AddTemporaryCommand(
-           Bot().ThenRequried("Room").ThenWord("RoomName", "Help").FinalizeCommand(),
-           x => ChangesRoom(x.MatchedResult["RoomName"]));
-
+                Bot().ThenRequried("Room").ThenWord("RoomName", "Help").FinalizeCommand(),
+                x => ChangesRoom(x.MatchedResult["RoomName"]));
 
             orderDoer.AddTemporaryCommand(
                 Bot().ThenRequried("?").FinalizeCommand(),
                 x=>orderDoer.GetHelpAboutAllCommands());
-
        
             return orderDoer;
         }

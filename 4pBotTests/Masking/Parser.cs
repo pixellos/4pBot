@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BotOrder.Mask;
 using NUnit.Framework;
-using pBot.Model.Order.Mask;
-using static pBot.Model.Order.Mask.Builder;
-
+using static BotOrder.Mask.Builder;
 namespace pBotTests.Masking
 {
     [TestFixture]

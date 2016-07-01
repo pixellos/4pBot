@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using pBot.Model.Order.Mask;
+using BotOrder.Mask;
 
-namespace pBot.Model.Order
+namespace BotOrder
 {
     public class OrderDoer
     {
-        Dictionary<Mask.Mask,Func<Result,string>> Dictionary = new Dictionary<Mask.Mask, Func<Result, string>>();
+        Dictionary<Mask.Mask,Func<Result, string>> Dictionary = new Dictionary<Mask.Mask, Func<Result, string>>();
 
         public void AddTemporaryCommand(Mask.Mask mask, Func<Result, string> func)
         {

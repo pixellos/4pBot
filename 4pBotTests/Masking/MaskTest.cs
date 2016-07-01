@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Text.RegularExpressions;
+using BotOrder.Mask;
 using NUnit.Framework;
-using pBot.Model.Order.Mask;
-using static pBot.Model.Order.Mask.Builder;
+using static BotOrder.Mask.Builder;
 namespace pBotTests.Masking
 {
     [TestFixture]
@@ -26,7 +26,7 @@ namespace pBotTests.Masking
         }
 
         [Test,TestCaseSource(nameof(SampleInputMatchRegexString))]
-        public void IsSampleInputMatchingWithRegex(pBot.Model.Order.Mask.Mask mask)
+        public void IsSampleInputMatchingWithRegex(Mask mask)
         {
             Regex regex = new Regex(mask.RegexString);
             var result = regex.Match(mask.SampleInput);
@@ -49,7 +49,7 @@ namespace pBotTests.Masking
             }
         }
         [Test,TestCaseSource(nameof(SampleInputCorrectMatch))]
-        public void IsMatchedSampleIsCorrect(pBot.Model.Order.Mask.Mask mask,string group, string estimatedMatch)
+        public void IsMatchedSampleIsCorrect(Mask mask,string group, string estimatedMatch)
         {
             Regex regex = new Regex(mask.RegexString);
             var result = regex.Match(mask.SampleInput);

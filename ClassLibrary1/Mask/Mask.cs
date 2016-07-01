@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace pBot.Model.Order.Mask
+namespace BotOrder.Mask
 {
     public class Mask
     {

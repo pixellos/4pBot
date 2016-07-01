@@ -1,8 +1,6 @@
 using System;
-using System.Text.RegularExpressions;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace pBot.Model.Order.Mask
+namespace BotOrder.Mask
 {
     public static class Builder // I'm assuming that every part of command except optional 
     {

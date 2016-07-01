@@ -1,4 +1,4 @@
-﻿namespace pBot.Model.Order.Mask
+﻿namespace BotOrder.Mask
 {
     public class Argument
     {

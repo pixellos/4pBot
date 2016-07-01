@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using agsXMPP;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
+using BotOrder;
 using pBot.Model.Commands.Helpers;
 using pBot.Model.Constants;
 using pBot.Model.Core.Data;
 using pBot.Model.Core.Abstract;
-using pBot.Model.Order;
 
 namespace pBot.Model.ComunicateService
 {

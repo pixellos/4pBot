@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using pBot.Model.Order;
-using pBot.Model.Order.Mask;
-using static pBot.Model.Order.Mask.Builder;
+﻿using BotOrder;
+using NUnit.Framework;
+using static BotOrder.Mask.Builder;
+
 namespace pBotTests.Order
 {
     [TestFixture]
