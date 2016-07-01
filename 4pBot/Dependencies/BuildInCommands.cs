@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Autofac;
 using BotOrder;
 using static BotOrder.Mask.Builder;
-using pBot.Model.Commands.HighLevel;
-using pBot.Model.Commands.StackOverflowChecker;
-using pBot.Model.Commands._4pChecker;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core;
 using pBot.Model.Core.Data;
+using pBot.Model.Functions.HighLevel;
+using pBot.Model.Functions.StackOverflowChecker;
+using pBot.Model.Functions._4pChecker;
 
 namespace pBot.Dependencies
 {

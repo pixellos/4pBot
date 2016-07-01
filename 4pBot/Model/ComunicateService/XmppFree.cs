@@ -4,7 +4,6 @@ using agsXMPP;
 using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 using BotOrder;
-using pBot.Model.Commands.Helpers;
 using pBot.Model.Constants;
 using pBot.Model.Core.Data;
 using pBot.Model.Core.Abstract;

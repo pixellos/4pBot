@@ -1,12 +1,12 @@
 ﻿using System;
 using NSubstitute;
 using NUnit.Framework;
-using pBot.Model.Commands.Helpers;
-using pBot.Model.Commands.HighLevel;
 using pBot.Model.ComunicateService;
 using pBot.Model.Core.Abstract;
 using pBot.Model.Core.Cache;
 using pBot.Model.Core.Data;
+using pBot.Model.Functions.Helpers;
+using pBot.Model.Functions.HighLevel;
 
 namespace pBotTests.HighLevel
 {
