@@ -22,10 +22,7 @@ namespace pBot.Dependencies
             builder.RegisterType<CachedResponse<Command,string>>().AsSelf();
             builder.RegisterType<RegexParser>().As<ICommandParser>();
 
-            builder.Register(x => new Dictionary<Command, CommandDelegates.CommandAction>(BuildInCommands.Commands))
-                .AsSelf();
-
-            builder.Register(x => BuildInCommands.InitializeOrderer()).AsSelf();
+            builder.Register(x => Controllers.ControllerInitialize()).AsSelf();
 
             builder.RegisterType<CommandInvoker>().UsingConstructor(
                 () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>()))

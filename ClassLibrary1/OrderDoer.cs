@@ -34,7 +34,7 @@ namespace BotOrder
                     var result = record.Key.Parse(author, text);
                     return record.Value(result);
                 }
-                catch (FormatException exception)
+                catch (FormatException)
                 {
                     continue;    
                 }
