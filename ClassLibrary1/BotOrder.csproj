@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,12 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Abstract\ICommandInvoker.cs" />
+    <Compile Include="Abstract\Abstract\ICommandParser.cs" />
     <Compile Include="Mask\Argument.cs" />
     <Compile Include="Mask\ArgumentOptions.cs" />
     <Compile Include="Mask\Block.cs" />
     <Compile Include="Mask\Builder.cs" />
     <Compile Include="Mask\Mask.cs" />
     <Compile Include="Mask\Result.cs" />
+    <Compile Include="Old\Core\Cache\CachedResponse.cs" />
+    <Compile Include="Old\Core\CommandDelegates.cs" />
+    <Compile Include="Old\Core\CommandInvoker.cs" />
+    <Compile Include="Old\Core\Data\Command.cs" />
+    <Compile Include="Old\Core\Data\RegexParser.cs" />
     <Compile Include="OrderDoer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using BotOrder.Old.Core.Data;
 using Newtonsoft.Json;
-using pBot.Model.Core.Data;
 
 namespace pBot.Model.Functions._4pChecker
 {

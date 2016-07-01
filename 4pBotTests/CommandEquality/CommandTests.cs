@@ -1,6 +1,6 @@
 ﻿using System.Collections;
+using BotOrder.Old.Core.Data;
 using NUnit.Framework;
-using pBot.Model.Core.Data;
 
 namespace pBotTests.CommandEquality
 {

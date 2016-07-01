@@ -1,9 +1,9 @@
 ﻿using System.Text.RegularExpressions;
-using pBot.Model.Core.Abstract;
+using BotOrder.Abstract.Abstract;
 
-namespace pBot.Model.Core.Data
+namespace BotOrder.Old.Core.Data
 {
-    internal class RegexParser : ICommandParser
+    public class RegexParser : ICommandParser
     {
         public Core.Data.Command GetCommand(string author, string text)
         {

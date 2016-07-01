@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using pBot.Model.Core.Data;
+using BotOrder.Old.Core.Data;
 
 namespace pBot.Model.Functions.Helpers
 {

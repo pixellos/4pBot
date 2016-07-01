@@ -1,5 +1,5 @@
-using pBot.Model.Core.Abstract;
-using pBot.Model.Core.Data;
+using BotOrder.Abstract.Abstract;
+using BotOrder.Old.Core.Data;
 
 namespace pBot.Model.Functions.Helpers
 {

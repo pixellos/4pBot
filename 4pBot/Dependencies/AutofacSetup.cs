@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using Autofac;
-using pBot.Model.Commands.HighLevel;
+using BotOrder.Abstract.Abstract;
+using BotOrder.Old.Core;
+using BotOrder.Old.Core.Cache;
+using BotOrder.Old.Core.Data;
 using pBot.Model.ComunicateService;
-using pBot.Model.Core;
-using pBot.Model.Core.Abstract;
-using pBot.Model.Core.Cache;
-using pBot.Model.Core.Data;
 using pBot.Model.Functions.HighLevel;
 using pBot.Model.Functions._4pChecker;
 

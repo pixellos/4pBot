@@ -1,10 +1,10 @@
 ﻿using System;
+using BotOrder.Abstract.Abstract;
+using BotOrder.Old.Core.Cache;
+using BotOrder.Old.Core.Data;
 using NSubstitute;
 using NUnit.Framework;
 using pBot.Model.ComunicateService;
-using pBot.Model.Core.Abstract;
-using pBot.Model.Core.Cache;
-using pBot.Model.Core.Data;
 using pBot.Model.Functions.Helpers;
 using pBot.Model.Functions.HighLevel;
 

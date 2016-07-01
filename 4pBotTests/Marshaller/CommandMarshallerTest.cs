@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using Autofac;
+using BotOrder.Abstract.Abstract;
+using BotOrder.Old.Core.Data;
 using NUnit.Framework;
 using pBot.Dependencies;
-using pBot.Model.Core.Abstract;
-using pBot.Model.Core.Data;
 using pBot.Model.Functions.StackOverflowChecker;
 
 namespace pBotTests.Marshaller

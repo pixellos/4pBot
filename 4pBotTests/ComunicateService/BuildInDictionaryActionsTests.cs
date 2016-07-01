@@ -4,7 +4,6 @@ using Autofac;
 using NUnit.Framework;
 using pBot.Dependencies;
 using pBot.Model.ComunicateService;
-using pBot.Model.Core;
 
 namespace pBotTests.ComunicateService
 {

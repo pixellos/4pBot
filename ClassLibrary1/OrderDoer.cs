@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BotOrder.Abstract.Abstract;
 using BotOrder.Mask;
 
 namespace BotOrder

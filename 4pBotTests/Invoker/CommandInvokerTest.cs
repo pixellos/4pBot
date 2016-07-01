@@ -1,9 +1,9 @@
 ﻿using Autofac;
+using BotOrder.Abstract.Abstract;
+using BotOrder.Old.Core;
+using BotOrder.Old.Core.Data;
 using NUnit.Framework;
 using pBot.Dependencies;
-using pBot.Model.Core;
-using pBot.Model.Core.Abstract;
-using pBot.Model.Core.Data;
 
 namespace pBotTests.Invoker
 {

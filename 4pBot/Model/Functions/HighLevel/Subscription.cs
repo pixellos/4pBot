@@ -1,5 +1,4 @@
-﻿using pBot.Model.Commands.HighLevel;
-using pBot.Model.ComunicateService;
+﻿using pBot.Model.ComunicateService;
 
 namespace pBot.Model.Functions.HighLevel
 {

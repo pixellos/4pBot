@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
-using pBot.Model.Core.Cache;
-using pBot.Model.Core.Data;
+﻿using BotOrder.Old.Core.Cache;
+using BotOrder.Old.Core.Data;
+using NUnit.Framework;
 using pBotTests.Marshaller;
 
 namespace pBotTests.Cache

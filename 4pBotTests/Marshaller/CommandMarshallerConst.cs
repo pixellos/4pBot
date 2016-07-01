@@ -1,4 +1,4 @@
-﻿using pBot.Model.Core.Data;
+﻿using BotOrder.Old.Core.Data;
 
 namespace pBotTests.Marshaller
 {
