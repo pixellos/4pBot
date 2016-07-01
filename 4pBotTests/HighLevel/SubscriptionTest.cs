@@ -26,7 +26,7 @@ namespace pBotTests.HighLevel
 
             subscription.CommandInvoker = invoker;
             subscription.Xmpp = mockXmpp;
-            subscription.CachedResponse = Substitute.For<CachedResponse>();
+            subscription.CachedResponse = Substitute.For<CachedResponse<Command,string>>();
         }
 
         private Subscription subscription;

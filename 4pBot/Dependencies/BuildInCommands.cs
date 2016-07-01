@@ -14,26 +14,25 @@ namespace pBot.Dependencies
 {
     public class BuildInCommands
     {
-
         public static OrderDoer InitializeOrderer()
         {
             OrderDoer orderDoer = new OrderDoer();
 
             var TagString = "Tag";
             orderDoer.AddTemporaryCommand(
-                Bot().ThenRequried("SO").ThenNonWhiteSpaceString(TagString,"C#").FinalizeCommand(),
+                Bot().ThenRequired("SO").ThenNonWhiteSpaceString(TagString,"C#").FinalizeCommand(),
                 x=>StackOverflowHtmlChecker.GetSingleSORequestWithTagAsParameter(x.MatchedResult[TagString]));
 
             orderDoer.AddTemporaryCommand(
-                Bot().ThenRequried("4P").ThenNonWhiteSpaceString(TagString,"C++").FinalizeCommand(),
+                Bot().ThenRequired("4P").ThenNonWhiteSpaceString(TagString,"C++").FinalizeCommand(),
                 x=>_4pChecker.GetNewestPost(x.MatchedResult[TagString]));
 
             orderDoer.AddTemporaryCommand(
-                Bot().ThenRequried("Room").ThenWord("RoomName", "Help").FinalizeCommand(),
+                Bot().ThenRequired("Room").ThenWord("RoomName", "Help").FinalizeCommand(),
                 x => ChangesRoom(x.MatchedResult["RoomName"]));
 
             orderDoer.AddTemporaryCommand(
-                Bot().ThenRequried("?").FinalizeCommand(),
+                Bot().ThenRequired("?").FinalizeCommand(),
                 x=>orderDoer.GetHelpAboutAllCommands());
        
             return orderDoer;
@@ -52,14 +51,18 @@ namespace pBot.Dependencies
                     "4P", Command.Any),
                 _4pChecker.GetNewestPost
             },
-            {new Command(Command.Any, "Auto", Command.CommandType.Default, "current", "tasks"), Current},
+            {
+                new Command(Command.Any, "Auto", Command.CommandType.Default, "current", "tasks"), Current
+            },
 
             {
                 new Command(Command.Any, "Auto", Command.CommandType.Any,
                     Command.Any, Command.Any, Command.Any, Command.Any, Command.Any, Command.Any),
                 RepeatCommand
             },
-            {new Command(Command.Any, "Room", Command.CommandType.Any, Command.Any), ChangeRoom},
+            {
+                new Command(Command.Any, "Room", Command.CommandType.Any, Command.Any), ChangeRoom
+            },
             {
                 new Command(Command.Any, "Subscribe", Command.CommandType.Any, Command.Any, Command.Any, Command.Any,
                     Command.Any, Command.Any),

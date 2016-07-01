@@ -11,7 +11,7 @@ namespace pBotTests.Order
         public void IntegrationTest()
         {
             OrderDoer orderDoer  = new OrderDoer();
-            orderDoer.AddTemporaryCommand(Bot().ThenRequried("Test").FinalizeCommand(),(x)=> "ReturnString");
+            orderDoer.AddTemporaryCommand(Bot().ThenRequired("Test").FinalizeCommand(),(x)=> "ReturnString");
 
             Assert.AreEqual(orderDoer.InvokeCommand("", "Bot Test"),"ReturnString");
         }

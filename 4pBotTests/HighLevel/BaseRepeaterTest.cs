@@ -17,7 +17,7 @@ namespace pBotTests.HighLevel
         {
             repeater = new Repeater
             {
-                CachedResponse = new CachedResponse(),
+                CachedResponse = new CachedResponse<Command, string>(),
                 CommandInvoker = new CommandInvoker(),
                 Xmpp = Substitute.For<IXmpp>()
             };

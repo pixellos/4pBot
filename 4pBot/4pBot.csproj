@@ -201,6 +201,7 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="MainWindow.cs" />
     <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="Model\Core\Data\RegexParser.cs" />
     <Compile Include="Model\Functions\4pChecker\4pChecker.cs" />
     <Compile Include="Model\Functions\4pChecker\ApiKey.cs" />
     <Compile Include="Model\Functions\4pChecker\JSONModel.cs" />
@@ -210,7 +211,6 @@
     <Compile Include="Model\Functions\HighLevel\Subscription.cs" />
     <Compile Include="Model\Constants\Identity.cs" />
     <Compile Include="Model\Core\Cache\CachedResponse.cs" />
-    <Compile Include="Model\Functions\Parser\RegexParser.cs" />
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
     <Compile Include="Model\Functions\StackOverflowChecker\StackOverflowHtmlChecker.cs" />
@@ -250,9 +250,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets" Condition="Exists('..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets')" />
 </Project>

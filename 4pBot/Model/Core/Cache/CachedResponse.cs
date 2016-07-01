@@ -2,57 +2,75 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using pBot.Model.Core.Data;
 
 namespace pBot.Model.Core.Cache
 {
-    public class CachedResponse
+
+    public interface ICache<TBase,TResult>
     {
-        private readonly Dictionary<Data.Command, string> Cache = new Dictionary<Data.Command, string>();
+        ImmutableDictionary<TBase, TResult> ReadOnlyCache { get; }
+        bool ContainsTBase(TBase TBase);
+        bool IsResponseUnique(TBase TBase, TResult TResult);
+        void SetLastResponse(TBase TBase, TResult TResult);
+        void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action);
+        TResult GetCacheValue(TBase TBase);
+        void InitializeTBase(TBase TBase);
+        void Remove(TBase TBase);
+    }
 
-        public ImmutableDictionary<Data.Command, string> ReadOnlyCache => Cache.ToImmutableDictionary();
+    public class CachedResponse<TBase,TResult> : ICache<TBase, TResult> where TBase : class 
+    {
+        private readonly Dictionary<TBase, TResult> Cache = new Dictionary<TBase, TResult>();
 
-        public bool ContainsCommand(Data.Command command)
+        public ImmutableDictionary<TBase, TResult> ReadOnlyCache => Cache.ToImmutableDictionary();
+
+        public bool ContainsTBase(TBase TBase)
         {
-            return Cache.Any(x => x.Key == command);
+            return Cache.Any(x => x.Key == TBase);
         }
 
-        public bool IsResponseUnique(Data.Command command, string response)
+
+
+        public bool IsResponseUnique(TBase TBase, TResult TResult)
         {
-            return !Cache.Single(x => x.Key == command).Value.Equals(response);
+            return !Cache.Single(x => x.Key == TBase).Value.Equals(TResult);
         }
 
-        public void SetLastResponse(Data.Command command, string response)
+        public void SetLastResponse(TBase TBase, TResult TResult)
         {
-            Cache[command] = response;
+            Cache[TBase] = TResult;
         }
 
-        public void DoWhenResponseIsNotLikeLastResponse(Data.Command command, string response, Action<string> action)
+        public void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action)
         {
-            if (!ContainsCommand(command))
+            if (!ContainsTBase(TBase))
             {
-                InitializeCommand(command);
+                InitializeTBase(TBase);
             }
 
-            if (IsResponseUnique(command, response))
+            if (IsResponseUnique(TBase, TResult))
             {
-                SetLastResponse(command, response);
-                action(response);
+                SetLastResponse(TBase, TResult);
+                action(TResult);
             }
         }
 
-        public string GetCacheValue(Data.Command command)
+        public TResult GetCacheValue(TBase TBase)
         {
-            return Cache.SingleOrDefault(x => x.Key == command).Value;
+            return Cache.SingleOrDefault(x => x.Key == TBase).Value;
         }
 
-        private void InitializeCommand(Data.Command command)
+
+
+        public void InitializeTBase(TBase TBase)
         {
-            Cache.Add(command, "");
+            Cache.Add(TBase, default(TResult));
         }
 
-        public void Remove(Data.Command command)
+        public void Remove(TBase TBase)
         {
-            Cache.Remove(Cache.First(x => x.Key == command).Key);
+            Cache.Remove(Cache.First(x => x.Key == TBase).Key);
         }
     }
 }

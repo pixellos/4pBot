@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using pBot.Model.Core.Abstract;
 
-namespace pBot.Model.Functions.Parser
+namespace pBot.Model.Core.Data
 {
     internal class RegexParser : ICommandParser
     {

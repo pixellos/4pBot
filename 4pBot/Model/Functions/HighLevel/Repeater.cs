@@ -14,8 +14,7 @@ namespace pBot.Model.Functions.HighLevel
 
         protected Action<Command, string> StringAction;
         public ICommandInvoker CommandInvoker { get; set; }
-        public CachedResponse CachedResponse { get; set; }
-
+        public CachedResponse<Command,string> CachedResponse { get; set; }
 
         private static int GetDelayValue(Command command)
         {
@@ -46,7 +45,7 @@ namespace pBot.Model.Functions.HighLevel
             if (rootCommand.TypeOfCommand == Command.CommandType.Default ||
                 rootCommand.TypeOfCommand == Command.CommandType.Any)
             {
-                if (!CachedResponse.ContainsCommand(childCommand))
+                if (!CachedResponse.ContainsTBase(childCommand))
                 {
                     CachedResponse.SetLastResponse(childCommand, "");
                     Task.Run(
@@ -58,7 +57,7 @@ namespace pBot.Model.Functions.HighLevel
 
             if (rootCommand.TypeOfCommand == Command.CommandType.Negation)
             {
-                if (CachedResponse.ContainsCommand(childCommand))
+                if (CachedResponse.ContainsTBase(childCommand))
                 {
                     CachedResponse.Remove(childCommand);
                     return "Request has been removed";
@@ -74,7 +73,7 @@ namespace pBot.Model.Functions.HighLevel
             {
                 var response = CommandInvoker.InvokeCommand(command);
 
-                if (!CachedResponse.ContainsCommand(command))
+                if (!CachedResponse.ContainsTBase(command))
                 {
                     return;
                 }

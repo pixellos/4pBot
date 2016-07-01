@@ -6,7 +6,6 @@ using pBot.Model.Core.Abstract;
 using pBot.Model.Core.Cache;
 using pBot.Model.Core.Data;
 using pBot.Model.Functions.HighLevel;
-using pBot.Model.Functions.Parser;
 using pBot.Model.Functions._4pChecker;
 
 namespace pBot.Dependencies
@@ -17,28 +16,27 @@ namespace pBot.Dependencies
 
         public static IContainer GetContainer()
         {
-            if (Container == null)
-            {
-                var builder = new ContainerBuilder();
-                builder.RegisterType<CachedResponse>().AsSelf();
-                builder.RegisterType<RegexParser>().As<ICommandParser>();
+            if (Container != null) return Container;
 
-                builder.Register(x => new Dictionary<Command, CommandDelegates.CommandAction>(BuildInCommands.Commands))
-                    .AsSelf();
+            var builder = new ContainerBuilder();
+            builder.RegisterType<CachedResponse<Command,string>>().AsSelf();
+            builder.RegisterType<RegexParser>().As<ICommandParser>();
 
-                builder.Register(x => BuildInCommands.InitializeOrderer()).AsSelf();
+            builder.Register(x => new Dictionary<Command, CommandDelegates.CommandAction>(BuildInCommands.Commands))
+                .AsSelf();
 
-                builder.RegisterType<CommandInvoker>().UsingConstructor(
-                    () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>()))
-                    .As<ICommandInvoker>();
+            builder.Register(x => BuildInCommands.InitializeOrderer()).AsSelf();
 
-                builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
-                builder.RegisterType<Subscription>().PropertiesAutowired().AsSelf().SingleInstance();
-                builder.RegisterType<_4pChecker>().PropertiesAutowired().AsSelf().SingleInstance();
-                builder.RegisterType<Repeater>().PropertiesAutowired().AsSelf().SingleInstance();
+            builder.RegisterType<CommandInvoker>().UsingConstructor(
+                () => new CommandInvoker(new Dictionary<Command, CommandDelegates.CommandAction>()))
+                .As<ICommandInvoker>();
 
-                Container = builder.Build();
-            }
+            builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
+            builder.RegisterType<Subscription>().PropertiesAutowired().AsSelf().SingleInstance();
+            builder.RegisterType<_4pChecker>().PropertiesAutowired().AsSelf().SingleInstance();
+            builder.RegisterType<Repeater>().PropertiesAutowired().AsSelf().SingleInstance();
+
+            Container = builder.Build();
             return Container;
         }
     }

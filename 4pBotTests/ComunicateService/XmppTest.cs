@@ -20,7 +20,7 @@ namespace pBotTests.ComunicateService
             {
                 Xmpp = xmpp,
                 CommandInvoker = Invoker,
-                CachedResponse = new CachedResponse()
+                CachedResponse = new CachedResponse<Command, string>()
             };
 
             //AutofacSetup.GetContainer().Resolve<Xmpp>();

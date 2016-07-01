@@ -30,7 +30,7 @@ namespace BotOrder.Mask
             return block.AddToCommandBlock($@"(?<{sectionName}>\S+)", $"Non whitespace string to {sectionName}", sectionName, sampleInput,ArgumentOptions.Required);
         }
 
-        public static Block ThenRequried(this Block block, string requestedInput)
+        public static Block ThenRequired(this Block block, string requestedInput)
         {
             return block.AddToCommandBlock($"{requestedInput}", $"Requried {requestedInput}", requestedInput,
                 requestedInput, ArgumentOptions.Core);
