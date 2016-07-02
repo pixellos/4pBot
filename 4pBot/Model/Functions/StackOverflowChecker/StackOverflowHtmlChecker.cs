@@ -9,7 +9,7 @@ namespace pBot.Model.Functions.StackOverflowChecker
 {
     public class StackOverflowHtmlChecker
     {
-        public static string GetSingleSORequestWithTagAsParameter(string unescapedTag)
+        public string GetSingleSORequestWithTagAsParameter(string unescapedTag)
         {
             var html = new HtmlDocument();
 

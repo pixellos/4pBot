@@ -13,7 +13,7 @@ namespace BotOrder.Mask
         public static Block Bot(this Block block)
         {
             string regexComparer = @"Bot";
-            string botNick = "Bot Nick";
+            string botNick = "(Nick of Bot)";
             string Bot = nameof(Bot);
 
             return block.AddToCommandBlock(regexComparer, botNick, Bot, Bot, ArgumentOptions.Core, String.Empty);
@@ -27,23 +27,23 @@ namespace BotOrder.Mask
 
         public static Block ThenNonWhiteSpaceString(this Block block, string sectionName, string sampleInput)
         {
-            return block.AddToCommandBlock($@"(?<{sectionName}>\S+)", $"Non whitespace string to {sectionName}", sectionName, sampleInput,ArgumentOptions.Required);
+            return block.AddToCommandBlock($@"(?<{sectionName}>\S+)", $"({sectionName} : string)", sectionName, sampleInput,ArgumentOptions.Required);
         }
 
-        public static Block ThenRequired(this Block block, string requestedInput)
+        public static Block Then(this Block block, string requestedInput)
         {
-            return block.AddToCommandBlock($"{requestedInput}", $"Requried {requestedInput}", requestedInput,
+            return block.AddToCommandBlock($"{requestedInput}",$"({requestedInput})", requestedInput,
                 requestedInput, ArgumentOptions.Core);
         }
 
         public static Block ThenWord(this Block block, string sectionName, string sampleInput)
         {
-            return block.AddToCommandBlock($@"(?<{sectionName}>\w+)", $"String to {sectionName}", sectionName, sampleInput,ArgumentOptions.Required);
+            return block.AddToCommandBlock($@"(?<{sectionName}>\w+)", $"({sectionName} : word)", sectionName, sampleInput,ArgumentOptions.Required);
         }
 
         public static Block ThenEverythingToEndOfLine(this Block block, string sectionName,string sampleInput)
         {
-            return block.AddToCommandBlock($@"(?<{sectionName}>((\S+\s*)+))", $"Everything to {sectionName}", sectionName, sampleInput,ArgumentOptions.Optional);
+            return block.AddToCommandBlock($@"(?<{sectionName}>((\S+\s*)+))", $"({sectionName}: to EOL [Optional])", sectionName, sampleInput,ArgumentOptions.Optional);
         }
 
         private static Block AddToCommandBlock(this Block block, string regexComparer, string description, string sectionName, string sampleInput,ArgumentOptions argumentOptions,string preSampleInputSeparator = " ")

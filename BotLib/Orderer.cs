@@ -5,7 +5,7 @@ using BotOrder.Mask;
 
 namespace BotOrder
 {
-    public class OrderDoer
+    public class Orderer
     {
         Dictionary<Mask.Mask,Func<Result, string>> Dictionary = new Dictionary<Mask.Mask, Func<Result, string>>();
 
@@ -22,6 +22,7 @@ namespace BotOrder
 
         /// <summary>
         /// Return null when result should not be send
+        /// Invoke only first 
         /// </summary>
         /// <returns>Status response</returns>
         public string InvokeCommand(string author, string text)

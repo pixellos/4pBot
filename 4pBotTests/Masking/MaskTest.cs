@@ -20,7 +20,7 @@ namespace pBotTests.Masking
                 yield return new TestCaseData(Bot().FinalizeCommand());
                 yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).FinalizeCommand());
-                yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).ThenRequired(SampleInput).FinalizeCommand());
+                yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).Then(SampleInput).FinalizeCommand());
                 yield return new TestCaseData(Bot().ThenWord(Something,SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").FinalizeCommand());
             }
         }

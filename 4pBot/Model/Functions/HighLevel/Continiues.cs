@@ -1,18 +1,24 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using pBot.Model.ComunicateService;
 
 namespace pBot.Model.Functions.HighLevel
 {
-
-
     public class ContinuesRequest
     {
         public CachedResponse<string,string> CachedResponse { get; set; } 
 
-        public Action<string> SendCommand { get; set; } 
+        public Action<string> SendCommand { get; set; }
 
+        public string CheckRequests()
+        {
+            var x = "";
+            foreach (KeyValuePair<string, string> keyValuePair in CachedResponse.ReadOnlyCache)
+            {
+                x += $"{keyValuePair.Key} : {keyValuePair.Value}";
+            }
+            return x;
+        }
 
         public string AddRequest(string key, Func<string> action, int delay = 5)
         {
@@ -35,15 +41,12 @@ namespace pBot.Model.Functions.HighLevel
 
         public string RemoveRequest(string key)
         {
-            if (!CachedResponse.ContainsKey(key))
-            {
-                return "There is no entry";
-            }
-            else
+            if (CachedResponse.ContainsKey(key))
             {
                 CachedResponse.Remove(key);
                 return "OK";
             }
+                return "There is no entry";
         }
     }
 

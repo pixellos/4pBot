@@ -33,7 +33,7 @@ namespace pBot.Model.ComunicateService
             clientConnection.OnWriteXml += DebugConsoleWrite;
         }
 
-        public OrderDoer Invoker { get; set; }
+        public Orderer Orderer { get; set; }
 
 
         public void SendIfNotNull(string message)
@@ -83,7 +83,7 @@ namespace pBot.Model.ComunicateService
 
             if (startupDate < Stamp)
             {
-                var response = Invoker.InvokeCommand(nickName,msg.Body);
+                var response = Orderer.InvokeCommand(nickName,msg.Body);
                 if (response != null && msg.Type == MessageType.groupchat)
                 {
                     SendIfNotNull(response);

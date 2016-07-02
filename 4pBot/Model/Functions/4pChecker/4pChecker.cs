@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace pBot.Model.Functions._4pChecker
 {
-    internal class _4pChecker
+    public class _4pChecker
     {
-        private static readonly string _4pAdress = ApiKey.Key;
+        private readonly string _4pAdress = ApiKey.Key;
 
-        private static readonly Dictionary<string, string> NameToID = new Dictionary<string, string>
+        private readonly Dictionary<string, string> NameToID = new Dictionary<string, string>
         {
             {"Delphi i Pascal", "1"},
             {"C/C++", "2"},
@@ -46,7 +46,7 @@ namespace pBot.Model.Functions._4pChecker
             {"Python", "51"}
         };
 
-        private static readonly Dictionary<string, string> IDToForumString = new Dictionary<string, string>
+        private readonly Dictionary<string, string> IDToForumString = new Dictionary<string, string>
         {
             {"1", "Delphi_Pascal"},
             {"2", "C_i_C++"},
@@ -82,7 +82,7 @@ namespace pBot.Model.Functions._4pChecker
         };
 
 
-        public static string GetForumId(string str)
+        public string GetForumId(string str)
         {
           
             return NameToID.First(x => x.Key.ToLower().Contains(str.ToLower())).Value;
@@ -90,17 +90,17 @@ namespace pBot.Model.Functions._4pChecker
            
         }
 
-        public static string GetForumUrl(string id)
+        public string GetForumUrl(string id)
         {
             return IDToForumString.Single(x => x.Key.Equals(id)).Value;
         }
 
-        private static string MagicWithJson(string json)
+        private string MagicWithJson(string json)
         {
             return $"{"{ \"Main\":"} {json} {"}"}";
         }
 
-        private static string MagicWith4PSubject(string subject)
+        private string MagicWith4PSubject(string subject)
         {
             return subject
                 .Replace(' ', '_')
@@ -121,10 +121,10 @@ namespace pBot.Model.Functions._4pChecker
                 .TrimEnd('_');
         }
 
-        private static string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
+        private string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
             $"http://forum.4programmers.net/{GetForumUrl(jsonForumId)}/{jsonTopicId}-{MagicWith4PSubject(jsonSubject)}";
 
-        public static string GetNewestPost(string forumId)
+        public string GetNewestPost(string forumId)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace pBot.Model.Functions._4pChecker
                        $"przez {element.first_post.user.name}: " +
                        UrlShortener.GetShortUrl(make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
             }
-            catch (InvalidOperationException exception)
+            catch (InvalidOperationException)
             {
                 return "There is no matching forum id! Check your spelling";
             }

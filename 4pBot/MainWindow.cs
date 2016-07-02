@@ -5,7 +5,7 @@ namespace pBot
 {
     public partial class MainWindow : Window
     {
-        public MainWindow(IXmpp xmpp) : base(WindowType.Toplevel)
+        public MainWindow() : base(WindowType.Toplevel)
         {
             Build();
         }

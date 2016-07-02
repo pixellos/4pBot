@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Autofac;
+using BotOrder;
 using pBot.Model.ComunicateService;
 using pBot.Model.Functions.HighLevel;
 using pBot.Model.Functions.StackOverflowChecker;
@@ -16,10 +17,12 @@ namespace pBot.Dependencies
             if (Container != null) return Container;
 
             var builder = new ContainerBuilder();
+            builder.RegisterType<StackOverflowHtmlChecker>().SingleInstance();
+            builder.RegisterType<_4pChecker>().SingleInstance();
 
-            builder.Register(x => Controllers.ControllerInitialize()).AsSelf().SingleInstance();
+            builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();
+            builder.RegisterType<Orderer>().PropertiesAutowired().AsSelf().SingleInstance();
             builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
-            
 
             Container = builder.Build();
             return Container;

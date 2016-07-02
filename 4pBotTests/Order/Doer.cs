@@ -10,10 +10,10 @@ namespace pBotTests.Order
         [Test]
         public void IntegrationTest()
         {
-            OrderDoer orderDoer  = new OrderDoer();
-            orderDoer.AddTemporaryCommand(Bot().ThenRequired("Test").FinalizeCommand(),(x)=> "ReturnString");
+            Orderer orderer  = new Orderer();
+            orderer.AddTemporaryCommand(Bot().Then("Test").FinalizeCommand(),(x)=> "ReturnString");
 
-            Assert.AreEqual(orderDoer.InvokeCommand("", "Bot Test"),"ReturnString");
+            Assert.AreEqual(orderer.InvokeCommand("", "Bot Test"),"ReturnString");
         }
     }
 }
