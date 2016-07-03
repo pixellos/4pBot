@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Gtk;
 using pBot.Dependencies;
 using pBot.Model.ComunicateService;
 
@@ -16,10 +15,7 @@ namespace pBot
 
             controller.ControllerInitialize();
 
-            while (true)
-            {
-               
-            }
+            while (true) {}
         }
     }
 }

@@ -7,6 +7,8 @@ namespace pBot.Model.Functions.Checkers.SOChecker
 {
     public class CheckerSO
     {
+        public const string CantFindRequestMessage = "Sorry, I can't find your request :(";
+
         public DownloaderSo DownloaderSo { get; set; }
 
         public string CheckNewestByTag(string tagName)
@@ -25,7 +27,7 @@ namespace pBot.Model.Functions.Checkers.SOChecker
             catch (InvalidOperationException exception)
             {
                 Console.WriteLine($"{exception.Message} at StackOverFlowChecker");
-                return "Sorry, I can't find your request :(";
+                return CantFindRequestMessage;
             }
         }
     }

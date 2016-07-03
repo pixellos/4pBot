@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace pBot.Model.Functions.HighLevel
 {
-    public class ContinuesRequest
+    public class Repeater
     {
         public CachedResponse<string,string> CachedResponse { get; set; } 
 

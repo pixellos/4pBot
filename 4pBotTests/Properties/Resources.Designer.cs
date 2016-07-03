@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace _4pBotTests.Properties {
     using System;
     
@@ -19,6 +21,7 @@ namespace _4pBotTests.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
+    [ExcludeFromCodeCoverage]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -120,6 +123,27 @@ namespace _4pBotTests.Properties {
         ///      },
         ///      &quot;fo [rest of string was truncated]&quot;;.
         /// </summary>
-  
+        internal static string _4pJsonResponse {
+            get {
+                return ResourceManager.GetString("4pJsonResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html itemscope itemtype=&quot;http://schema.org/QAPage&quot;&gt;
+        ///&lt;head&gt;
+        ///
+        ///&lt;title&gt;Newest &amp;#39;java&amp;#39; Questions - Stack Overflow&lt;/title&gt;
+        ///    &lt;link rel=&quot;shortcut icon&quot; href=&quot;//cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d&quot;&gt;
+        ///    &lt;link rel=&quot;apple-touch-icon image_src&quot; href=&quot;//cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a&quot;&gt;
+        ///    &lt;link rel=&quot;search&quot; type=&quot;application/opensearchdescription+xml&quot; title=&quot;Stack Overflow&quot; href=&quot;/opensearch.xml&quot;&gt;
+        ///    &lt;meta na [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SOHtml {
+            get {
+                return ResourceManager.GetString("SOHtml", resourceCulture);
+            }
+        }
     }
 }

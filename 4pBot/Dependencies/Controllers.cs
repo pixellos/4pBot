@@ -50,7 +50,7 @@ namespace pBot.Dependencies
 
         private void SOController(Orderer orderer)
         {
-            var SOContinueRequest = new ContinuesRequest() {SendCommand = SendCurrentXmpp,CachedResponse = CachedResponse()};
+            var SOContinueRequest = new Repeater() {SendCommand = SendCurrentXmpp,CachedResponse = CachedResponse()};
             var TagString = "Tag";
             string Delay = nameof(Delay);
 
@@ -82,7 +82,7 @@ namespace pBot.Dependencies
 
         private void _4PController(Orderer orderer)
         {
-            var _4PContinueRequest = new ContinuesRequest() {SendCommand = SendCurrentXmpp,CachedResponse = CachedResponse()};
+            var _4PContinueRequest = new Repeater() {SendCommand = SendCurrentXmpp,CachedResponse = CachedResponse()};
             var TagString = "Tag";
 
 

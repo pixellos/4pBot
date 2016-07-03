@@ -194,16 +194,16 @@
   <ItemGroup>
     <Compile Include="Dependencies\Controllers.cs" />
     <Compile Include="Model\CachedResponse.cs" />
-    <Compile Include="Model\Functions\Checkers\4pChecker\4pChecker.cs" />
+    <Compile Include="Model\Checkers\4pChecker\4pChecker.cs" />
     <Compile Include="Model\Constants\ApiKey.cs" />
-    <Compile Include="Model\Functions\Checkers\4pChecker\Downloader4P.cs" />
-    <Compile Include="Model\Functions\Checkers\4pChecker\JSONModel.cs" />
-    <Compile Include="Model\Functions\Checkers\SOChecker\DownloaderSo.cs" />
-    <Compile Include="Model\Functions\Helper\UrlShortener.cs" />
+    <Compile Include="Model\Checkers\4pChecker\Downloader4P.cs" />
+    <Compile Include="Model\Checkers\4pChecker\JSONModel.cs" />
+    <Compile Include="Model\Checkers\SOChecker\DownloaderSo.cs" />
+    <Compile Include="Model\Helper\UrlShortener.cs" />
     <Compile Include="Model\Constants\Identity.cs" />
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
-    <Compile Include="Model\Functions\Checkers\SOChecker\CheckerSO.cs" />
+    <Compile Include="Model\Checkers\SOChecker\CheckerSO.cs" />
     <Compile Include="Model\ICache.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
