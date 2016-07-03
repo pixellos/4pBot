@@ -7,9 +7,9 @@ using Newtonsoft.Json;
 
 namespace pBot.Model.Functions._4pChecker
 {
-    public class _4pChecker
+    public class Checker4P
     {
-        private readonly string _4pAdress = ApiKey.Key;
+        private Downloader4P Downloader4P { get; set; }
 
         private readonly Dictionary<string, string> NameToID = new Dictionary<string, string>
         {
@@ -84,10 +84,7 @@ namespace pBot.Model.Functions._4pChecker
 
         public string GetForumId(string str)
         {
-          
             return NameToID.First(x => x.Key.ToLower().Contains(str.ToLower())).Value;
-            
-           
         }
 
         public string GetForumUrl(string id)
@@ -95,10 +92,7 @@ namespace pBot.Model.Functions._4pChecker
             return IDToForumString.Single(x => x.Key.Equals(id)).Value;
         }
 
-        private string MagicWithJson(string json)
-        {
-            return $"{"{ \"Main\":"} {json} {"}"}";
-        }
+     
 
         private string MagicWith4PSubject(string subject)
         {
@@ -110,6 +104,7 @@ namespace pBot.Model.Functions._4pChecker
                 .Replace('#', '_')
                 .Replace('@', '_')
                 .Replace('!', '_')
+                .Replace(',', '_')
                 .Replace(']', '_')
                 .Replace('?', '_')
                 .Replace('!', '_')
@@ -129,9 +124,7 @@ namespace pBot.Model.Functions._4pChecker
             try
             {
                 var jsonForumId = GetForumId(forumId);
-                var json = new WebClient().DownloadString(_4pAdress + jsonForumId);
-
-                var obj = JsonConvert.DeserializeObject<RootObject>(MagicWithJson(json));
+                var obj = Downloader4P.GetData(jsonForumId);
 
                 var element = obj.Main.First();
                 var tags = element.tags.Aggregate(" ", (current, tag) => current + tag + ", ");
@@ -145,6 +138,5 @@ namespace pBot.Model.Functions._4pChecker
                 return "There is no matching forum id! Check your spelling";
             }
         }
-
     }
 }

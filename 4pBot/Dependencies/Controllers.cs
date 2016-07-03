@@ -14,7 +14,7 @@ namespace pBot.Dependencies
         public IXmpp Xmpp { get; set; }
         public Orderer Orderer { get; set; }
         public StackOverflowHtmlChecker StackOverflowHtmlChecker { get; set; }
-        public _4pChecker _4PChecker { get; set; }
+        public Checker4P Checker4P { get; set; }
         private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 
         private Func<string, string> ChangesRoom
@@ -95,7 +95,7 @@ namespace pBot.Dependencies
                 Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString("Delay", "5").End(),
                 x => _4PContinueRequest.AddRequest(x.MatchedResult[TagString],
                     () => 
-                        _4PChecker.GetNewestPost(x.MatchedResult[TagString]),
+                        Checker4P.GetNewestPost(x.MatchedResult[TagString]),
                         Int32.Parse(x.MatchedResult["Delay"])
                         )
                 );
@@ -107,7 +107,7 @@ namespace pBot.Dependencies
 
             orderer.AddTemporaryCommand(
                 Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "C++").End(),
-                x => _4PChecker.GetNewestPost(x.MatchedResult[TagString]));
+                x => Checker4P.GetNewestPost(x.MatchedResult[TagString]));
         }
     }
 }

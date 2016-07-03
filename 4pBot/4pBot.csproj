@@ -205,6 +205,7 @@
     <Compile Include="Model\CachedResponse.cs" />
     <Compile Include="Model\Functions\4pChecker\4pChecker.cs" />
     <Compile Include="Model\Functions\4pChecker\ApiKey.cs" />
+    <Compile Include="Model\Functions\4pChecker\Downloader4P.cs" />
     <Compile Include="Model\Functions\4pChecker\JSONModel.cs" />
     <Compile Include="Model\Functions\4pChecker\UrlShortener.cs" />
     <Compile Include="Model\Constants\Identity.cs" />

@@ -21,7 +21,7 @@ namespace pBot.Dependencies
 
             var builder = new ContainerBuilder();
             builder.RegisterType<StackOverflowHtmlChecker>().SingleInstance();
-            builder.RegisterType<_4pChecker>().SingleInstance();
+            builder.RegisterType<Checker4P>().SingleInstance();
 
             builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();
             builder.RegisterType<Orderer>().PropertiesAutowired().AsSelf().SingleInstance();
