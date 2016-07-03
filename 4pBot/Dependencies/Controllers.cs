@@ -3,9 +3,9 @@ using CoreBot;
 using pBot.Model;
 using static CoreBot.Mask.Builder;
 using pBot.Model.ComunicateService;
+using pBot.Model.Functions.Checkers.SOChecker;
+using pBot.Model.Functions.Checkers._4pChecker;
 using pBot.Model.Functions.HighLevel;
-using pBot.Model.Functions.StackOverflowChecker;
-using pBot.Model.Functions._4pChecker;
 
 namespace pBot.Dependencies
 {
@@ -13,7 +13,7 @@ namespace pBot.Dependencies
     {
         public IXmpp Xmpp { get; set; }
         public Orderer Orderer { get; set; }
-        public StackOverflowHtmlChecker StackOverflowHtmlChecker { get; set; }
+        public CheckerSO CheckerSo { get; set; }
         public Checker4P Checker4P { get; set; }
         private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 
@@ -64,7 +64,7 @@ namespace pBot.Dependencies
                 Bot().Then("SO").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString(Delay, "5").End(),
                 x => SOContinueRequest.AddRequest(x.MatchedResult[TagString],
                     () => 
-                        StackOverflowHtmlChecker.GetSingleSORequestWithTagAsParameter(x.MatchedResult[TagString]),
+                        CheckerSo.CheckNewestByTag(x.MatchedResult[TagString]),
                         Int32.Parse(x.MatchedResult[Delay])
                         )
                 );
@@ -77,7 +77,7 @@ namespace pBot.Dependencies
 
             orderer.AddTemporaryCommand(
                 Bot().Then("SO").ThenNonWhiteSpaceString(TagString, "C#").End(), //Route
-                x => StackOverflowHtmlChecker.GetSingleSORequestWithTagAsParameter(x.MatchedResult[TagString])); //Action
+                x => CheckerSo.CheckNewestByTag(x.MatchedResult[TagString])); //Action
         }
 
         private void _4PController(Orderer orderer)
@@ -95,7 +95,7 @@ namespace pBot.Dependencies
                 Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString("Delay", "5").End(),
                 x => _4PContinueRequest.AddRequest(x.MatchedResult[TagString],
                     () => 
-                        Checker4P.GetNewestPost(x.MatchedResult[TagString]),
+                        Checker4P.GetLastPostAtCategory(x.MatchedResult[TagString]),
                         Int32.Parse(x.MatchedResult["Delay"])
                         )
                 );
@@ -107,7 +107,7 @@ namespace pBot.Dependencies
 
             orderer.AddTemporaryCommand(
                 Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "C++").End(),
-                x => Checker4P.GetNewestPost(x.MatchedResult[TagString]));
+                x => Checker4P.GetLastPostAtCategory(x.MatchedResult[TagString]));
         }
     }
 }

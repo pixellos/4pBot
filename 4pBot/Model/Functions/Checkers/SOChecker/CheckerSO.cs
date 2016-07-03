@@ -1,20 +1,17 @@
 using System;
 using System.Linq;
-using System.Net;
 using System.Web;
-using HtmlAgilityPack;
-using pBot.Model.Functions._4pChecker;
-namespace pBot.Model.Functions.StackOverflowChecker
-{
-    public class StackOverflowHtmlChecker
-    {
-        public string GetSingleSORequestWithTagAsParameter(string unescapedTag)
-        {
-            var html = new HtmlDocument();
-            var escapedTag = HttpUtility.HtmlEncode(unescapedTag);
+using pBot.Model.Functions.Helper;
 
-            html.LoadHtml(
-                new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}"));
+namespace pBot.Model.Functions.Checkers.SOChecker
+{
+    public class CheckerSO
+    {
+        public DownloaderSo DownloaderSo { get; set; }
+
+        public string CheckNewestByTag(string tagName)
+        {
+            var html = DownloaderSo.Download(tagName);
             try
             {
                 var question = html.DocumentNode

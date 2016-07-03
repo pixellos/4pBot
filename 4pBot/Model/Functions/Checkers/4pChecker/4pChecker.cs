@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using pBot.Model.Functions.Helper;
 
-namespace pBot.Model.Functions._4pChecker
+namespace pBot.Model.Functions.Checkers._4pChecker
 {
     public class Checker4P
     {
-        private Downloader4P Downloader4P { get; set; }
+        public Downloader4P Downloader4P { get; set; } = new Downloader4P();
 
+        public const string NoMatchingForumMeessage = "There is no matching forum id! Check your spelling";
         private readonly Dictionary<string, string> NameToID = new Dictionary<string, string>
         {
             {"Delphi i Pascal", "1"},
@@ -81,18 +81,15 @@ namespace pBot.Model.Functions._4pChecker
             {"51", "Python"}
         };
 
-
-        public string GetForumId(string str)
+        public string GetForumId(string forumName)
         {
-            return NameToID.First(x => x.Key.ToLower().Contains(str.ToLower())).Value;
+            return NameToID.First(x => x.Key.ToLower().Contains(forumName.ToLower())).Value;
         }
 
         public string GetForumUrl(string id)
         {
             return IDToForumString.Single(x => x.Key.Equals(id)).Value;
         }
-
-     
 
         private string MagicWith4PSubject(string subject)
         {
@@ -119,12 +116,12 @@ namespace pBot.Model.Functions._4pChecker
         private string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
             $"http://forum.4programmers.net/{GetForumUrl(jsonForumId)}/{jsonTopicId}-{MagicWith4PSubject(jsonSubject)}";
 
-        public string GetNewestPost(string forumId)
+        public string GetLastPostAtCategory(string categoryName)
         {
             try
             {
-                var jsonForumId = GetForumId(forumId);
-                var obj = Downloader4P.GetData(jsonForumId);
+                var jsonForumId = GetForumId(categoryName);
+                var obj = Downloader4P.DownloadData(jsonForumId);
 
                 var element = obj.Main.First();
                 var tags = element.tags.Aggregate(" ", (current, tag) => current + tag + ", ");
@@ -135,7 +132,7 @@ namespace pBot.Model.Functions._4pChecker
             }
             catch (InvalidOperationException)
             {
-                return "There is no matching forum id! Check your spelling";
+                return NoMatchingForumMeessage;
             }
         }
     }

@@ -2,9 +2,9 @@
 using Autofac;
 using CoreBot;
 using pBot.Model.ComunicateService;
+using pBot.Model.Functions.Checkers.SOChecker;
+using pBot.Model.Functions.Checkers._4pChecker;
 using pBot.Model.Functions.HighLevel;
-using pBot.Model.Functions.StackOverflowChecker;
-using pBot.Model.Functions._4pChecker;
 
 namespace pBot.Dependencies
 {
@@ -20,8 +20,11 @@ namespace pBot.Dependencies
             }
 
             var builder = new ContainerBuilder();
-            builder.RegisterType<StackOverflowHtmlChecker>().SingleInstance();
-            builder.RegisterType<Checker4P>().SingleInstance();
+            builder.RegisterType<DownloaderSo>().SingleInstance();
+            builder.RegisterType<CheckerSO>().PropertiesAutowired().SingleInstance();
+
+            builder.RegisterType<Downloader4P>().SingleInstance();
+            builder.RegisterType<Checker4P>().PropertiesAutowired().SingleInstance();
 
             builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();
             builder.RegisterType<Orderer>().PropertiesAutowired().AsSelf().SingleInstance();

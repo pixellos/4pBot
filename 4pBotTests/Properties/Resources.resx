@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="4pJson" xml:space="preserve">
+    <value>{
+    "Main": [
+    {
+      "topic_id": 273633,
+      "first_post": {
+        "id": 1267467,
+        "time": 1467539465,
+        "user": {
+          "id": 77635,
+          "name": "Stang",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267525,
+        "time": 1467558798,
+        "user": {
+          "id": 48325,
+          "name": "Th0ru5",
+          "photo_url": null,
+          "reputation": 20
+        }
+      },
+      "forum": "Java",
+      "subject": "Rozszerzenie listy jednokierunkowej",
+      "timestamp": 1467539465,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 3,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "java",
+        "lista-jednokierunkowa"
+      ]
+    },
+    {
+      "topic_id": 273433,
+      "first_post": {
+        "id": 1266174,
+        "time": 1467054467,
+        "user": {
+          "id": 77512,
+          "name": "rafal193",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267523,
+        "time": 1467558717,
+        "user": {
+          "id": 77512,
+          "name": "rafal193",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "forum": "Java",
+      "subject": "Java Spring b\u0142\u0105d przy pr\u00f3bie uruchomienia - ConflictingBeanDefinitionException",
+      "timestamp": 1467054467,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 4,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273645,
+      "first_post": {
+        "id": 1267507,
+        "time": 1467554313,
+        "user": {
+          "id": 77637,
+          "name": "Sylwestrinio",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267520,
+        "time": 1467557239,
+        "user": {
+          "id": 77637,
+          "name": "Sylwestrinio",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "forum": "Java",
+      "subject": "Program do realizacji zam\u00f3wie\u0144 w JAVA",
+      "timestamp": 1467554313,
+      "sticky": 0,
+      "locked": 0,
+      "solved": 1267509,
+      "replies": 2,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273613,
+      "first_post": {
+        "id": 1267353,
+        "time": 1467475551,
+        "user": {
+          "id": 31480,
+          "name": "bogdans",
+          "photo_url": "http:\/\/4programmers.net\/store\/_a\/524df04050e25.png",
+          "reputation": 15570
+        }
+      },
+      "last_post": {
+        "id": 1267504,
+        "time": 1467552657,
+        "user": {
+          "id": 62774,
+          "name": "diamen",
+          "photo_url": null,
+          "reputation": 100
+        }
+      },
+      "forum": "Java",
+      "subject": "Liczenie krotno\u015bci znak\u00f3w w tek\u015bcie.",
+      "timestamp": 1467475551,
+      "sticky": 0,
+      "locked": 0,
+      "solved": 1267401,
+      "replies": 10,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273529,
+      "first_post": {
+        "id": 1266841,
+        "time": 1467289877,
+        "user": {
+          "id": 62724,
+          "name": "maniek1310",
+          "photo_url": null,
+          "reputation": 65
+        }
+      },
+      "last_post": {
+        "id": 1267470,
+        "time": 1467540355,
+        "user": {
+          "id": 62724,
+          "name": "maniek1310",
+          "photo_url": null,
+          "reputation": 65
+        }
+      },
+      "forum": "Java",
+      "subject": "Kod JavaScript wykonany w programie",
+      "timestamp": 1467289877,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 9,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "android",
+        "java",
+        "javascript"
+      ]
+    },
+    {
+      "topic_id": 273589,
+      "first_post": {
+        "id": 1267208,
+        "time": 1467395230,
+        "user": {
+          "id": 0,
+          "name": "Anonim",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267452,
+        "time": 1467525502,
+        "user": {
+          "id": 31480,
+          "name": "bogdans",
+          "photo_url": "http:\/\/4programmers.net\/store\/_a\/524df04050e25.png",
+          "reputation": 15570
+        }
+      },
+      "forum": "Java",
+      "subject": "Format daty",
+      "timestamp": 1467395230,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 6,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "java",
+        "date",
+        "format"
+      ]
+    },
+    {
+      "topic_id": 273619,
+      "first_post": {
+        "id": 1267371,
+        "time": 1467484585,
+        "user": {
+          "id": 72541,
+          "name": "mateuszp32",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267371,
+        "time": 1467484585,
+        "user": {
+          "id": 72541,
+          "name": "mateuszp32",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "forum": "Java",
+      "subject": "Drzewo decyzyjne JAVAFX - zlece",
+      "timestamp": 1467484585,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 0,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "java",
+        "javafx"
+      ]
+    },
+    {
+      "topic_id": 273602,
+      "first_post": {
+        "id": 1267283,
+        "time": 1467448945,
+        "user": {
+          "id": 64252,
+          "name": "scibi92",
+          "photo_url": null,
+          "reputation": 240
+        }
+      },
+      "last_post": {
+        "id": 1267292,
+        "time": 1467453620,
+        "user": {
+          "id": 35761,
+          "name": "NoZi",
+          "photo_url": "http:\/\/4programmers.net\/store\/_a\/4ccbfedb105c0",
+          "reputation": 806
+        }
+      },
+      "forum": "Java",
+      "subject": "PowerMockito + Mockito - mockowane statyczne metody nie wykonuj\u0105 si\u0119 dobrze na testowanym obiekcie",
+      "timestamp": 1467448945,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 3,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273541,
+      "first_post": {
+        "id": 1266947,
+        "time": 1467305915,
+        "user": {
+          "id": 76640,
+          "name": "ernest1",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267282,
+        "time": 1467448809,
+        "user": {
+          "id": 48325,
+          "name": "Th0ru5",
+          "photo_url": null,
+          "reputation": 20
+        }
+      },
+      "forum": "Java",
+      "subject": "Spring -logowanie usera z wykorzystaniem https i ssl",
+      "timestamp": 1467305915,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 1,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "spring",
+        "boot",
+        "java",
+        "https",
+        "ssl"
+      ]
+    },
+    {
+      "topic_id": 273584,
+      "first_post": {
+        "id": 1267184,
+        "time": 1467389751,
+        "user": {
+          "id": 77622,
+          "name": "Bros",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267263,
+        "time": 1467411393,
+        "user": {
+          "id": 48325,
+          "name": "Th0ru5",
+          "photo_url": null,
+          "reputation": 20
+        }
+      },
+      "forum": "Java",
+      "subject": "Zapis do listy",
+      "timestamp": 1467389751,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 3,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    }
+  ]
+}</value>
+  </data>
+  <data name="4pJsonResponse" xml:space="preserve">
+    <value>{
+    "Main": [
+    {
+      "topic_id": 273633,
+      "first_post": {
+        "id": 1267467,
+        "time": 1467539465,
+        "user": {
+          "id": 77635,
+          "name": "Stang",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267525,
+        "time": 1467558798,
+        "user": {
+          "id": 48325,
+          "name": "Th0ru5",
+          "photo_url": null,
+          "reputation": 20
+        }
+      },
+      "forum": "Java",
+      "subject": "Rozszerzenie listy jednokierunkowej",
+      "timestamp": 1467539465,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 3,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "java",
+        "lista-jednokierunkowa"
+      ]
+    },
+    {
+      "topic_id": 273433,
+      "first_post": {
+        "id": 1266174,
+        "time": 1467054467,
+        "user": {
+          "id": 77512,
+          "name": "rafal193",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267523,
+        "time": 1467558717,
+        "user": {
+          "id": 77512,
+          "name": "rafal193",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "forum": "Java",
+      "subject": "Java Spring b\u0142\u0105d przy pr\u00f3bie uruchomienia - ConflictingBeanDefinitionException",
+      "timestamp": 1467054467,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 4,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273645,
+      "first_post": {
+        "id": 1267507,
+        "time": 1467554313,
+        "user": {
+          "id": 77637,
+          "name": "Sylwestrinio",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267520,
+        "time": 1467557239,
+        "user": {
+          "id": 77637,
+          "name": "Sylwestrinio",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "forum": "Java",
+      "subject": "Program do realizacji zam\u00f3wie\u0144 w JAVA",
+      "timestamp": 1467554313,
+      "sticky": 0,
+      "locked": 0,
+      "solved": 1267509,
+      "replies": 2,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273613,
+      "first_post": {
+        "id": 1267353,
+        "time": 1467475551,
+        "user": {
+          "id": 31480,
+          "name": "bogdans",
+          "photo_url": "http:\/\/4programmers.net\/store\/_a\/524df04050e25.png",
+          "reputation": 15570
+        }
+      },
+      "last_post": {
+        "id": 1267504,
+        "time": 1467552657,
+        "user": {
+          "id": 62774,
+          "name": "diamen",
+          "photo_url": null,
+          "reputation": 100
+        }
+      },
+      "forum": "Java",
+      "subject": "Liczenie krotno\u015bci znak\u00f3w w tek\u015bcie.",
+      "timestamp": 1467475551,
+      "sticky": 0,
+      "locked": 0,
+      "solved": 1267401,
+      "replies": 10,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273529,
+      "first_post": {
+        "id": 1266841,
+        "time": 1467289877,
+        "user": {
+          "id": 62724,
+          "name": "maniek1310",
+          "photo_url": null,
+          "reputation": 65
+        }
+      },
+      "last_post": {
+        "id": 1267470,
+        "time": 1467540355,
+        "user": {
+          "id": 62724,
+          "name": "maniek1310",
+          "photo_url": null,
+          "reputation": 65
+        }
+      },
+      "forum": "Java",
+      "subject": "Kod JavaScript wykonany w programie",
+      "timestamp": 1467289877,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 9,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "android",
+        "java",
+        "javascript"
+      ]
+    },
+    {
+      "topic_id": 273589,
+      "first_post": {
+        "id": 1267208,
+        "time": 1467395230,
+        "user": {
+          "id": 0,
+          "name": "Anonim",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267452,
+        "time": 1467525502,
+        "user": {
+          "id": 31480,
+          "name": "bogdans",
+          "photo_url": "http:\/\/4programmers.net\/store\/_a\/524df04050e25.png",
+          "reputation": 15570
+        }
+      },
+      "forum": "Java",
+      "subject": "Format daty",
+      "timestamp": 1467395230,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 6,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "java",
+        "date",
+        "format"
+      ]
+    },
+    {
+      "topic_id": 273619,
+      "first_post": {
+        "id": 1267371,
+        "time": 1467484585,
+        "user": {
+          "id": 72541,
+          "name": "mateuszp32",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267371,
+        "time": 1467484585,
+        "user": {
+          "id": 72541,
+          "name": "mateuszp32",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "forum": "Java",
+      "subject": "Drzewo decyzyjne JAVAFX - zlece",
+      "timestamp": 1467484585,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 0,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "java",
+        "javafx"
+      ]
+    },
+    {
+      "topic_id": 273602,
+      "first_post": {
+        "id": 1267283,
+        "time": 1467448945,
+        "user": {
+          "id": 64252,
+          "name": "scibi92",
+          "photo_url": null,
+          "reputation": 240
+        }
+      },
+      "last_post": {
+        "id": 1267292,
+        "time": 1467453620,
+        "user": {
+          "id": 35761,
+          "name": "NoZi",
+          "photo_url": "http:\/\/4programmers.net\/store\/_a\/4ccbfedb105c0",
+          "reputation": 806
+        }
+      },
+      "forum": "Java",
+      "subject": "PowerMockito + Mockito - mockowane statyczne metody nie wykonuj\u0105 si\u0119 dobrze na testowanym obiekcie",
+      "timestamp": 1467448945,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 3,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    },
+    {
+      "topic_id": 273541,
+      "first_post": {
+        "id": 1266947,
+        "time": 1467305915,
+        "user": {
+          "id": 76640,
+          "name": "ernest1",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267282,
+        "time": 1467448809,
+        "user": {
+          "id": 48325,
+          "name": "Th0ru5",
+          "photo_url": null,
+          "reputation": 20
+        }
+      },
+      "forum": "Java",
+      "subject": "Spring -logowanie usera z wykorzystaniem https i ssl",
+      "timestamp": 1467305915,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 1,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [
+        "spring",
+        "boot",
+        "java",
+        "https",
+        "ssl"
+      ]
+    },
+    {
+      "topic_id": 273584,
+      "first_post": {
+        "id": 1267184,
+        "time": 1467389751,
+        "user": {
+          "id": 77622,
+          "name": "Bros",
+          "photo_url": null,
+          "reputation": 0
+        }
+      },
+      "last_post": {
+        "id": 1267263,
+        "time": 1467411393,
+        "user": {
+          "id": 48325,
+          "name": "Th0ru5",
+          "photo_url": null,
+          "reputation": 20
+        }
+      },
+      "forum": "Java",
+      "subject": "Zapis do listy",
+      "timestamp": 1467389751,
+      "sticky": 0,
+      "locked": 0,
+      "solved": null,
+      "replies": 3,
+      "announcement": 0,
+      "votes": 0,
+      "tags": [ ]
+    }
+  ]
+}</value>
+  </data>
+</root>

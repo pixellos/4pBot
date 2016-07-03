@@ -3,11 +3,11 @@ using Google.Apis.Urlshortener.v1;
 using Google.Apis.Urlshortener.v1.Data;
 using pBot.Model.Constants;
 
-namespace pBot.Model.Functions._4pChecker
+namespace pBot.Model.Functions.Helper
 {
     public static class UrlShortener
     {
-        public static string GetShortUrl(string longUrl)
+        public static string GetShortUrl(this string longUrl)
         {
             var url = new Url();
             url.LongUrl = longUrl;
