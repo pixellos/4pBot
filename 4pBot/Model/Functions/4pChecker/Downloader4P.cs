@@ -10,7 +10,7 @@ namespace pBot.Model.Functions._4pChecker
 {
     internal class Downloader4P
     {
-        private readonly string _4pAdress = ApiKey.Key;
+        private readonly string _4pAdress = ApiKey.AdressWithKey;
 
         private string MagicWithJson(string json)
         {
