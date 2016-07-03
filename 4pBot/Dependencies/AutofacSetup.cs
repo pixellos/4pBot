@@ -14,7 +14,10 @@ namespace pBot.Dependencies
 
         public static IContainer GetContainer()
         {
-            if (Container != null) return Container;
+            if (Container != null)
+            {
+                return Container;
+            }
 
             var builder = new ContainerBuilder();
             builder.RegisterType<StackOverflowHtmlChecker>().SingleInstance();

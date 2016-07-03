@@ -56,7 +56,7 @@ namespace BotOrder.Mask
             return block;
         }
 
-        public static Mask FinalizeCommand(this Block block)
+        public static Mask End(this Block block)
         {
             return new Mask(block);
         }

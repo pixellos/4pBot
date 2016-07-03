@@ -36,7 +36,7 @@ namespace pBot.Dependencies
         private void InfoController(Orderer orderer)
         {
             orderer.AddTemporaryCommand(
-                Bot().Then("?").FinalizeCommand(),
+                Bot().Then("?").End(),
                 x => orderer.GetHelpAboutAllCommands());
 
         }
@@ -44,7 +44,7 @@ namespace pBot.Dependencies
         private void RoomController(Orderer orderer)
         {
             orderer.AddTemporaryCommand(
-                Bot().Then("Room").ThenWord("RoomName", "Help").FinalizeCommand(),
+                Bot().Then("Room").ThenWord("RoomName", "Help").End(),
                 x => ChangesRoom(x.MatchedResult["RoomName"]));
         }
 
@@ -56,12 +56,12 @@ namespace pBot.Dependencies
 
 
             orderer.AddTemporaryCommand(
-                Bot().Then("SO").Then("Repeat").Then("Show").FinalizeCommand(),
+                Bot().Then("SO").Then("Repeat").Then("Show").End(),
                 x => SOContinueRequest.CheckRequests());
 
 
             orderer.AddTemporaryCommand(
-                Bot().Then("SO").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString(Delay, "5").FinalizeCommand(),
+                Bot().Then("SO").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString(Delay, "5").End(),
                 x => SOContinueRequest.AddRequest(x.MatchedResult[TagString],
                     () => 
                         StackOverflowHtmlChecker.GetSingleSORequestWithTagAsParameter(x.MatchedResult[TagString]),
@@ -72,11 +72,11 @@ namespace pBot.Dependencies
 
 
             orderer.AddTemporaryCommand(
-                Bot().Then("Dont").Then("SO").ThenNonWhiteSpaceString(TagString, "Java").FinalizeCommand(),
+                Bot().Then("Dont").Then("SO").ThenNonWhiteSpaceString(TagString, "Java").End(),
                 x => SOContinueRequest.RemoveRequest(x.MatchedResult[TagString]));
 
             orderer.AddTemporaryCommand(
-                Bot().Then("SO").ThenNonWhiteSpaceString(TagString, "C#").FinalizeCommand(), //Route
+                Bot().Then("SO").ThenNonWhiteSpaceString(TagString, "C#").End(), //Route
                 x => StackOverflowHtmlChecker.GetSingleSORequestWithTagAsParameter(x.MatchedResult[TagString])); //Action
         }
 
@@ -87,12 +87,12 @@ namespace pBot.Dependencies
 
 
             orderer.AddTemporaryCommand(
-             Bot().Then("4P").Then("Repeat").Then("Show").FinalizeCommand(),
+             Bot().Then("4P").Then("Repeat").Then("Show").End(),
              x => _4PContinueRequest.CheckRequests());
 
 
             orderer.AddTemporaryCommand(
-                Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString("Delay", "5").FinalizeCommand(),
+                Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "Java").Then("Repeat").ThenNonWhiteSpaceString("Delay", "5").End(),
                 x => _4PContinueRequest.AddRequest(x.MatchedResult[TagString],
                     () => 
                         _4PChecker.GetNewestPost(x.MatchedResult[TagString]),
@@ -101,12 +101,12 @@ namespace pBot.Dependencies
                 );
 
             orderer.AddTemporaryCommand(
-                Bot().Then("Dont").Then("4P").ThenNonWhiteSpaceString(TagString, "Java").FinalizeCommand(),
+                Bot().Then("Dont").Then("4P").ThenNonWhiteSpaceString(TagString, "Java").End(),
                 x => _4PContinueRequest.RemoveRequest(x.MatchedResult[TagString]));
 
 
             orderer.AddTemporaryCommand(
-                Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "C++").FinalizeCommand(),
+                Bot().Then("4P").ThenNonWhiteSpaceString(TagString, "C++").End(),
                 x => _4PChecker.GetNewestPost(x.MatchedResult[TagString]));
         }
     }

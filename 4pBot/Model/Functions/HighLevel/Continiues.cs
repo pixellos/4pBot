@@ -30,7 +30,7 @@ namespace pBot.Model.Functions.HighLevel
                 {
                     while (CachedResponse.ContainsKey(key))
                     {
-                        Task.Delay(delay > 1 ? delay : 1   * 1000);
+                        Task.Delay((delay > 1 ? delay : 1)   * 1000);
                         CachedResponse.DoWhenResponseIsNotLikeLastResponse(key,action(),SendCommand,"");
                     }    
                 });

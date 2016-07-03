@@ -108,6 +108,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <SpecificVersion>False</SpecificVersion>
@@ -179,9 +183,6 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="StacMan">
       <HintPath>..\packages\StacMan.1.1.2\lib\StacMan.dll</HintPath>
     </Reference>
@@ -225,9 +226,9 @@
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BotLib\BotOrder.csproj">
+    <ProjectReference Include="..\BotLib\CoreBot.csproj">
       <Project>{cb72fa83-d941-43c8-92f1-9637a4fa5d39}</Project>
-      <Name>BotOrder</Name>
+      <Name>CoreBot</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -83,7 +83,7 @@ namespace pBot.Model.ComunicateService
 
             if (startupDate < Stamp)
             {
-                var response = Orderer.InvokeCommand(nickName,msg.Body);
+                var response = Orderer.InvokeConnectedAction(nickName,msg.Body);
                 if (response != null && msg.Type == MessageType.groupchat)
                 {
                     SendIfNotNull(response);

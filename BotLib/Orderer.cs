@@ -8,16 +8,25 @@ namespace BotOrder
     public class Orderer
     {
         Dictionary<Mask.Mask,Func<Result, string>> Dictionary = new Dictionary<Mask.Mask, Func<Result, string>>();
+        public const string HelpHeader = "Description\nSample Input\n";
+        public const string HorizontalSeparator = "====================\n";
 
         public void AddTemporaryCommand(Mask.Mask mask, Func<Result, string> func)
         {
             Dictionary.Add(mask,func);
         }
 
-
         public string GetHelpAboutAllCommands()
         {
-            return Dictionary.Aggregate("", (current, func) => current + ($"Description: {func.Key.Description} ||" + $"Sample input: {func.Key.SampleInput}\n"));
+            string result = HelpHeader; 
+
+            foreach (var pair in Dictionary)
+            {
+                result += HorizontalSeparator;
+                result += $"{pair.Key.Description}\n";
+                result += $"{pair.Key.SampleInput}\n";
+            }
+            return result;
         }
 
         /// <summary>
@@ -25,7 +34,7 @@ namespace BotOrder
         /// Invoke only first 
         /// </summary>
         /// <returns>Status response</returns>
-        public string InvokeCommand(string author, string text)
+        public string InvokeConnectedAction(string author, string text)
         {
             foreach (var record in Dictionary)
             {
