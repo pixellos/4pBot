@@ -60,24 +60,24 @@ namespace pBot.Model.Functions.Checkers._4pChecker
             {"11", "Coyote"},
             {"13", "RoadRunner"},
             {"15", "Newbie"},
-            {"22", "Test"},
+            {"22", "Coyote/Test"},
             {"23", "Praca"},
             {"24", "C_i_.NET"},
             {"25", "Java"},
             {"26", "Inzynieria_oprogramowania"},
             {"27", "Bazy_danych"},
-            {"28", "Perelki"},
+            {"28", "Spolecznosc/Perelki"},
             {"29", "Yosemite"},
             {"33", "Flame"},
             {"35", "PHP"},
-            {"36", "Oceny_i_recenzje"},
+            {"36", "Off-Topic/Oceny_i_recenzje"},
             {"39", "Ogłoszenia_drobne"},
             {"40", "Edukacja"},
             {"41", "Kariera"},
             {"42", "Nietuzinkowe_tematy"},
             {"45", "Magazyn_Programista"},
             {"46", "Szkolenia_i_konferencje"},
-            {"50", "Projekty"},
+            {"50", "Spolecznosc/Projekty"},
             {"51", "Python"}
         };
 
@@ -93,7 +93,7 @@ namespace pBot.Model.Functions.Checkers._4pChecker
 
         private string MagicWith4PSubject(string subject)
         {
-            return subject
+            return subject.ToLower()
                 .Replace(' ', '_')
                 .Replace('(', '_')
                 .Replace(')', '_')
@@ -104,8 +104,14 @@ namespace pBot.Model.Functions.Checkers._4pChecker
                 .Replace(',', '_')
                 .Replace(']', '_')
                 .Replace('?', '_')
-                .Replace('!', '_')
+                .Replace('ą', 'a')
+                .Replace('ę', 'e')
+                .Replace('ó', 'o')
+                .Replace('ł', 'l')
+                .Replace('ż', 'z')
+                .Replace('ź', 'z')
                 .Replace(".", "")
+                .Replace(",", "")
                 .Replace('&', '_')
                 .Replace('^', '_')
                 .Replace(':', '_')

@@ -2,11 +2,6 @@
 using System.Net;
 using NUnit.Framework;
 
-using Google.Apis.Services;
-using Google.Apis.Urlshortener.v1;
-using Google.Apis.Urlshortener.v1.Data;
-using pBot.Model.Constants;
-using pBot.Model.Functions._4pChecker;
 using pBot.Model.Helper;
 
 namespace _4pBotTests.Model.Functions._4pChecker

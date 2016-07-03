@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,10 +15,9 @@ namespace BotNet.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> About()
         {
-            pBot.MainClass.Main(new[] { "" });
-
+            await pBot.MainClass.GetTask();
             ViewBag.Message = "Bot Has been started";
 
             return View();

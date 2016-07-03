@@ -99,6 +99,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Model\DataStructures\CachedResponseTests.cs" />
     <Compile Include="Model\Functions\4pChecker\Checker4PTests.cs" />
     <Compile Include="Model\Functions\4pChecker\UrlShortenerTests.cs" />
     <Compile Include="Model\Functions\Checkers\SOChecker\CheckerSOTests.cs" />
