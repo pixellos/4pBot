@@ -1,6 +1,0 @@
-﻿namespace pBotTests
-{
-	class xaml
-	{
-	}
-}

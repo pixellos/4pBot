@@ -226,7 +226,7 @@
     <None Include="Properties\webjob-publish-settings.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BotLib\CoreBot.csproj">
+    <ProjectReference Include="..\CoreBot\CoreBot.csproj">
       <Project>{cb72fa83-d941-43c8-92f1-9637a4fa5d39}</Project>
       <Name>CoreBot</Name>
     </ProjectReference>
