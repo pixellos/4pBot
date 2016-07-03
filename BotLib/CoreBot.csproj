@@ -7,8 +7,8 @@
     <ProjectGuid>{CB72FA83-D941-43C8-92F1-9637A4FA5D39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BotOrder</RootNamespace>
-    <AssemblyName>BotOrder</AssemblyName>
+    <RootNamespace>CoreBot</RootNamespace>
+    <AssemblyName>CoreBot</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>

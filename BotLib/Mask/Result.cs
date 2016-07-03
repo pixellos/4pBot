@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BotOrder.Mask
+namespace CoreBot.Mask
 {
     public class Result
     {

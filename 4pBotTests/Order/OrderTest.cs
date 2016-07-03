@@ -1,8 +1,9 @@
 ﻿using System;
+using CoreBot;
+using CoreBot.Mask;
 using NUnit.Framework;
-using static BotOrder.Mask.Builder;
 
-namespace pBotTests.Order
+namespace CoreBotTests.Order
 {
     [TestFixture]
     public class OrderTest
@@ -10,8 +11,8 @@ namespace pBotTests.Order
         [Test]
         public void IntegrationTest()
         {
-            BotOrder.Orderer orderer  = new BotOrder.Orderer();
-            orderer.AddTemporaryCommand(Bot().Then("Test").End(),(x)=> "ReturnString");
+            Orderer orderer  = new Orderer();
+            orderer.AddTemporaryCommand(Builder.Bot().Then("Test").End(),(x)=> "ReturnString");
 
             Assert.AreEqual(orderer.InvokeConnectedAction("", "Bot Test"),"ReturnString");
         }
@@ -19,8 +20,8 @@ namespace pBotTests.Order
         [Test]
         public void InvokingCommand()
         {
-            var sampleMask = Bot().Then("Test").End();
-            var orderer = new BotOrder.Orderer();
+            var sampleMask = Builder.Bot().Then("Test").End();
+            var orderer = new Orderer();
             bool isHitted = false;
             orderer.AddTemporaryCommand(sampleMask,x => {
                 isHitted = true;
@@ -35,8 +36,8 @@ namespace pBotTests.Order
         [Test]
         public void NotMatchingMask_ReturnsNull()
         {
-            var sampleMask = Bot().Then("Test").End();
-            var orderer = new BotOrder.Orderer();
+            var sampleMask = Builder.Bot().Then("Test").End();
+            var orderer = new Orderer();
 
             Assert.Null(orderer.InvokeConnectedAction("", sampleMask.SampleInput));
         }
@@ -45,12 +46,12 @@ namespace pBotTests.Order
         public void FewMasks_IsCorrectInvoked()
         {
             string sampleMaskText = nameof(sampleMaskText);
-            var sampleMask = Bot().Then(sampleMaskText).End();
+            var sampleMask = Builder.Bot().Then(sampleMaskText).End();
 
             string sampleMask2Text = nameof(sampleMask2Text);
-            var sampleMask2 = Bot().Then(sampleMask2Text).End();
+            var sampleMask2 = Builder.Bot().Then(sampleMask2Text).End();
 
-            var orderer = new BotOrder.Orderer();
+            var orderer = new Orderer();
             orderer.AddTemporaryCommand(sampleMask, x => sampleMaskText);
             orderer.AddTemporaryCommand(sampleMask2, x => sampleMask2Text);
 
@@ -65,8 +66,8 @@ namespace pBotTests.Order
         [Test]
         public void IsHelpReturnGoodData()
         {
-            var sampleMask = Prepare().Then("Test").End();
-            var orderer = new BotOrder.Orderer();
+            var sampleMask = Builder.Prepare().Then("Test").End();
+            var orderer = new Orderer();
             orderer.AddTemporaryCommand(sampleMask, x => String.Empty);
 
             Assert.NotNull(orderer.GetHelpAboutAllCommands());

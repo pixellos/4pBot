@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using BotOrder.Mask;
+using CoreBot.Mask;
 using NUnit.Framework;
-using static BotOrder.Mask.Builder;
-namespace pBotTests.Masking
+
+namespace CoreBotTests.Masking
 {
     [TestFixture]
     public class ParserTests
@@ -14,25 +14,25 @@ namespace pBotTests.Masking
             get
             {
                 yield return new TestCaseData(
-                    Bot().End(), "Bot ").
+                    Builder.Bot().End(), "Bot ").
                     Returns(new Dictionary<string,string>()
                 {
                     ["Bot"] = ""
                 });
 
-                yield return new TestCaseData(Bot().ThenWord("SomeWord", "Example").End(),"Bot test ").Returns(new Dictionary<string,string>()
+                yield return new TestCaseData(Builder.Bot().ThenWord("SomeWord", "Example").End(),"Bot test ").Returns(new Dictionary<string,string>()
                 {
                     ["Bot"] = "",
                     ["SomeWord"] = "test"
                 });
 
-                yield return new TestCaseData(Bot().ThenNonWhiteSpaceString("Q","1234").End(), "Bot 8796381147869adsa").Returns(new Dictionary<string, string>()
+                yield return new TestCaseData(Builder.Bot().ThenNonWhiteSpaceString("Q","1234").End(), "Bot 8796381147869adsa").Returns(new Dictionary<string, string>()
                 {
                     ["Bot"] = "",
                     ["Q"] = "8796381147869adsa"
                 });
 
-                yield return new TestCaseData(Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").End(), "Bot test trata rata").Returns(new Dictionary<string, string>()
+                yield return new TestCaseData(Builder.Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").End(), "Bot test trata rata").Returns(new Dictionary<string, string>()
                 {
                     ["Bot"] = "",
                     ["SomeWord"] = "test",
@@ -58,7 +58,7 @@ namespace pBotTests.Masking
         [Test]
         public void MatchTest_Throw_FormatException_When_StringHasIncorrectFormat()
         {
-            var mask = Bot().End();
+            var mask = Builder.Bot().End();
             var incorrectInput = "Bo312ts some chat message :D :P#$@#$23k43io2j44";
 
             Assert.Throws<FormatException>(() => mask.Parse("TES", incorrectInput));

@@ -1,7 +1,7 @@
 ﻿using System;
-using BotOrder;
+using CoreBot;
 using pBot.Model;
-using static BotOrder.Mask.Builder;
+using static CoreBot.Mask.Builder;
 using pBot.Model.ComunicateService;
 using pBot.Model.Functions.HighLevel;
 using pBot.Model.Functions.StackOverflowChecker;

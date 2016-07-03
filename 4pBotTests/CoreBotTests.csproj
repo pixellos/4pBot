@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>pBotTests</RootNamespace>
-    <AssemblyName>4pBotTests</AssemblyName>
+    <RootNamespace>CoreBotTests</RootNamespace>
+    <AssemblyName>CoreBotTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ApplicationManifest>SOCheckerTests.manifest</ApplicationManifest>
   </PropertyGroup>

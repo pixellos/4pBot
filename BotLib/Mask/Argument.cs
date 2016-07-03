@@ -1,4 +1,4 @@
-﻿namespace BotOrder.Mask
+﻿namespace CoreBot.Mask
 {
     public class Argument
     {

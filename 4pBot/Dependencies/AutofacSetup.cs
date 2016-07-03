@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Autofac;
-using BotOrder;
+using CoreBot;
 using pBot.Model.ComunicateService;
 using pBot.Model.Functions.HighLevel;
 using pBot.Model.Functions.StackOverflowChecker;

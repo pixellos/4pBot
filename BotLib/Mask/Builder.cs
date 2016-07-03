@@ -1,6 +1,6 @@
 using System;
 
-namespace BotOrder.Mask
+namespace CoreBot.Mask
 {
     public static class Builder // I'm assuming that every part of command except optional 
     {

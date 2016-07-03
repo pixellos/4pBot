@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace BotOrder.Mask
+namespace CoreBot.Mask
 {
     public enum ArgumentOptions
     {

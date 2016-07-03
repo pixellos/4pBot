@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using BotOrder.Mask;
+using CoreBot.Mask;
 
-namespace BotOrder
+namespace CoreBot
 {
     public class Orderer
     {
