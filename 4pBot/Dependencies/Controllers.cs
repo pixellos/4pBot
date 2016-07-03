@@ -3,6 +3,7 @@ using CoreBot;
 using pBot.Model;
 using static CoreBot.Mask.Builder;
 using pBot.Model.ComunicateService;
+using pBot.Model.DataStructures;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.Checkers._4pChecker;
 using pBot.Model.Functions.HighLevel;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using pBot.Model.Functions.Helper;
+using pBot.Model.Helper;
 
 namespace pBot.Model.Functions.Checkers._4pChecker
 {

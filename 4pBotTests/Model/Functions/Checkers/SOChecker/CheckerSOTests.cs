@@ -1,14 +1,9 @@
-﻿using NUnit.Framework;
+﻿using NSubstitute;
+using NUnit.Framework;
 using pBot.Model.Functions.Checkers.SOChecker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NSubstitute;
 using _4pBotTests.Properties;
 
-namespace pBot.Model.Functions.Checkers.SOChecker.Tests
+namespace _4pBotTests.Model.Functions.Checkers.SOChecker
 {
     [TestFixture()]
     public class CheckerSOTests

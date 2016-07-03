@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace pBot.Model
+namespace pBot.Model.DataStructures
 {
     public class CachedResponse<TBase, TResult> : ICache<TBase, TResult> where TBase : class
     {

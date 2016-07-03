@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace pBot.Model
+namespace pBot.Model.DataStructures
 {
     public interface ICache<TBase, TResult>
     {

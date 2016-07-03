@@ -1,15 +1,12 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
+using pBot.Model.DataStructures;
 using pBot.Model.Functions.HighLevel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace pBot.Model.Functions.HighLevel.Tests
+namespace _4pBotTests.Model.Functions.HighLevel
 {
     [TestFixture()]
-    public class ContinuesRequestTests
+    public class RepeaterTest
     {
         [Test()]
         public void CheckRequestsTest()

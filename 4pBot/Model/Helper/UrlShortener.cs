@@ -3,7 +3,7 @@ using Google.Apis.Urlshortener.v1;
 using Google.Apis.Urlshortener.v1.Data;
 using pBot.Model.Constants;
 
-namespace pBot.Model.Functions.Helper
+namespace pBot.Model.Helper
 {
     public static class UrlShortener
     {

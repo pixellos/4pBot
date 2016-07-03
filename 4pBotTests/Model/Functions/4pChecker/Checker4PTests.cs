@@ -1,19 +1,10 @@
-﻿using NUnit.Framework;
-using pBot.Model.Functions._4pChecker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Google.Apis.Download;
-using Newtonsoft.Json;
+﻿using System;
 using NSubstitute;
-using NSubstitute.Core;
-using NSubstitute.Extensions;
+using NUnit.Framework;
 using pBot.Model.Functions.Checkers._4pChecker;
 using _4pBotTests.Properties;
 
-namespace pBot.Model.Functions._4pChecker.Tests
+namespace _4pBotTests.Model.Functions._4pChecker
 {
     [TestFixture()]
     public class Checker4PTests

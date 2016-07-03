@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Web;
-using pBot.Model.Functions.Helper;
+using pBot.Model.Helper;
 
 namespace pBot.Model.Functions.Checkers.SOChecker
 {
