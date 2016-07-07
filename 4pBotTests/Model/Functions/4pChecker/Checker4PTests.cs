@@ -27,8 +27,8 @@ namespace _4pBotTests.Model.Functions._4pChecker
             var JsonDeserialized = downloader.Deserialize(Resources._4pJson);
 
             Downloader4P Downloader4P = Substitute.For<Downloader4P>();
-            Downloader4P.WhenForAnyArgs(x=>x.DownloadData("x")).DoNotCallBase();
-            Downloader4P.DownloadData("x").ReturnsForAnyArgs(JsonDeserialized);
+            Downloader4P.WhenForAnyArgs(x=>x.DownloadData("x","x")).DoNotCallBase();
+            Downloader4P.DownloadData("x","x").ReturnsForAnyArgs(JsonDeserialized);
             Checker4P checker4P = new Checker4P();
             checker4P.Downloader4P = Downloader4P;
 

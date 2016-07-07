@@ -30,7 +30,7 @@ namespace _4pBotTests.Model.Functions.HighLevel
                 SendCommand = s => { }
             };
 
-            repeater.AddRequest("Test", () => "");
+            repeater.Add(5,"Test", () => "");
 
             Assert.IsFalse(repeater.CheckRequests().Equals(String.Empty));
         }
@@ -45,7 +45,7 @@ namespace _4pBotTests.Model.Functions.HighLevel
                 SendCommand = s => { }
             };
 
-            repeater.AddRequest("Test", () => "");
+            repeater.Add(5,"Test", () => "");
             
             Assert.IsTrue(cachedResponse.ContainsKey("Test"));
         }
@@ -60,7 +60,7 @@ namespace _4pBotTests.Model.Functions.HighLevel
                 SendCommand = s => { }
             };
 
-            repeater.AddRequest("Test", () => "");
+            repeater.Add(5,"Test", () => "");
             repeater.RemoveRequest("Test");
 
             Assert.IsFalse(cachedResponse.ContainsKey("Test"));

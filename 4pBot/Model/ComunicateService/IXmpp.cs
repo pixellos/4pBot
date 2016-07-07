@@ -6,5 +6,7 @@ namespace pBot.Model.ComunicateService
         void SendIfNotNull(string message);
         void PrivateSend(string user, string message);
         string ChangeRoom(string roomName);
+        void Close();
+        void Open();
     }
 }

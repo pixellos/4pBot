@@ -22,15 +22,23 @@ namespace CoreBot.Mask
         public static Block Bot()
         {
             var block = Prepare();
+#pragma warning disable 618
             return block.Bot();
+#pragma warning restore 618
         }
 
-        public static Block ThenNonWhiteSpaceString(this Block block, string sectionName, string sampleInput)
+
+        public static Block StartsWith(string startsWith)
+        {
+            return new Block().AddToCommandBlock($"^{startsWith}", $"({startsWith})", startsWith, startsWith,
+                ArgumentOptions.Core, "");
+        }
+        public static Block ThenString(this Block block, string sectionName, string sampleInput)
         {
             return block.AddToCommandBlock($@"(?<{sectionName}>\S+)", $"({sectionName} : string)", sectionName, sampleInput,ArgumentOptions.Required);
         }
 
-        public static Block Then(this Block block, string requestedInput)
+        public static Block Requried(this Block block, string requestedInput)
         {
             return block.AddToCommandBlock($"{requestedInput}",$"({requestedInput})", requestedInput,
                 requestedInput, ArgumentOptions.Core);
@@ -44,6 +52,11 @@ namespace CoreBot.Mask
         public static Block ThenEverythingToEndOfLine(this Block block, string sectionName,string sampleInput)
         {
             return block.AddToCommandBlock($@"(?<{sectionName}>((\S+\s*)+))", $"({sectionName}: to EOL [Optional])", sectionName, sampleInput,ArgumentOptions.Optional);
+        }
+
+        public static Block ThenEverythingToEndOfLine(this Block block, string sectionNameandSampleInput)
+        {
+            return block.ThenEverythingToEndOfLine(sectionNameandSampleInput, sectionNameandSampleInput);
         }
 
         private static Block AddToCommandBlock(this Block block, string regexComparer, string description, string sectionName, string sampleInput,ArgumentOptions argumentOptions,string preSampleInputSeparator = " ")

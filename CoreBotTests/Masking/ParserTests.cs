@@ -26,7 +26,7 @@ namespace CoreBotTests.Masking
                     ["SomeWord"] = "test"
                 });
 
-                yield return new TestCaseData(Builder.Bot().ThenNonWhiteSpaceString("Q","1234").End(), "Bot 8796381147869adsa").Returns(new Dictionary<string, string>()
+                yield return new TestCaseData(Builder.Bot().ThenString("Q","1234").End(), "Bot 8796381147869adsa").Returns(new Dictionary<string, string>()
                 {
                     ["Bot"] = "",
                     ["Q"] = "8796381147869adsa"

@@ -51,7 +51,7 @@
     <Compile Include="Mask\Builder.cs" />
     <Compile Include="Mask\Mask.cs" />
     <Compile Include="Mask\Result.cs" />
-    <Compile Include="Orderer.cs" />
+    <Compile Include="Actions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

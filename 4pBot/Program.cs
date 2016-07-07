@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Autofac;
+using Gtk;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using pBot.Dependencies;
 using pBot.Model.ComunicateService;
 
@@ -18,19 +22,35 @@ namespace pBot
             controller.ControllerInitialize();
         }
 
-        public static async Task GetTask()
+        public static Action<IXmpp> invokeMessage;
+        
+        public static Task GetTask(CancellationTokenSource cancellationTokenSourcetoken)
         {
-
-            Task task = new Task(() =>
-            {
+            var token = cancellationTokenSourcetoken.Token;
+            
+            return Task.Run(async () => 
+            { 
                 var container = AutofacSetup.GetContainer();
-
                 var xmpp = container.Resolve<IXmpp>();
                 var controller = container.Resolve<Controllers>();
 
                 controller.ControllerInitialize();
-            });
-            await task;
+                while (true)
+                {
+                    await Task.Delay(100);
+                    if (token.IsCancellationRequested)
+                    {
+                        if (invokeMessage != null)
+                        {
+                            invokeMessage(xmpp);
+                            invokeMessage = null;
+                        }
+                    }
+                }
+
+            }
+            ,token);
+
             
         }
     }

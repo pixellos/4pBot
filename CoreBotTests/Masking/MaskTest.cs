@@ -20,7 +20,7 @@ namespace CoreBotTests.Masking
                 yield return new TestCaseData(Builder.Bot().End());
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).End());
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).End());
-                yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).Then(SampleInput).End());
+                yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).Requried(SampleInput).End());
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").End());
             }
         }

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Autofac;
 using CoreBot;
+using Matrix.Xmpp.MessageArchiving;
 using pBot.Model.ComunicateService;
+using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.Checkers._4pChecker;
 using pBot.Model.Functions.HighLevel;
@@ -27,8 +29,9 @@ namespace pBot.Dependencies
             builder.RegisterType<Checker4P>().PropertiesAutowired().SingleInstance();
 
             builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();
-            builder.RegisterType<Orderer>().PropertiesAutowired().AsSelf().SingleInstance();
+            builder.RegisterType<Actions>().PropertiesAutowired().AsSelf().SingleInstance();
             builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
+            builder.RegisterType<SaveManager>();
 
             Container = builder.Build();
             return Container;

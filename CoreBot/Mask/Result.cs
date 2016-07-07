@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CoreBot.Mask
-{
+{ 
     public class Result
     {
         private readonly Mask _commandMask;
@@ -15,5 +16,6 @@ namespace CoreBot.Mask
             _fromString = fromString;
             MatchedResult = matchedResult;
         }
+        public string this[string matchName] => MatchedResult[matchName];
     }
 }

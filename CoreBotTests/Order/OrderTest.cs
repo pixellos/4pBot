@@ -11,24 +11,24 @@ namespace CoreBotTests.Order
         [Test]
         public void IntegrationTest()
         {
-            Orderer orderer  = new Orderer();
-            orderer.AddTemporaryCommand(Builder.Bot().Then("Test").End(),(x)=> "ReturnString");
+            Actions actions  = new Actions();
+            actions.Add(Builder.Bot().Requried("Test").End(), (x)=> "ReturnString");
 
-            Assert.AreEqual(orderer.InvokeConnectedAction("", "Bot Test"),"ReturnString");
+            Assert.AreEqual(actions.InvokeMatchingAction("", "Bot Test"),"ReturnString");
         }
 
         [Test]
         public void InvokingCommand()
         {
-            var sampleMask = Builder.Bot().Then("Test").End();
-            var orderer = new Orderer();
+            var sampleMask = Builder.Bot().Requried("Test").End();
+            var orderer = new Actions();
             bool isHitted = false;
-            orderer.AddTemporaryCommand(sampleMask,x => {
-                isHitted = true;
-                return isHitted.ToString();
+            orderer.Add(sampleMask, x => {
+                                             isHitted = true;
+                                             return isHitted.ToString();
             });
 
-            orderer.InvokeConnectedAction("", sampleMask.SampleInput);
+            orderer.InvokeMatchingAction("", sampleMask.SampleInput);
 
             Assert.True(isHitted);
         }
@@ -36,27 +36,27 @@ namespace CoreBotTests.Order
         [Test]
         public void NotMatchingMask_ReturnsNull()
         {
-            var sampleMask = Builder.Bot().Then("Test").End();
-            var orderer = new Orderer();
+            var sampleMask = Builder.Bot().Requried("Test").End();
+            var orderer = new Actions();
 
-            Assert.Null(orderer.InvokeConnectedAction("", sampleMask.SampleInput));
+            Assert.Null(orderer.InvokeMatchingAction("", sampleMask.SampleInput));
         }
 
         [Test]
         public void FewMasks_IsCorrectInvoked()
         {
             string sampleMaskText = nameof(sampleMaskText);
-            var sampleMask = Builder.Bot().Then(sampleMaskText).End();
+            var sampleMask = Builder.Bot().Requried(sampleMaskText).End();
 
             string sampleMask2Text = nameof(sampleMask2Text);
-            var sampleMask2 = Builder.Bot().Then(sampleMask2Text).End();
+            var sampleMask2 = Builder.Bot().Requried(sampleMask2Text).End();
 
-            var orderer = new Orderer();
-            orderer.AddTemporaryCommand(sampleMask, x => sampleMaskText);
-            orderer.AddTemporaryCommand(sampleMask2, x => sampleMask2Text);
+            var orderer = new Actions();
+            orderer.Add(sampleMask, x => sampleMaskText);
+            orderer.Add(sampleMask2, x => sampleMask2Text);
 
 
-            var response = orderer.InvokeConnectedAction("", sampleMask2.SampleInput);
+            var response = orderer.InvokeMatchingAction("", sampleMask2.SampleInput);
 
             Assert.AreSame(
                 sampleMask2Text,
@@ -66,11 +66,11 @@ namespace CoreBotTests.Order
         [Test]
         public void IsHelpReturnGoodData()
         {
-            var sampleMask = Builder.Prepare().Then("Test").End();
-            var orderer = new Orderer();
-            orderer.AddTemporaryCommand(sampleMask, x => String.Empty);
+            var sampleMask = Builder.Prepare().Requried("Test").End();
+            var orderer = new Actions();
+            orderer.Add(sampleMask, x => String.Empty);
 
-            Assert.NotNull(orderer.GetHelpAboutAllCommands());
+            Assert.NotNull(orderer.GetHelpAboutActions());
         }
     }
 }

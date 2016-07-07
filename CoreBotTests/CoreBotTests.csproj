@@ -50,10 +50,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\4pBot\4pBot.csproj">
-      <Project>{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}</Project>
-      <Name>4pBot</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CoreBot\CoreBot.csproj">
       <Project>{cb72fa83-d941-43c8-92f1-9637a4fa5d39}</Project>
       <Name>CoreBot</Name>

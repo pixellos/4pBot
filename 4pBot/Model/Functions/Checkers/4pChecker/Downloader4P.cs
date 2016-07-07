@@ -6,16 +6,16 @@ namespace pBot.Model.Functions.Checkers._4pChecker
 {
     public class Downloader4P
     {
-        private readonly string _4pAddress = ApiKey.AdressWithKey;
+        private readonly string _4pAddress = ApiKey.ApiKeyWithForumIdQuotation;
 
         private string PrepareDownloadedJson(string json)
         {
             return $"{"{ \"Main\":"} {json} {"}"}";
         }
 
-        public virtual RootObject DownloadData(string jsonForumId)
+        public virtual RootObject DownloadData(string jsonForumId,string apiKeyUrl)
         {
-            var json = new WebClient().DownloadString(_4pAddress + jsonForumId);
+            var json = new WebClient().DownloadString(apiKeyUrl + jsonForumId);
             return Deserialize(PrepareDownloadedJson(json));
         }
 

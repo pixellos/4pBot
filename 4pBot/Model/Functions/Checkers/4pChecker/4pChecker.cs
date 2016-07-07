@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using pBot.Model.Constants;
 using pBot.Model.Helper;
 
 namespace pBot.Model.Functions.Checkers._4pChecker
@@ -119,6 +120,27 @@ namespace pBot.Model.Functions.Checkers._4pChecker
                 .TrimEnd('_');
         }
 
+        public string GetLastMessagesByTag(string requestedTag)
+        {
+            try
+            {
+                var obj = Downloader4P.DownloadData("", ApiKey.ApiKeyForNewPosts);
+
+                var element = obj.Main.First(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
+
+                var forumId = GetForumId(Regex.Unescape(element.forum));
+
+                return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
+                       $"przez {element.first_post.user.name}: " +
+                       UrlShortener.GetShortUrl(make4pUrlFromJson(forumId, element.topic_id.ToString(), element.subject));
+            }
+            catch (Exception)
+            {
+                return $"I cant find any posts with tag {requestedTag}";
+            }
+           
+        }
+
         private string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
             $"http://forum.4programmers.net/{GetForumUrl(jsonForumId)}/{jsonTopicId}-{MagicWith4PSubject(jsonSubject)}";
 
@@ -127,10 +149,9 @@ namespace pBot.Model.Functions.Checkers._4pChecker
             try
             {
                 var jsonForumId = GetForumId(categoryName);
-                var obj = Downloader4P.DownloadData(jsonForumId);
+                var obj = Downloader4P.DownloadData(jsonForumId,ApiKey.ApiKeyWithForumIdQuotation);
 
                 var element = obj.Main.First();
-                var tags = element.tags.Aggregate(" ", (current, tag) => current + tag + ", ");
 
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
                        $"przez {element.first_post.user.name}: " +

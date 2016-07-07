@@ -21,19 +21,29 @@ namespace pBot.Model.Functions.HighLevel
             return x;
         }
 
-        public string AddRequest(string key, Func<string> action, int delay = 5)
+        public string Add(string key, int delay, Func<string> action)
+        {
+            if (delay < 5)
+            {
+                delay = 5;
+            }
+            return Add(delay, key, action);
+        }
+
+        public string Add(int delay, string key, Func<string> action)
         {
             if (!CachedResponse.ContainsKey(key))
             {
                 CachedResponse.InitializeKey(key,"");
                 
-                Task.Run(() =>
+                Task.Run(async () =>
                 {
                     while (CachedResponse.ContainsKey(key))
                     {
-                        Task.Delay((delay > 1 ? delay : 1)   * 1000);
                         CachedResponse.DoWhenResponseIsNotLikeLastResponse(key,action(),SendCommand,"");
-                    }    
+                        await Task.Delay((delay > 1 ? delay : 1) * 1000);
+
+                    }
                 });
                 return "Request has been added!";
             }
