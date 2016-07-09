@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using CoreBot.Mask;
 using NUnit.Framework;
@@ -7,6 +8,7 @@ using NUnit.Framework;
 namespace CoreBotTests.Masking
 {
     [TestFixture]
+    [ExcludeFromCodeCoverage]
     public class MaskTests
     {
         private const string Code = "Code";
@@ -18,6 +20,7 @@ namespace CoreBotTests.Masking
             get
             {
                 yield return new TestCaseData(Builder.Bot().End());
+                yield return new TestCaseData(Builder.StartsWith("test").End());
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).End());
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).End());
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something,SampleInput).Requried(SampleInput).End());
@@ -44,6 +47,7 @@ namespace CoreBotTests.Masking
             get
             {
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something, SampleInput).End(),Something,SampleInput);
+                yield return new TestCaseData(Builder.StartsWith("Test").ThenWord(Something, SampleInput).End(),Something,SampleInput);
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something, SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").End(),Code, @"var x = new x();");
                 yield return new TestCaseData(Builder.Bot().ThenWord(Something, SampleInput).ThenEverythingToEndOfLine(Code, @"var x = new x();").End(),"Something","Input");
             }

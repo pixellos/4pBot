@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Masking\MaskTest.cs" />
     <Compile Include="Masking\ParserTests.cs" />
+    <Compile Include="Order\ActionTests.cs" />
     <Compile Include="Order\OrderTest.cs" />
   </ItemGroup>
   <ItemGroup>

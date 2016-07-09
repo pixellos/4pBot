@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using pBot.Model.DataStructures;
 using pBot.Model.Functions.HighLevel;
 
 namespace _4pBotTests.Model.Functions.HighLevel
 {
+    [ExcludeFromCodeCoverage]
     [TestFixture()]
     public class RepeaterTest
     {

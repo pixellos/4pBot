@@ -1,21 +1,16 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CoreBot;
 using CoreBot.Mask;
 using NUnit.Framework;
 
 namespace CoreBotTests.Order
 {
+    [ExcludeFromCodeCoverage]
     [TestFixture]
     public class OrderTest
     {
-        [Test]
-        public void IntegrationTest()
-        {
-            Actions actions  = new Actions();
-            actions.Add(Builder.Bot().Requried("Test").End(), (x)=> "ReturnString");
 
-            Assert.AreEqual(actions.InvokeMatchingAction("", "Bot Test"),"ReturnString");
-        }
 
         [Test]
         public void InvokingCommand()
