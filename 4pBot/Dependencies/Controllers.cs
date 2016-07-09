@@ -5,6 +5,7 @@ using pBot.Model;
 using static CoreBot.Mask.Builder;
 using pBot.Model.ComunicateService;
 using pBot.Model.DataStructures;
+using pBot.Model.Facades;
 using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.Checkers._4pChecker;
@@ -33,8 +34,8 @@ namespace pBot.Dependencies
         public Actions ControllerInitialize()
         {
 
-            ProgramersWebsiteQuotations(Actions,"4p",new P4Facade());
-            ProgramersWebsiteQuotations(Actions,"SO",new SoFacade());
+            ProgramersWebsiteQuotations(Actions,"4p",new P4Adapter());
+            ProgramersWebsiteQuotations(Actions,"SO",new SoAdapter());
 
             RoomController(Actions);
 
@@ -68,18 +69,18 @@ namespace pBot.Dependencies
             actions[Bot().Requried("Room").ThenWord("RoomName", "Help").End()] = result => ChangesRoom(result["RoomName"]);
         }
 
-        private void ProgramersWebsiteQuotations(Actions actions, string forumPrefix, IProgrammingSitesFacade facade)
+        private void ProgramersWebsiteQuotations(Actions actions, string forumPrefix, IProgrammingSitesAdapter adapter)
         {
             var Tag = "TagLiteral";
 
             actions[Bot().Requried(forumPrefix).ThenString(Tag, "Java").Requried("Repeat").Requried("Tag").End()] =
-                result => facade.HotPostsStream(result[Tag]);
+                result => adapter.HotPostsStream(result[Tag]);
 
             actions[Bot().Requried("Dont").Requried(forumPrefix).ThenString(Tag, "Java").Requried("Repeat").Requried("Tag").End()] =
-                x => facade.HotPostsStreamStop(x[Tag]);
+                x => adapter.HotPostsStreamStop(x[Tag]);
 
             actions[Bot().Requried(forumPrefix).ThenString(Tag, "Java").End()] =
-                result => facade.HotPost(result[Tag]);
+                result => adapter.HotPost(result[Tag]);
 
         }
 

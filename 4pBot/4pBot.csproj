@@ -187,9 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependencies\Controllers.cs" />
-    <Compile Include="Dependencies\IProgrammingSitesFacade.cs" />
-    <Compile Include="Model\Facades\P4Facade.cs" />
-    <Compile Include="Model\Facades\SoFacade.cs" />
+    <Compile Include="Model\Facades\IProgrammingSitesAdapter.cs" />
+    <Compile Include="Model\Facades\P4Adapter.cs" />
+    <Compile Include="Model\Facades\SoAdapter.cs" />
     <Compile Include="Model\DataStructures\CachedResponse.cs" />
     <Compile Include="Model\Functions\Checkers\4pChecker\4pChecker.cs" />
     <Compile Include="Model\Constants\ApiKey.cs" />

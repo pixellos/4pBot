@@ -3,16 +3,16 @@ using pBot.Model.DataStructures;
 using pBot.Model.Functions.Checkers._4pChecker;
 using pBot.Model.Functions.HighLevel;
 
-namespace pBot.Dependencies
+namespace pBot.Model.Facades
 {
-    public class P4Facade : IProgrammingSitesFacade
+    public class P4Adapter : IProgrammingSitesAdapter
     {
         public IXmpp Xmpp { get; set; }
         public Checker4P Checker4P { get; set; }
         Repeater P4Repeater;
         private CachedResponse<string, string> Cache = new CachedResponse<string, string>();
 
-        public P4Facade()
+        public P4Adapter()
         {
             P4Repeater = new Repeater() { SendCommand = Xmpp.SendIfNotNull, CachedResponse = Cache };
         }

@@ -2,9 +2,9 @@ using pBot.Model.ComunicateService;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.HighLevel;
 
-namespace pBot.Dependencies
+namespace pBot.Model.Facades
 {
-    class SoFacade : IProgrammingSitesFacade
+    class SoAdapter : IProgrammingSitesAdapter
     {
         public IXmpp Xmpp { get; set; }
         public CheckerSO CheckerSo { get; set; }

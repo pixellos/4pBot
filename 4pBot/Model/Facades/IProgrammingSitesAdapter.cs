@@ -1,6 +1,6 @@
-namespace pBot.Dependencies
+namespace pBot.Model.Facades
 {
-    public interface IProgrammingSitesFacade
+    public interface IProgrammingSitesAdapter
     {
         string HotPost(string tag);
         string HotPostsStream(string tag);
