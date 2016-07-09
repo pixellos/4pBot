@@ -9,7 +9,6 @@ using pBot.Model.Facades;
 using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.Checkers._4pChecker;
-using pBot.Model.Functions.HighLevel;
 using static System.Int32;
 
 namespace pBot.Dependencies
@@ -22,20 +21,21 @@ namespace pBot.Dependencies
         public Checker4P Checker4P { get; set; }
         public SaveManager SaveManager { get; set; }
 
+        public P4Adapter P4Adapter { get; set; }
+        public SoAdapter SoAdapter { get; set; }
+
         private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 
         private Func<string, string> ChangesRoom
             => str => Xmpp.ChangeRoom(str);
 
-        private static Func<CachedResponse<string, string>> CachedResponse => () => new CachedResponse<string, string>()
-            ;
-
+        private static Func<CachedResponse<string, string>> CachedResponse => () => new CachedResponse<string, string>();
 
         public Actions ControllerInitialize()
         {
 
-            ProgramersWebsiteQuotations(Actions,"4p",new P4Adapter());
-            ProgramersWebsiteQuotations(Actions,"SO",new SoAdapter());
+            ProgramersWebsiteQuotations(Actions,"4p",P4Adapter);
+            ProgramersWebsiteQuotations(Actions,"SO",SoAdapter);
 
             RoomController(Actions);
 
@@ -83,8 +83,5 @@ namespace pBot.Dependencies
                 result => adapter.HotPost(result[Tag]);
 
         }
-
-        
-      
     }
 }

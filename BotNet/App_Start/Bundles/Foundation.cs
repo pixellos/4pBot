@@ -1,6 +1,6 @@
 using System.Web.Optimization;
 
-namespace BotNet
+namespace BotNet.Bundles
 {
     public static class Foundation
     {

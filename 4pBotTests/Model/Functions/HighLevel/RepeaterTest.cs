@@ -16,7 +16,6 @@ namespace _4pBotTests.Model.Functions.HighLevel
             Repeater repeater = new Repeater()
             {
                 CachedResponse = new CachedResponse<string, string>(),
-                SendCommand = s => { }
             };
 
             Assert.IsTrue(repeater.CheckRequests().Equals(String.Empty));
@@ -29,7 +28,6 @@ namespace _4pBotTests.Model.Functions.HighLevel
             Repeater repeater = new Repeater()
             {
                 CachedResponse = new CachedResponse<string, string>(),
-                SendCommand = s => { }
             };
 
             repeater.Add(5,"Test", () => "");
@@ -44,7 +42,6 @@ namespace _4pBotTests.Model.Functions.HighLevel
             Repeater repeater = new Repeater()
             {
                 CachedResponse = cachedResponse,
-                SendCommand = s => { }
             };
 
             repeater.Add(5,"Test", () => "");
@@ -59,7 +56,6 @@ namespace _4pBotTests.Model.Functions.HighLevel
             Repeater repeater = new Repeater()
             {
                 CachedResponse = cachedResponse,
-                SendCommand = s => { }
             };
 
             repeater.Add(5,"Test", () => "");

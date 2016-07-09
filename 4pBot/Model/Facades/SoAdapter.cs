@@ -4,7 +4,7 @@ using pBot.Model.Functions.HighLevel;
 
 namespace pBot.Model.Facades
 {
-    class SoAdapter : IProgrammingSitesAdapter
+    public class SoAdapter : IProgrammingSitesAdapter
     {
         public IXmpp Xmpp { get; set; }
         public CheckerSO CheckerSo { get; set; }

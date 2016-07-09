@@ -9,12 +9,12 @@ namespace pBot.Model.Facades
     {
         public IXmpp Xmpp { get; set; }
         public Checker4P Checker4P { get; set; }
-        Repeater P4Repeater;
+
+        public Repeater P4Repeater { get; set; }
         private CachedResponse<string, string> Cache = new CachedResponse<string, string>();
 
         public P4Adapter()
         {
-            P4Repeater = new Repeater() { SendCommand = Xmpp.SendIfNotNull, CachedResponse = Cache };
         }
 
         public string HotPost(string tag)

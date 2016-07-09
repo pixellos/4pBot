@@ -3,6 +3,7 @@ using Autofac;
 using CoreBot;
 using Matrix.Xmpp.MessageArchiving;
 using pBot.Model.ComunicateService;
+using pBot.Model.Facades;
 using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.Checkers._4pChecker;
@@ -22,10 +23,16 @@ namespace pBot.Dependencies
             }
 
             var builder = new ContainerBuilder();
-            builder.RegisterType<DownloaderSo>().SingleInstance();
-            builder.RegisterType<CheckerSO>().PropertiesAutowired().SingleInstance();
+
+            builder.RegisterType<P4Adapter>().PropertiesAutowired();
+            builder.RegisterType<SoAdapter>().PropertiesAutowired();
 
             builder.RegisterType<Downloader4P>().SingleInstance();
+            builder.RegisterType<DownloaderSo>().SingleInstance();
+
+            builder.RegisterType<Repeater>().PropertiesAutowired();
+
+            builder.RegisterType<CheckerSO>().PropertiesAutowired().SingleInstance();
             builder.RegisterType<Checker4P>().PropertiesAutowired().SingleInstance();
 
             builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();

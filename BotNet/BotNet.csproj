@@ -182,6 +182,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="App_Readme\Foundation for sites\readme.md" />
+    <None Include="Properties\PublishProfiles\4pBot - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\4pBot - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\4pBot.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\foundation\fastclick.js" />

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using pBot.Model.ComunicateService;
 using pBot.Model.DataStructures;
 
 namespace pBot.Model.Functions.HighLevel
 {
     public class Repeater
     {
-        public CachedResponse<string,string> CachedResponse { get; set; } 
-
-        public Action<string> SendCommand { get; set; }
+        public CachedResponse<string,string> CachedResponse { get; set; }  = new CachedResponse<string, string>();
+        public IXmpp Xmpp { get; set; }
+        public Action<string> SendCommand => Xmpp.SendIfNotNull;
 
         public string CheckRequests()
         {

@@ -1,0 +1,1 @@
+[0709/114825:ERROR:sandbox_policy_base.cc(379)] Failed to add sandbox rule. error = 2, subsystem = 0, semantics = 0, pattern = 'C:\Users\rogoz\AppData\Local\Temp\gpu-watchdog.tmp'
