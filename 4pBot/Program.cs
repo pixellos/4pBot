@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using Gtk;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using pBot.Dependencies;

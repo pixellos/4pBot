@@ -1,56 +1,73 @@
 ﻿using NUnit.Framework;
 using pBot.Model.DataStructures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace pBot.Model.DataStructures.Tests
+namespace _4pBotTests.Model.DataStructures
 {
     [TestFixture()]
     public class CachedResponseTests
     {
+        CachedResponse<string,string> cachedResponse = new CachedResponse<string, string>();
+
+
+        private string firstKey = "FirstKey";
+        private string firstValue = "FirstVal";
+        [SetUp]
+        public void SetUp()
+        {
+            cachedResponse = new CachedResponse<string, string>();
+            cachedResponse.InitializeKey(firstKey,firstValue);
+        }
+
         [Test()]
         public void ContainsKeyTest()
         {
-            Assert.Fail();
+            Assert.IsTrue(cachedResponse.ContainsKey(firstKey));
         }
 
         [Test()]
         public void IsResponseUniqueTest()
         {
-            Assert.Fail();
+            Assert.IsTrue(cachedResponse.IsResponseUnique(firstKey,"Not firstValue value"));
         }
 
         [Test()]
         public void SetLastResponseTest()
         {
-            Assert.Fail();
+            string newValue = nameof(newValue);
+            cachedResponse.SetLastResponse(firstKey,newValue);
+
+            Assert.AreEqual(newValue,cachedResponse.GetCacheValue(firstKey));
         }
 
         [Test()]
         public void DoWhenResponseIsNotLikeLastResponseTest()
         {
-            Assert.Fail();
+            cachedResponse.DoWhenResponseIsNotLikeLastResponse(firstKey,"NotLastLike",s => Assert.AreEqual(s,"NotLastLike") );
         }
 
         [Test()]
         public void GetCacheValueTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(firstValue,cachedResponse.GetCacheValue(firstKey));
         }
 
         [Test()]
         public void InitializeKeyTest()
         {
-            Assert.Fail();
+            string key = "key";
+            string val = "val";
+
+            cachedResponse.InitializeKey(key,val);
+
+            Assert.AreEqual(val, cachedResponse.GetCacheValue(key));
         }
 
         [Test()]
         public void RemoveTest()
         {
-            Assert.Fail();
+            cachedResponse.Remove(firstKey);
+
+            Assert.IsTrue(null == cachedResponse.GetCacheValue(firstKey));
         }
     }
 }
