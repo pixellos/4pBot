@@ -24,7 +24,7 @@ namespace pBot.Model.Facades
 
         public string HotPostsStream(string tag)
         {
-            return P4Repeater.Add(tag, 10, () => Checker4P.GetLastMessagesByTag(tag));
+            return P4Repeater.Add(tag, 10, () => Checker4P.GetLastMessagesByTag(tag,false));
         }
 
         public string HotPostsStreamStop(string tag)

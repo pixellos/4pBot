@@ -120,7 +120,7 @@ namespace pBot.Model.Functions.Checkers._4pChecker
                 .TrimEnd('_');
         }
 
-        public string GetLastMessagesByTag(string requestedTag)
+        public string GetLastMessagesByTag(string requestedTag, bool shouldGiveMessageWhenThereIsNoMatch = true)
         {
             try
             {
@@ -136,7 +136,14 @@ namespace pBot.Model.Functions.Checkers._4pChecker
             }
             catch (Exception)
             {
-                return $"I cant find any posts with tag {requestedTag}";
+                if (shouldGiveMessageWhenThereIsNoMatch)
+                {
+                    return $"I cant find any posts with tag {requestedTag}";
+                }
+                else
+                {
+                    return "";
+                }
             }
            
         }
