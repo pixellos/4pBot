@@ -31,7 +31,7 @@ namespace pBot.Model.ComunicateService
             clientConnection.OnLogin += JoinRoom;
             clientConnection.OnMessage += HandleMessage;
            // clientConnection.OnReadXml += DebugConsoleWrite;
-          //  clientConnection.OnPresence += ClientConnection_OnPresence;
+           //  clientConnection.OnPresence += ClientConnection_OnPresence;
           //  clientConnection.OnWriteXml += DebugConsoleWrite;
         }
         
