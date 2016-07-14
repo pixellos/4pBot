@@ -38,7 +38,7 @@ namespace pBot.Dependencies
             builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();
             builder.RegisterType<Actions>().PropertiesAutowired().AsSelf().SingleInstance();
             builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
-            builder.RegisterType<SaveManager>();
+            builder.RegisterType<SaveManager>().SingleInstance();
 
             Container = builder.Build();
             return Container;

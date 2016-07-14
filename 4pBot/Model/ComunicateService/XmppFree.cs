@@ -5,17 +5,18 @@ using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 using CoreBot;
 using pBot.Model.Constants;
+using pBot.Model.Functions;
 
 namespace pBot.Model.ComunicateService
 {
     public class XmppFree : IXmpp
     {
         private static string RoomName = "help";
-
+        
         private readonly XmppClientConnection clientConnection;
         private MucManager mucManager;
         private DateTime startupDate = DateTime.Now;
-
+        public SaveManager Manager { get; set; }
         public XmppFree()
         {
             clientConnection = new XmppClientConnection
@@ -29,8 +30,16 @@ namespace pBot.Model.ComunicateService
             clientConnection.Open();
             clientConnection.OnLogin += JoinRoom;
             clientConnection.OnMessage += HandleMessage;
-
-            clientConnection.OnWriteXml += DebugConsoleWrite;
+           // clientConnection.OnReadXml += DebugConsoleWrite;
+          //  clientConnection.OnPresence += ClientConnection_OnPresence;
+          //  clientConnection.OnWriteXml += DebugConsoleWrite;
+        }
+        
+        private void ClientConnection_OnPresence(object sender, Presence pres)
+        {
+            SendIfNotNull(
+                Manager.Get(pres.From.Resource)
+                );    
         }
 
         public Actions Actions { get; set; }
@@ -89,6 +98,7 @@ namespace pBot.Model.ComunicateService
 
             if (startupDate < Stamp)
             {
+                
                 var response = Actions.InvokeMatchingAction(nickName,msg.Body);
                 if (response != null && msg.Type == MessageType.groupchat)
                 {

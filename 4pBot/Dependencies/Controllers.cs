@@ -1,7 +1,6 @@
 ﻿using System;
 using CoreBot;
 using CoreBot.Mask;
-using pBot.Model;
 using static CoreBot.Mask.Builder;
 using pBot.Model.ComunicateService;
 using pBot.Model.DataStructures;
@@ -9,7 +8,6 @@ using pBot.Model.Facades;
 using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.Checkers._4pChecker;
-using static System.Int32;
 
 namespace pBot.Dependencies
 {

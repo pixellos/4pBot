@@ -19,6 +19,11 @@ namespace pBot
             var controller = container.Resolve<Controllers>();
 
             controller.ControllerInitialize();
+
+            while (true)
+            {
+
+            }
         }
 
         public static Action<IXmpp> invokeMessage;
