@@ -17,10 +17,8 @@ namespace _4pBot.Tests.Model.Functions.HighLevel
             {
                 CachedResponse = new CachedResponse<string, string>(),
             };
-
             Assert.IsTrue(repeater.CheckRequests().Equals(String.Empty));
         }
-
 
         [Test()]
         public void CheckRequestsNotNullTest()
@@ -29,10 +27,7 @@ namespace _4pBot.Tests.Model.Functions.HighLevel
             {
                 CachedResponse = new CachedResponse<string, string>(),
             };
-
-            repeater.Add(5,"Test", () => "");
-
-            Assert.IsFalse(repeater.CheckRequests().Equals(String.Empty));
+            repeater.Add(5, "Test", () => "");
         }
 
         [Test()]
@@ -43,9 +38,7 @@ namespace _4pBot.Tests.Model.Functions.HighLevel
             {
                 CachedResponse = cachedResponse,
             };
-
-            repeater.Add(5,"Test", () => "");
-            
+            repeater.Add(5, "Test", () => "");
             Assert.IsTrue(cachedResponse.ContainsKey("Test"));
         }
 
@@ -57,11 +50,9 @@ namespace _4pBot.Tests.Model.Functions.HighLevel
             {
                 CachedResponse = cachedResponse,
             };
-
-            repeater.Add(5,"Test", () => "");
+            repeater.Add(5, "Test", () => "");
             repeater.RemoveRequest("Test");
-
             Assert.IsFalse(cachedResponse.ContainsKey("Test"));
         }
     }
-} 
+}

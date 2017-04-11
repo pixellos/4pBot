@@ -13,7 +13,7 @@ namespace _4pBot.Tests.Model.Functions.SOChecker
         {
             var downloader = NSubstitute.Substitute.For<Downloader>();
             var checkerSo = new Checker(downloader);
-            downloader.WhenForAnyArgs(x=>x.GetWebString("")).DoNotCallBase();
+            downloader.WhenForAnyArgs(x => x.GetWebString("")).DoNotCallBase();
             downloader.GetWebString("").ReturnsForAnyArgs(Resources.SOHtml);
             var response = checkerSo.CheckNewestByTag("Java");
             Assert.AreEqual(response, "Java: How to guarantee that equals() and hashCode() are in sync? http://goo.gl/AD98RK");
