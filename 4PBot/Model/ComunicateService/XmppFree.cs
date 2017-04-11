@@ -19,16 +19,12 @@ namespace _4PBot.Model.ComunicateService
         private MucManager MucManager { get; set; }
         private DateTime StartupDate = DateTime.Now;
         private Actions Actions { get; }
-      
+
         public void Open() => this.ClientConnection.Open();
         public void Close() => this.ClientConnection.Close();
-        public XmppFree(IEnumerable<ICommand> commands)
+        public XmppFree(Actions actions)
         {
-            var actions = commands.Select(x => x.AvailableActions);
-            foreach (var action in actions)
-            {
-                this.Actions = action;
-            }
+            this.Actions = actions;
             this.ClientConnection = new XmppClientConnection
             {
                 AutoPresence = true,
@@ -83,10 +79,10 @@ namespace _4PBot.Model.ComunicateService
         }
 
         private void HandleMessage(object sender, Message msg)
-        {
-            var Stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
+        {   
+            var stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
             var nickName = msg?.From.Resource ?? "Undefined";
-            if (this.StartupDate < Stamp)
+            if (this.StartupDate.AddSeconds(2) < stamp)
             {
 
                 var response = this.Actions.InvokeMatchingAction(nickName, msg.Body);

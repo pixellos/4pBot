@@ -126,10 +126,10 @@ namespace _4PBot.Model.Functions._4Programmers
             try
             {
                 var obj = this.Downloader4P.DownloadData("", ApiKey.ApiKeyForNewPosts);
-                var element = obj.Main.First(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
+                var element = obj.Property1.First(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
                 var forumId = this.GetForumId(Regex.Unescape(element.forum));
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
-                       $"przez {element.first_post.user.name}: " +
+                       // $"przez {element.first_post.user.name}: " +
                        UrlShortener.GetShortUrl(this.make4pUrlFromJson(forumId, element.topic_id.ToString(), element.subject));
             }
             catch (Exception)
@@ -154,9 +154,9 @@ namespace _4PBot.Model.Functions._4Programmers
             {
                 var jsonForumId = this.GetForumId(categoryName);
                 var obj = this.Downloader4P.DownloadData(jsonForumId, ApiKey.ApiKeyWithForumIdQuotation);
-                var element = obj.Main.First();
+                var element = obj.Property1.First();
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
-                       $"przez {element.first_post.user.name}: " +
+                       //$"przez {element.first_post.user.name}: " +
                        UrlShortener.GetShortUrl(this.make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
             }
             catch (InvalidOperationException)

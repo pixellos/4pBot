@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using CoreBot;
 using CoreBot.Mask;
 
@@ -7,21 +8,10 @@ namespace _4PBot.Model.Functions
     public class ActionsHelp : ICommand
     {
         public static readonly string BotHelpMessage = "To get help use \"Bot help\" call";
-        Actions Actions { get; }
+        private Actions Actions { get; }
         public ActionsHelp(Actions actions)
         {
             this.Actions = actions;
-        }
-
-        public Actions AvailableActions
-        {
-            get
-            {
-                var actions = new Actions();
-                actions[Builder.Bot().Requried("Help").End()] = x => this.BuildHelpString();
-                actions[Builder.Bot().Requried("?").End()] = x => ActionsHelp.BotHelpMessage;
-                return actions;
-            }
         }
 
         public string BuildHelpString()
@@ -35,6 +25,11 @@ namespace _4PBot.Model.Functions
                 result.AppendLine(pair.Key.SampleInput);
             }
             return result.ToString();
+        }
+
+        public void Register(Actions actions)
+        {
+            actions[Builder.Bot().Requried("Help").End()] = x => this.BuildHelpString();
         }
     }
 }

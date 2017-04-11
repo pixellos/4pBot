@@ -2,6 +2,7 @@ using CoreBot;
 using _4PBot.Model.Functions;
 using _4PBot.Model.Functions.HighLevel;
 using _4PBot.Model.Functions.StackOverflow;
+using System;
 
 namespace _4PBot.Model.Facades
 {
@@ -15,15 +16,6 @@ namespace _4PBot.Model.Facades
         {
             this.Checker = checker;
             this.Repeater = repeater;
-        }
-
-        public Actions AvailableActions
-        {
-            get
-            {
-                var actions = this.ConstructStandardProgrammingSitesQuotations(_4Programmers.Name);
-                return actions;
-            }
         }
 
         public string HotPost(string tag)
@@ -54,6 +46,14 @@ namespace _4PBot.Model.Facades
         public string NewThreadsStreamStop(string forumName)
         {
             return StackOverflow.NotYetImplemented;
+        }
+
+        public void Register(Actions actions)
+        {
+            foreach (var item in this.ConstructStandardProgrammingSitesQuotations(nameof(StackOverflow)))
+            {
+                actions.Add(item.Key, item.Value);
+            }
         }
     }
 }

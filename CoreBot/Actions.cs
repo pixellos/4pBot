@@ -23,6 +23,10 @@ namespace CoreBot
 
         public void Add(Mask.Mask mask, Func<SuccededResult, string> func)
         {
+            if (this.Container.Any(x=>x.Key.RegexString == mask.RegexString))
+            {
+                throw new ArgumentException();
+            }
             this.Container.Add(mask, func);
         }
 

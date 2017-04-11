@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace CoreBot.Mask
@@ -20,11 +21,6 @@ namespace CoreBot.Mask
             this.SampleInput = block.SampleInput;
         }
 
-        public override string ToString()
-        {
-            return String.Join(", ", this.NameOfArgument);
-        }
-
         public Result Parse(string author, string text)
         {
             var regex = new Regex(this.RegexString, RegexOptions.IgnoreCase);
@@ -39,6 +35,11 @@ namespace CoreBot.Mask
                 return new SuccededResult(this, text, dict);
             }
             return new Result(this, text);
+        }
+
+        public override string ToString()
+        {
+            return $"{this.RegexString}:{this.SampleInput}";
         }
     }
 }

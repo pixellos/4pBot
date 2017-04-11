@@ -9,8 +9,6 @@ namespace _4PBot.Model.Functions.HighLevel
     public class Repeater
     {
         public CachedResponse<string,string> CachedResponse { get; set; }  = new CachedResponse<string, string>();
-        public IXmpp Xmpp { get; set; }
-        public Action<string> SendCommand => this.Xmpp.SendIfNotNull;
 
         public string CheckRequests()
         {
@@ -33,21 +31,22 @@ namespace _4PBot.Model.Functions.HighLevel
 
         public string Add(int delay, string key, Func<string> action)
         {
-            if (!this.CachedResponse.ContainsKey(key))
-            {
-                this.CachedResponse.InitializeKey(key,"");
+            return "Tempoorary off";
+            //if (!this.CachedResponse.ContainsKey(key))
+            //{
+            //    this.CachedResponse.InitializeKey(key,"");
                 
-                Task.Run(async () =>
-                {
-                    while (this.CachedResponse.ContainsKey(key))
-                    {
-                        this.CachedResponse.DoWhenResponseIsNotLikeLastResponse(key,action(),this.SendCommand,"");
-                        await Task.Delay((delay > 1 ? delay : 1) * 1000);
+            //    Task.Run(async () =>
+            //    {
+            //        while (this.CachedResponse.ContainsKey(key))
+            //        {
+            //            this.CachedResponse.DoWhenResponseIsNotLikeLastResponse(key,action(),this.SendCommand,"");
+            //            await Task.Delay((delay > 1 ? delay : 1) * 1000);
 
-                    }
-                });
-                return "Request has been added!";
-            }
+            //        }
+            //    });
+            //    return "Request has been added!";
+            //}
             return "Request already exist";
         }
 

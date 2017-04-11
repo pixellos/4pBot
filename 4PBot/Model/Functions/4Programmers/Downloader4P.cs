@@ -13,15 +13,15 @@ namespace _4PBot.Model.Functions._4Programmers
             return $"{"{ \"Main\":"} {json} {"}"}";
         }
 
-        public virtual RootObject DownloadData(string jsonForumId,string apiKeyUrl)
+        public virtual Rootobject DownloadData(string jsonForumId,string apiKeyUrl)
         {
             var json = new WebClient().DownloadString(apiKeyUrl + jsonForumId);
             return this.Deserialize(this.PrepareDownloadedJson(json));
         }
 
-        public RootObject Deserialize(string json)
+        public Rootobject Deserialize(string json)
         {
-            return JsonConvert.DeserializeObject<RootObject>(json);
+            return JsonConvert.DeserializeObject<Rootobject>(json);
         }
     }
 }

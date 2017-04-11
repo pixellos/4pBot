@@ -4,6 +4,6 @@ namespace _4PBot.Model.Functions
 {
     public interface ICommand
     {
-        Actions AvailableActions { get; }
+        void Register(Actions actions);
     }
 }

@@ -3,6 +3,7 @@ using _4PBot.Model.DataStructures;
 using _4PBot.Model.Functions;
 using _4PBot.Model.Functions.HighLevel;
 using _4PBot.Model.Functions._4Programmers;
+using System;
 
 namespace _4PBot.Model.Facades
 {
@@ -56,6 +57,14 @@ namespace _4PBot.Model.Facades
         public string NewThreadsStreamStop(string forumName)
         {
             return this.Repeater.RemoveRequest(forumName + "Thread");
+        }
+
+        public void Register(Actions actions)
+        {
+            foreach (var item in this.ConstructStandardProgrammingSitesQuotations(_4Programmers.Name))
+            {
+                actions.Add(item.Key, item.Value);
+            }
         }
     }
 }

@@ -9,30 +9,26 @@ using CoreBot;
 
 namespace _4PBot.Model.ComunicateService
 {
-    public class XmppFreeWithCommands : XmppFree, ICommand
+    public class XmppFreeWithCommandsHandling : XmppFree, ICommand
     {
-        public XmppFreeWithCommands(IEnumerable<ICommand> commands) : base(commands)
+        public XmppFreeWithCommandsHandling(Actions actions, ICommand[] commands) : base(actions)
         {
+            foreach (var item in commands)
+            {
+                item.Register(actions);
+            }
+            this.Register(actions);
         }
 
         enum Words
         {
             Room,
             RoomName,
-            Help
         }
 
-        public Actions AvailableActions
+        public void Register(Actions actions)
         {
-            get
-            {
-                var actions = new Actions
-                {
-                    [Builder.Bot().Requried(nameof(Words.Room)).ThenWord(nameof(Words.RoomName), nameof(Words.Help)).End()] = result => this.ChangeRoom(result[nameof(Words.RoomName)])
-                };
-                return actions;
-            }
+            actions[Builder.Bot().Requried(nameof(Words.Room)).ThenWord(nameof(Words.RoomName), nameof(Words.Room)).End()] = result => this.ChangeRoom(result[nameof(Words.RoomName)]);
         }
-
     }
 }

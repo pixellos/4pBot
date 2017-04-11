@@ -11,52 +11,56 @@ namespace _4PBot.Model.Functions
 {
     public class Messages : ICommand
     {
-        public Actions AvailableActions
+        private static readonly string ConnectionString = $"{nameof(Messages)}.db";
+        enum Words
         {
-            get
-            {
-                var actions = new Actions();
-                this.Save(actions);
-                this.Read(actions);
-                return actions;
-            }
+            NickName,
+            Message,
+            Save
+
         }
 
-        private void Read(Actions actions)
+        private void AppendRead(Actions actions)
         {
-            actions[Builder.StartsWith("!").ThenWord("NickName", "Pixel").End()] = result =>
+            actions[Builder.StartsWith("!").ThenWord(nameof(Words.NickName), "Pixel").End()] = result =>
             {
-                using (var db = new LiteDatabase(nameof(Messages)))
+                using (var db = new LiteDatabase(Messages.ConnectionString))
                 {
                     var collection = db.GetCollection<UserMessage>();
-                    var messages = collection.Find(x => x.User == result["NickName"]);
+                    var messages = collection.Find(x => x.User == result[nameof(Words.NickName)]);
                     if (messages.Count() > 1)
                     {
                         throw new Exception("There should be no more than 1 matching entry.");
                     }
-                    return messages.Single().Message;
+                    return messages.SingleOrDefault()?.Message ?? String.Empty;
                 }
             };
         }
 
-        private void Save(Actions actions)
+        private void AppendSave(Actions actions)
         {
-            actions[Builder.Bot().Requried("Save").ThenWord("NickName", "Pixel").ThenEverythingToEndOfLine("Message").End()] = result =>
+            actions[Builder.Bot().Requried(nameof(Words.Save)).ThenWord(nameof(Words.NickName), "Pixel").ThenEverythingToEndOfLine(nameof(Words.Message)).End()] = result =>
             {
-                using (var db = new LiteDatabase(nameof(Messages)))
+                using (var db = new LiteDatabase(Messages.ConnectionString))
                 {
                     var savedMessage = new UserMessage()
                     {
-                        Message = result.MatchedResult["Message"],
-                        User = result.MatchedResult["NickName"]
+                        Message = result.MatchedResult[nameof(Words.Message)],
+                        User = result.MatchedResult[nameof(Words.NickName)]
                     };
                     var collection = db.GetCollection<UserMessage>();
-                    collection.Delete(x => x.User == result["NickName"]);
-                    collection.EnsureIndex(x => x.Key, true);
+                    collection.Delete(x => x.User == result[nameof(Words.NickName)]);
+                    collection.EnsureIndex(x => x.User);
                     collection.Insert(savedMessage);
                 }
                 return "Saved!";
             };
+        }
+
+        public void Register(Actions actions)
+        {
+            this.AppendSave(actions);
+            this.AppendRead(actions);
         }
     }
 }
