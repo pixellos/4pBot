@@ -21,7 +21,7 @@ namespace pBot.Dependencies
         public Checker Checker4P { get; set; }
         public StartupSomethingTodoChangeNameDao SaveManager { get; set; }
         public P4 P4Adapter { get; set; }
-        public SoAdapter SoAdapter { get; set; }
+        public SO SoAdapter { get; set; }
 
         private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 

@@ -287,8 +287,8 @@
   <ItemGroup>
     <Compile Include="Dependencies\Controllers.cs" />
     <Compile Include="Model\Facades\IProgrammingSitesAdapter.cs" />
-    <Compile Include="Model\Facades\P4Adapter.cs" />
-    <Compile Include="Model\Facades\SoAdapter.cs" />
+    <Compile Include="Model\Facades\P4.cs" />
+    <Compile Include="Model\Facades\SO.cs" />
     <Compile Include="Model\DataStructures\CachedResponse.cs" />
     <Compile Include="Model\Functions\4P\Checker.cs" />
     <Compile Include="Model\Constants\ApiKey.cs" />

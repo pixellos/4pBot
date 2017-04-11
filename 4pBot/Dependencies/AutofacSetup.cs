@@ -18,7 +18,7 @@ namespace pBot.Dependencies
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<P4>().PropertiesAutowired();
-            builder.RegisterType<SoAdapter>().PropertiesAutowired();
+            builder.RegisterType<SO>().PropertiesAutowired();
             builder.RegisterType<Downloader4P>().SingleInstance();
             builder.RegisterType<Downloader>().SingleInstance();
             builder.RegisterType<Repeater>().PropertiesAutowired();

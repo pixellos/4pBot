@@ -4,8 +4,9 @@ using pBot.Model.Functions.HighLevel;
 
 namespace pBot.Model.Facades
 {
-    public class SoAdapter : IProgrammingSitesAdapter
+    public class SO : IProgrammingSitesAdapter
     {
+        private string NotYetImplemented = "Not implemented yet!";
         public IXmpp Xmpp { get; set; }
         public Checker CheckerSo { get; set; }
         public Repeater Repeater { get; set; }
@@ -25,7 +26,6 @@ namespace pBot.Model.Facades
             return Repeater.RemoveRequest(tag);
         }
 
-        private string NotYetImplemented = "Not implemented yet!";
         public string NewThreads(string forumName)
         {
             return NotYetImplemented;
