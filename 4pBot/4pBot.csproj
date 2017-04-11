@@ -296,7 +296,7 @@
     <Compile Include="Model\Functions\4P\JSONModel.cs" />
     <Compile Include="Model\Functions\SO\DownloaderSo.cs" />
     <Compile Include="Model\Functions\ICommand.cs" />
-    <Compile Include="Model\Functions\LogMessage.cs" />
+    <Compile Include="Model\Functions\UserMessage.cs" />
     <Compile Include="Model\Functions\Save.cs" />
     <Compile Include="Model\Helper\UrlShortener.cs" />
     <Compile Include="Model\Constants\Identity.cs" />
