@@ -50,7 +50,6 @@ namespace BotNet.Controllers
             return View("Index");
         }
 
-
         public ActionResult About()
         {
             return View();
