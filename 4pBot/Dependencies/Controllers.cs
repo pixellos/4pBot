@@ -16,7 +16,6 @@ namespace _4PBot.Dependencies
 
         private Func<string, string> ChangesRoom => str => this.Xmpp.ChangeRoom(str);
 
-        private static Func<CachedResponse<string, string>> CachedResponse => () => new CachedResponse<string, string>();
 
         public Actions ControllerInitialize()
         {
