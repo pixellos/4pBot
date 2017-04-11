@@ -4,37 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using CoreBot.Mask;
+using System.Collections.Immutable;
 
 namespace CoreBot
 {
     public class Actions : IEnumerable<KeyValuePair<Mask.Mask, Func<SuccededResult, string>>>
     {
-        readonly Dictionary<Mask.Mask,Func<SuccededResult, string>> ActionsContainer = new Dictionary<Mask.Mask, Func<SuccededResult, string>>();
+        private readonly Dictionary<Mask.Mask, Func<SuccededResult, string>> Container = new Dictionary<Mask.Mask, Func<SuccededResult, string>>();
         //Todo: I18N
         public const string HelpHeader = "Description\nSample Input\n";
         public const string HorizontalSeparator = "====================\n";
 
         public Func<SuccededResult, string> this[Mask.Mask mask]
         {
-            set { this.ActionsContainer[mask] = value; }
-            get { return this.ActionsContainer[mask]; }
+            set { this.Container[mask] = value; }
+            get { return this.Container[mask]; }
         }
 
         public void Add(Mask.Mask mask, Func<SuccededResult, string> func)
         {
-            this.ActionsContainer.Add(mask,func);
-        }
-
-        public string GetHelpAboutActions()
-        {
-            var result = Actions.HelpHeader; 
-            foreach (var pair in this.ActionsContainer)
-            {
-                result += Actions.HorizontalSeparator;
-                result += $"{pair.Key.Description}\n";
-                result += $"{pair.Key.SampleInput}\n";
-            }
-            return result;
+            this.Container.Add(mask, func);
         }
 
         /// <summary>
@@ -44,7 +33,7 @@ namespace CoreBot
         /// <returns>Status response</returns>
         public string InvokeMatchingAction(string author, string text)
         {
-            foreach (var record in this.ActionsContainer)
+            foreach (var record in this.Container)
             {
                 var result = record.Key.Parse(author, text);
                 if (result is SuccededResult succeded)
@@ -57,12 +46,13 @@ namespace CoreBot
 
         public IEnumerator<KeyValuePair<Mask.Mask, Func<SuccededResult, string>>> GetEnumerator()
         {
-            throw new NotImplementedException();
+            var temp = this.Container.ToImmutableDictionary();
+            return temp.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return ((IEnumerator<KeyValuePair<Mask.Mask, Func<SuccededResult, string>>>)this);
         }
     }
 }

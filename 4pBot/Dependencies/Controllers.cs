@@ -22,14 +22,7 @@ namespace _4PBot.Dependencies
         {
             this.RoomController(this.Actions);
             this.SaySomethingToController(this.Actions);
-            this.InfoController(this.Actions);
             return this.Actions;
-        }
-
-        private void InfoController(Actions actions)
-        {
-            actions[Builder.Bot().Requried("Help").End()] = x => actions.GetHelpAboutActions();
-            actions[Builder.Bot().Requried("?").End()] = x => "To get help use \"Bot help\" call";
         }
 
         private void SaySomethingToController(Actions actions)
