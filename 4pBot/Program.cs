@@ -2,60 +2,44 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using pBot.Dependencies;
-using pBot.Model.ComunicateService;
+using _4PBot.Dependencies;
+using _4PBot.Model.ComunicateService;
 
-namespace pBot
+namespace _4PBot
 {
     public class MainClass
     {
+        //Todo: To some queue?
+        public static Action<IXmpp> MessageToInvoke;
+
         public static void Main(string[] args)
         {
-            var container = AutofacSetup.GetContainer();
-
-            var xmpp = container.Resolve<IXmpp>();
-            var controller = container.Resolve<Controllers>();
-
-            controller.ControllerInitialize();
-
-            while (true)
-            {
-
-            }
+            var token = new CancellationTokenSource();
+            MainClass.Start(token).Wait();
         }
 
-        public static Action<IXmpp> invokeMessage;
-        
-        public static Task GetTask(CancellationTokenSource cancellationTokenSourcetoken)
+        public static Task Start(CancellationTokenSource cancellationTokenSourcetoken)
         {
             var token = cancellationTokenSourcetoken.Token;
-            
-            return Task.Run(async () => 
-            { 
+            return Task.Run(async () =>
+            {
                 var container = AutofacSetup.GetContainer();
                 var xmpp = container.Resolve<IXmpp>();
                 var controller = container.Resolve<Controllers>();
-
                 controller.ControllerInitialize();
                 while (true)
                 {
                     await Task.Delay(100);
                     if (token.IsCancellationRequested)
                     {
-                        if (invokeMessage != null)
+                        if (MainClass.MessageToInvoke != null)
                         {
-                            invokeMessage(xmpp);
-                            invokeMessage = null;
+                            MainClass.MessageToInvoke(xmpp);
+                            MainClass.MessageToInvoke = null;
                         }
                     }
                 }
-
-            }
-            ,token);
-
-            
+            }, token);
         }
     }
 }

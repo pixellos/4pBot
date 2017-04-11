@@ -1,11 +1,9 @@
-using System;
 using CoreBot;
-using pBot.Model.ComunicateService;
-using pBot.Model.Functions;
-using pBot.Model.Functions.Checkers.SOChecker;
-using pBot.Model.Functions.HighLevel;
+using _4PBot.Model.Functions;
+using _4PBot.Model.Functions.HighLevel;
+using _4PBot.Model.Functions.StackOverflow;
 
-namespace pBot.Model.Facades
+namespace _4PBot.Model.Facades
 {
     public class StackOverflow : IProgrammingSitesAdapter, ICommand
     {
@@ -35,7 +33,7 @@ namespace pBot.Model.Facades
 
         public string HotPostsStream(string tag)
         {
-            return this.Repeater.Add(10, tag, () => Checker.CheckNewestByTag(tag));
+            return this.Repeater.Add(10, tag, () => this.Checker.CheckNewestByTag(tag));
         }
 
         public string HotPostsStreamStop(string tag)

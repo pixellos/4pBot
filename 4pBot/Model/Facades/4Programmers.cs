@@ -1,12 +1,10 @@
-using System;
 using CoreBot;
-using pBot.Model.ComunicateService;
-using pBot.Model.DataStructures;
-using pBot.Model.Functions;
-using pBot.Model.Functions.Checkers._4pChecker;
-using pBot.Model.Functions.HighLevel;
+using _4PBot.Model.DataStructures;
+using _4PBot.Model.Functions;
+using _4PBot.Model.Functions.HighLevel;
+using _4PBot.Model.Functions._4Programmers;
 
-namespace pBot.Model.Facades
+namespace _4PBot.Model.Facades
 {
     public class _4Programmers : IProgrammingSitesAdapter, ICommand
     {
@@ -31,32 +29,32 @@ namespace pBot.Model.Facades
 
         public string HotPost(string tag)
         {
-            return Checker.GetLastMessagesByTag(tag);
+            return this.Checker.GetLastMessagesByTag(tag);
         }
 
         public string HotPostsStream(string tag)
         {
-            return Repeater.Add(tag, 10, () => Checker.GetLastMessagesByTag(tag, false));
+            return this.Repeater.Add(tag, 10, () => this.Checker.GetLastMessagesByTag(tag, false));
         }
 
         public string HotPostsStreamStop(string tag)
         {
-            return Repeater.RemoveRequest(tag);
+            return this.Repeater.RemoveRequest(tag);
         }
 
         public string NewThreads(string forumName)
         {
-            return Checker.GetLastPostAtCategory(forumName);
+            return this.Checker.GetLastPostAtCategory(forumName);
         }
 
         public string NewThreadsStream(string forumName)
         {
-            return Repeater.Add(forumName + "Thread", 10, () => Checker.GetLastPostAtCategory(forumName));
+            return this.Repeater.Add(forumName + "Thread", 10, () => this.Checker.GetLastPostAtCategory(forumName));
         }
 
         public string NewThreadsStreamStop(string forumName)
         {
-            return Repeater.RemoveRequest(forumName + "Thread");
+            return this.Repeater.RemoveRequest(forumName + "Thread");
         }
     }
 }

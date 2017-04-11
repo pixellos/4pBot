@@ -1,12 +1,7 @@
 ﻿using CoreBot;
 using CoreBot.Mask;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace pBot.Model.Facades
+namespace _4PBot.Model.Facades
 {
     internal static class ActionExtensions
     {

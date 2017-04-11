@@ -1,4 +1,4 @@
-namespace pBot.Model.Facades
+namespace _4PBot.Model.Facades
 {
     public interface IProgrammingSitesAdapter
     {

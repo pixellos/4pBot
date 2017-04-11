@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 //Excluded from everything coz 
-namespace pBot.Model.Functions
+namespace _4PBot.Model.Functions
 {
     public class UserMessage
     {

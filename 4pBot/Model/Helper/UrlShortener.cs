@@ -1,9 +1,9 @@
 using Google.Apis.Services;
 using Google.Apis.Urlshortener.v1;
 using Google.Apis.Urlshortener.v1.Data;
-using pBot.Model.Constants;
+using _4PBot.Model.Constants;
 
-namespace pBot.Model.Helper
+namespace _4PBot.Model.Helper
 {
     public static class UrlShortener
     {

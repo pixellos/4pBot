@@ -1,15 +1,10 @@
-﻿using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using CoreBot;
-using Matrix.Xmpp.MessageArchiving;
-using pBot.Model.ComunicateService;
-using pBot.Model.Facades;
-using pBot.Model.Functions;
-using pBot.Model.Functions.Checkers.SOChecker;
-using pBot.Model.Functions.Checkers._4pChecker;
-using pBot.Model.Functions.HighLevel;
+using _4PBot.Model.ComunicateService;
+using _4PBot.Model.Facades;
+using _4PBot.Model.Functions.HighLevel;
 
-namespace pBot.Dependencies
+namespace _4PBot.Dependencies
 {
     public class AutofacSetup
     {
@@ -17,17 +12,16 @@ namespace pBot.Dependencies
         static AutofacSetup()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<_4Programmers>().PropertiesAutowired();
-            builder.RegisterType<StackOverflow>().PropertiesAutowired();
-            builder.RegisterType<Downloader4P>().SingleInstance();
-            builder.RegisterType<Downloader>().SingleInstance();
-            builder.RegisterType<Repeater>().PropertiesAutowired();
-            builder.RegisterType<Checker>().PropertiesAutowired().SingleInstance();
-            builder.RegisterType<Checker>().PropertiesAutowired().SingleInstance();
-            builder.RegisterType<Controllers>().PropertiesAutowired().AsSelf().SingleInstance();
-            builder.RegisterType<Actions>().PropertiesAutowired().AsSelf().SingleInstance();
-            builder.RegisterType<XmppFree>().PropertiesAutowired().As<IXmpp>().SingleInstance();
-            builder.RegisterType<StartupSomethingTodoChangeNameDao>().SingleInstance();
+            builder.RegisterType<_4Programmers>();
+            builder.RegisterType<StackOverflow>();
+            builder.RegisterType<Model.Functions._4Programmers.Downloader>().SingleInstance();
+            builder.RegisterType<Model.Functions.StackOverflow.Downloader>().SingleInstance();
+            builder.RegisterType<Repeater>();
+            builder.RegisterType<Model.Functions._4Programmers.Checker>().SingleInstance();
+            builder.RegisterType<Model.Functions._4Programmers.Checker>().SingleInstance();
+            builder.RegisterType<Controllers>().AsSelf().SingleInstance();
+            builder.RegisterType<Actions>().AsSelf().SingleInstance();
+            builder.RegisterType<XmppFree>().As<IXmpp>().SingleInstance();
             AutofacSetup.Container = builder.Build();
         }
 

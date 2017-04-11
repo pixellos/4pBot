@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4pBot", "4pBot\4pBot.csproj", "{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4PBot", "4PBot\4PBot.csproj", "{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBotTests", "CoreBotTests\CoreBotTests.csproj", "{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBot.Tests", "CoreBot.Tests\CoreBot.Tests.csproj", "{21C6C7A8-B19F-4F8A-B208-6021A01BE5D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreBot", "CoreBot\CoreBot.csproj", "{CB72FA83-D941-43C8-92F1-9637A4FA5D39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotNet", "BotNet\BotNet.csproj", "{5D4C7B6B-4BE1-4949-B47C-834EDF181C45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4pBotTests", "4pBotTests\4pBotTests.csproj", "{3A561A60-EC38-4A85-9B07-4C2644256E9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4PBot.Tests", "4PBot.Tests\4PBot.Tests.csproj", "{3A561A60-EC38-4A85-9B07-4C2644256E9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

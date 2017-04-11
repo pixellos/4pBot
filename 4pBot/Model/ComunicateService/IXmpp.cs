@@ -1,5 +1,5 @@
 ﻿
-namespace pBot.Model.ComunicateService
+namespace _4PBot.Model.ComunicateService
 {
     public interface IXmpp
     {

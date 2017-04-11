@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{BC4383AE-B68F-4380-A2AD-7D80FB3844AD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>pBot</RootNamespace>
-    <AssemblyName>4pBot</AssemblyName>
+    <RootNamespace>_4PBot</RootNamespace>
+    <AssemblyName>4PBot</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
@@ -291,18 +291,18 @@
     <Compile Include="Model\Facades\4Programmers.cs" />
     <Compile Include="Model\Facades\StackOverflow.cs" />
     <Compile Include="Model\DataStructures\CachedResponse.cs" />
-    <Compile Include="Model\Functions\4P\Checker.cs" />
+    <Compile Include="Model\Functions\4Programmers\Checker.cs" />
     <Compile Include="Model\Constants\ApiKey.cs" />
-    <Compile Include="Model\Functions\4P\Downloader4P.cs" />
-    <Compile Include="Model\Functions\4P\JSONModel.cs" />
-    <Compile Include="Model\Functions\SO\DownloaderSo.cs" />
+    <Compile Include="Model\Functions\4Programmers\Downloader4P.cs" />
+    <Compile Include="Model\Functions\4Programmers\JSONModel.cs" />
+    <Compile Include="Model\Functions\StackOverflow\DownloaderSo.cs" />
     <Compile Include="Model\Functions\ICommand.cs" />
     <Compile Include="Model\Functions\UserMessage.cs" />
     <Compile Include="Model\Helper\UrlShortener.cs" />
     <Compile Include="Model\Constants\Identity.cs" />
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
-    <Compile Include="Model\Functions\SO\Checker.cs" />
+    <Compile Include="Model\Functions\StackOverflow\Checker.cs" />
     <Compile Include="Model\DataStructures\ICache.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

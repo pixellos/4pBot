@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using _4PBot;
 
 namespace BotNet.Controllers
 {
@@ -17,15 +18,13 @@ namespace BotNet.Controllers
         {
             if (TaskHandler == null)
             {
-                CancellationToken = new CancellationTokenSource();
-
-                TaskHandler = pBot.MainClass.GetTask(CancellationToken);
-                
+                HomeController.CancellationToken = new CancellationTokenSource();
+                HomeController.TaskHandler = MainClass.Start(CancellationToken);
                 await TaskHandler;
             }
             else
             {
-                pBot.MainClass.invokeMessage = xmpp => xmpp.Open();
+                MainClass.MessageToInvoke = xmpp => xmpp.Open();
                 CancellationToken.Cancel();
             }
 
@@ -34,14 +33,14 @@ namespace BotNet.Controllers
 
         public ActionResult StopBot()
         {
-            pBot.MainClass.invokeMessage = xmpp => xmpp.Close();
+            MainClass.MessageToInvoke = xmpp => xmpp.Close();
             CancellationToken.Cancel();
             return View("Index");
         }
 
         public ActionResult ChangeRoom()
         {
-            pBot.MainClass.invokeMessage = xmpp => xmpp.ChangeRoom("General");
+            MainClass.MessageToInvoke = xmpp => xmpp.ChangeRoom("General");
             CancellationToken.Cancel();
             return View("Index");
         }

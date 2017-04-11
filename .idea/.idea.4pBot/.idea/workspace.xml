@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c10aed5c-8513-4c34-bdc8-9ec19efd9395" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBot/4pBot.sln" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/4p/Checker.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/4p/Downloader4P.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/4p/JSONModel.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/SO/Checker.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/SO/DownloaderSo.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/4pBotTests.csproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Model/DataStructures/CachedResponseTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Model/Functions/4pChecker/Checker4PTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Model/Functions/4pChecker/UrlShortenerTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Model/Functions/Checkers/SOChecker/CheckerSOTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Model/Functions/HighLevel/RepeaterTest.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Properties/AssemblyInfo.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Properties/Resources.Designer.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/Properties/Resources.resx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/TestData/SampleResponse.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/app.config" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/4pBotTests/packages.config" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/CoreBotTests.csproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/Masking/MaskTest.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/Masking/ParserTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/Order/ActionTests.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/Order/OrderTest.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/SOCheckerTests.manifest" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/app.config" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/packages.config" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CoreBotTests/xaml.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/UpgradeLog.htm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/UpgradeLog2.htm" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot.sln" afterPath="$PROJECT_DIR$/4pBot.sln" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/4pBot.csproj" afterPath="$PROJECT_DIR$/4pBot/4pBot.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Dependencies/AutofacSetup.cs" afterPath="$PROJECT_DIR$/4pBot/Dependencies/AutofacSetup.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Dependencies/Controllers.cs" afterPath="$PROJECT_DIR$/4pBot/Dependencies/Controllers.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/ComunicateService/IXmpp.cs" afterPath="$PROJECT_DIR$/4pBot/Model/ComunicateService/IXmpp.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/ComunicateService/XmppFree.cs" afterPath="$PROJECT_DIR$/4pBot/Model/ComunicateService/XmppFree.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/DataStructures/CachedResponse.cs" afterPath="$PROJECT_DIR$/4pBot/Model/DataStructures/CachedResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/DataStructures/ICache.cs" afterPath="$PROJECT_DIR$/4pBot/Model/DataStructures/ICache.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Facades/4Programmers.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Facades/4Programmers.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Facades/ActionExtensions.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Facades/ActionExtensions.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Facades/IProgrammingSitesAdapter.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Facades/IProgrammingSitesAdapter.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Facades/StackOverflow.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Facades/StackOverflow.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/HighLevel/Repeater.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Functions/HighLevel/Repeater.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/ICommand.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Functions/ICommand.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Functions/UserMessage.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Functions/UserMessage.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Model/Helper/UrlShortener.cs" afterPath="$PROJECT_DIR$/4pBot/Model/Helper/UrlShortener.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/4pBot/Program.cs" afterPath="$PROJECT_DIR$/4pBot/Program.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BotNet/Controllers/HomeController.cs" afterPath="$PROJECT_DIR$/BotNet/Controllers/HomeController.cs" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AutofacSetup.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Dependencies/AutofacSetup.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding>
+                <marker date="1491936859229" expanded="true" signature="198:1269" ph="{...}" />
+                <marker date="1491936859229" expanded="true" signature="279:1146" ph="{...}" />
+                <marker date="1491936859229" expanded="true" signature="1195:1263" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webjob-publish-settings.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Properties/webjob-publish-settings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeController.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BotNet/Controllers/HomeController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+              <folding>
+                <marker date="1491936859140" expanded="true" signature="6:174" ph="..." />
+                <marker date="1491936859140" expanded="true" signature="204:1625" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="251:1623" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="423:895" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="470:696" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="713:850" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="934:1090" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="1132:1302" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="1339:1393" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="1431:1478" ph="{...}" />
+                <marker date="1491936859140" expanded="true" signature="1517:1617" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionExtensions.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/ActionExtensions.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859167" expanded="true" signature="6:35" ph="..." />
+                <marker date="1491936859167" expanded="true" signature="66:1472" ph="{...}" />
+                <marker date="1491936859167" expanded="true" signature="111:1470" ph="{...}" />
+                <marker date="1491936859167" expanded="true" signature="136:229" ph="{...}" />
+                <marker date="1491936859167" expanded="true" signature="363:1464" ph="{...}" />
+                <marker date="1491936859167" expanded="true" signature="424:1425" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StackOverflow.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/StackOverflow.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859216" expanded="true" signature="1036:1077" ph="{...}" />
+                <marker date="1491936859216" expanded="true" signature="1036:1598" ph="{...}" />
+                <marker date="1491936859216" expanded="true" signature="1131:1204" ph="{...}" />
+                <marker date="1491936859216" expanded="true" signature="1256:1328" ph="{...}" />
+                <marker date="1491936859216" expanded="true" signature="1386:1458" ph="{...}" />
+                <marker date="1491936859216" expanded="true" signature="1520:1592" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CachedResponse.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/DataStructures/CachedResponse.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859127" expanded="true" signature="6:102" ph="..." />
+                <marker date="1491936859127" expanded="true" signature="1709:1762" ph="{...}" />
+                <marker date="1491936859127" expanded="true" signature="1709:1768" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ICache.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/DataStructures/ICache.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859202" expanded="true" signature="6:49" ph="..." />
+                <marker date="1491936859202" expanded="true" signature="134:637" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiKey.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/Constants/ApiKey.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859153" expanded="true" signature="32:292" ph="{...}" />
+                <marker date="1491936859153" expanded="true" signature="63:290" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IXmpp.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/ComunicateService/IXmpp.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859190" expanded="true" signature="70:268" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XmppFree.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/4PBot/Model/ComunicateService/XmppFree.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1491936859178" expanded="true" signature="6:141" ph="..." />
+                <marker date="1491936859178" expanded="true" signature="3471:3498" ph="{...}" />
+                <marker date="1491936859178" expanded="true" signature="3471:3615" ph="{...}" />
+                <marker date="1491936859178" expanded="true" signature="3538:3609" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/4pBot/Dependencies/Controllers.cs" />
+        <option value="$PROJECT_DIR$/4pBot/Model/Facades/4Programmers.cs" />
+        <option value="$PROJECT_DIR$/4pBot/Dependencies/AutofacSetup.cs" />
+        <option value="$PROJECT_DIR$/BotNet/Controllers/HomeController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1874" />
+    <option name="height" value="1096" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="4pBot (5 projects)" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Project.Default">
+    <configuration default="true" type="DotNetProject" factoryName=".NET Project">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue=".NET Project.Default" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c10aed5c-8513-4c34-bdc8-9ec19efd9395" name="Default" comment="" />
+      <created>1491936579887</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1491936579887</updated>
+      <workItem from="1491936581391" duration="352000" />
+      <workItem from="1491937179802" duration="120000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="472000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1874" height="1096" extended-state="1" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18622175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/4PBot/Dependencies/AutofacSetup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <marker date="1491936859229" expanded="true" signature="198:1269" ph="{...}" />
+            <marker date="1491936859229" expanded="true" signature="279:1146" ph="{...}" />
+            <marker date="1491936859229" expanded="true" signature="1195:1263" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Properties/webjob-publish-settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/ActionExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859167" expanded="true" signature="6:35" ph="..." />
+            <marker date="1491936859167" expanded="true" signature="66:1472" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="111:1470" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="136:229" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="363:1464" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="424:1425" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/StackOverflow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859216" expanded="true" signature="1036:1077" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1036:1598" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1131:1204" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1256:1328" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1386:1458" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1520:1592" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/DataStructures/CachedResponse.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859127" expanded="true" signature="6:102" ph="..." />
+            <marker date="1491936859127" expanded="true" signature="1709:1762" ph="{...}" />
+            <marker date="1491936859127" expanded="true" signature="1709:1768" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/DataStructures/ICache.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859202" expanded="true" signature="6:49" ph="..." />
+            <marker date="1491936859202" expanded="true" signature="134:637" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Constants/ApiKey.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859153" expanded="true" signature="32:292" ph="{...}" />
+            <marker date="1491936859153" expanded="true" signature="63:290" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/ComunicateService/IXmpp.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859190" expanded="true" signature="70:268" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/ComunicateService/XmppFree.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859178" expanded="true" signature="6:141" ph="..." />
+            <marker date="1491936859178" expanded="true" signature="3471:3498" ph="{...}" />
+            <marker date="1491936859178" expanded="true" signature="3471:3615" ph="{...}" />
+            <marker date="1491936859178" expanded="true" signature="3538:3609" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BotNet/Controllers/HomeController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <marker date="1491936859140" expanded="true" signature="6:174" ph="..." />
+            <marker date="1491936859140" expanded="true" signature="204:1625" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="251:1623" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="423:895" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="470:696" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="713:850" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="934:1090" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1132:1302" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1339:1393" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1431:1478" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1517:1617" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Dependencies/Controllers.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/4Programmers.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/ActionExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859167" expanded="true" signature="6:35" ph="..." />
+            <marker date="1491936859167" expanded="true" signature="66:1472" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="111:1470" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="136:229" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="363:1464" ph="{...}" />
+            <marker date="1491936859167" expanded="true" signature="424:1425" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Facades/StackOverflow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859216" expanded="true" signature="1036:1077" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1036:1598" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1131:1204" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1256:1328" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1386:1458" ph="{...}" />
+            <marker date="1491936859216" expanded="true" signature="1520:1592" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/DataStructures/CachedResponse.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859127" expanded="true" signature="6:102" ph="..." />
+            <marker date="1491936859127" expanded="true" signature="1709:1762" ph="{...}" />
+            <marker date="1491936859127" expanded="true" signature="1709:1768" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/DataStructures/ICache.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859202" expanded="true" signature="6:49" ph="..." />
+            <marker date="1491936859202" expanded="true" signature="134:637" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/Constants/ApiKey.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859153" expanded="true" signature="32:292" ph="{...}" />
+            <marker date="1491936859153" expanded="true" signature="63:290" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/ComunicateService/XmppFree.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859178" expanded="true" signature="6:141" ph="..." />
+            <marker date="1491936859178" expanded="true" signature="3471:3498" ph="{...}" />
+            <marker date="1491936859178" expanded="true" signature="3471:3615" ph="{...}" />
+            <marker date="1491936859178" expanded="true" signature="3538:3609" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Model/ComunicateService/IXmpp.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1491936859190" expanded="true" signature="70:268" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Dependencies/AutofacSetup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <marker date="1491936859229" expanded="true" signature="198:1269" ph="{...}" />
+            <marker date="1491936859229" expanded="true" signature="279:1146" ph="{...}" />
+            <marker date="1491936859229" expanded="true" signature="1195:1263" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4PBot/Properties/webjob-publish-settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BotNet/Controllers/HomeController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="50" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+          <folding>
+            <marker date="1491936859140" expanded="true" signature="6:174" ph="..." />
+            <marker date="1491936859140" expanded="true" signature="204:1625" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="251:1623" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="423:895" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="470:696" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="713:850" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="934:1090" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1132:1302" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1339:1393" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1431:1478" ph="{...}" />
+            <marker date="1491936859140" expanded="true" signature="1517:1617" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

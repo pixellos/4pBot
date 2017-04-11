@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace pBot.Model.DataStructures
+namespace _4PBot.Model.DataStructures
 {
     public class CachedResponse<TBase, TResult> : ICache<TBase, TResult> where TBase : class
     {
         private readonly Dictionary<TBase, TResult> Cache = new Dictionary<TBase, TResult>();
 
-        public ImmutableDictionary<TBase, TResult> ReadOnlyCache => Cache.ToImmutableDictionary();
+        public ImmutableDictionary<TBase, TResult> ReadOnlyCache => this.Cache.ToImmutableDictionary();
 
         public bool ContainsKey(TBase TBase)
         {
@@ -28,12 +28,12 @@ namespace pBot.Model.DataStructures
 
         public void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action, TResult baseResult = default(TResult))
         {
-            if (!ContainsKey(TBase))
+            if (!this.ContainsKey(TBase))
             {
                 this.InitializeKey(TBase,baseResult);
             }
 
-            if (IsResponseUnique(TBase, TResult))
+            if (this.IsResponseUnique(TBase, TResult))
             {
                 this.SetLastResponse(TBase, TResult);
                 action(TResult);
@@ -52,7 +52,7 @@ namespace pBot.Model.DataStructures
 
         public void Remove(TBase TBase)
         {
-            this.Cache.Remove(Cache.First(x => x.Key.Equals(TBase)).Key);
+            this.Cache.Remove(this.Cache.First(x => x.Key.Equals(TBase)).Key);
         }
     }
 }
