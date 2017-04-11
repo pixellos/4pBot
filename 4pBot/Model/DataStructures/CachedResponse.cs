@@ -13,46 +13,46 @@ namespace pBot.Model.DataStructures
 
         public bool ContainsKey(TBase TBase)
         {
-            return Cache.Any(x => x.Key.Equals(TBase));
+            return this.Cache.Any(x => x.Key.Equals(TBase));
         }
 
         public bool IsResponseUnique(TBase TBase, TResult TResult)
         {
-            return !Cache.Single(x => x.Key.Equals(TBase)).Value.Equals(TResult);
+            return !this.Cache.Single(x => x.Key.Equals(TBase)).Value.Equals(TResult);
         }
 
         public void SetLastResponse(TBase TBase, TResult TResult)
         {
-            Cache[TBase] = TResult;
+            this.Cache[TBase] = TResult;
         }
 
         public void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action, TResult baseResult = default(TResult))
         {
             if (!ContainsKey(TBase))
             {
-                InitializeKey(TBase,baseResult);
+                this.InitializeKey(TBase,baseResult);
             }
 
             if (IsResponseUnique(TBase, TResult))
             {
-                SetLastResponse(TBase, TResult);
+                this.SetLastResponse(TBase, TResult);
                 action(TResult);
             }
         }
 
         public TResult GetCacheValue(TBase TBase)
         {
-            return Cache.SingleOrDefault(x => x.Key.Equals(TBase)).Value;
+            return this.Cache.SingleOrDefault(x => x.Key.Equals(TBase)).Value;
         }
 
         public void InitializeKey(TBase TBase,TResult initializer)
         {
-            Cache.Add(TBase, initializer);
+            this.Cache.Add(TBase, initializer);
         }
 
         public void Remove(TBase TBase)
         {
-            Cache.Remove(Cache.First(x => x.Key.Equals(TBase)).Key);
+            this.Cache.Remove(Cache.First(x => x.Key.Equals(TBase)).Key);
         }
     }
 }

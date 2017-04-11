@@ -7,9 +7,12 @@ namespace pBot.Model.Functions.Checkers.SOChecker
 {
     public class Checker
     {
-        public const string CantFindRequestMessage = "Sorry, I can't find your request :(";
-
-        public Downloader DownloaderSo { get; set; }
+        public static readonly string CantFindRequestMessage = "Sorry, I can't find your request :(";
+        private Downloader DownloaderSo { get; }
+        public Checker(Downloader downloader)
+        {
+            this.DownloaderSo = downloader;
+        }
 
         public string CheckNewestByTag(string tagName)
         {

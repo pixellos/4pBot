@@ -17,13 +17,6 @@ namespace pBot.Dependencies
     {
         public IXmpp Xmpp { get; set; }
         public Actions Actions { get; set; }
-        public Checker CheckerSo { get; set; }
-        public Checker Checker4P { get; set; }
-        public StartupSomethingTodoChangeNameDao SaveManager { get; set; }
-        public _4Programmers P4Adapter { get; set; }
-        public StackOverflow SoAdapter { get; set; }
-
-        private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 
         private Func<string, string> ChangesRoom => str => Xmpp.ChangeRoom(str);
 
@@ -31,8 +24,6 @@ namespace pBot.Dependencies
 
         public Actions ControllerInitialize()
         {
-            this.ProgramersWebsiteQuotations(Actions, "4p", P4Adapter);
-            this.ProgramersWebsiteQuotations(Actions, "SO", SoAdapter);
             this.RoomController(Actions);
             this.SaySomethingToController(Actions);
             this.InfoController(Actions);

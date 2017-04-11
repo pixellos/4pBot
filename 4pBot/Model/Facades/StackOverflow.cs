@@ -1,44 +1,61 @@
+using System;
+using CoreBot;
 using pBot.Model.ComunicateService;
+using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers.SOChecker;
 using pBot.Model.Functions.HighLevel;
 
 namespace pBot.Model.Facades
 {
-    public class StackOverflow : IProgrammingSitesAdapter
+    public class StackOverflow : IProgrammingSitesAdapter, ICommand
     {
-        private string NotYetImplemented = "Not implemented yet!";
-        public IXmpp Xmpp { get; set; }
-        public Checker CheckerSo { get; set; }
-        public Repeater Repeater { get; set; }
+        private static readonly string NotYetImplemented = "Not implemented yet!";
+        private Checker Checker { get; }
+        private Repeater Repeater { get; }
+
+        public StackOverflow(Repeater repeater, Checker checker)
+        {
+            this.Checker = checker;
+            this.Repeater = repeater;
+        }
+
+        public Actions AvailableActions
+        {
+            get
+            {
+                var actions = this.ConstructStandardProgrammingSitesQuotations(_4Programmers.Name);
+                return actions;
+            }
+        }
 
         public string HotPost(string tag)
         {
-            return CheckerSo.CheckNewestByTag(tag);
+            return this.Checker.CheckNewestByTag(tag);
         }
 
         public string HotPostsStream(string tag)
         {
-            return Repeater.Add(10,tag, () => CheckerSo.CheckNewestByTag(tag));
+            return this.Repeater.Add(10, tag, () => Checker.CheckNewestByTag(tag));
         }
 
         public string HotPostsStreamStop(string tag)
         {
-            return Repeater.RemoveRequest(tag);
+            return this.Repeater.RemoveRequest(tag);
         }
 
         public string NewThreads(string forumName)
         {
-            return NotYetImplemented;
+            return StackOverflow.NotYetImplemented;
         }
 
         public string NewThreadsStream(string forumName)
         {
-            return NotYetImplemented;
+            return StackOverflow.NotYetImplemented;
         }
 
         public string NewThreadsStreamStop(string forumName)
         {
-            return NotYetImplemented;
+            return StackOverflow.NotYetImplemented;
         }
     }
 }
