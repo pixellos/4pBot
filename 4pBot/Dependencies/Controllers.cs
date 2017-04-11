@@ -20,8 +20,8 @@ namespace pBot.Dependencies
         public Checker CheckerSo { get; set; }
         public Checker Checker4P { get; set; }
         public StartupSomethingTodoChangeNameDao SaveManager { get; set; }
-        public P4 P4Adapter { get; set; }
-        public SO SoAdapter { get; set; }
+        public _4Programmers P4Adapter { get; set; }
+        public StackOverflow SoAdapter { get; set; }
 
         private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 
@@ -82,17 +82,6 @@ namespace pBot.Dependencies
         private void RoomController(Actions actions)
         {
             actions[Bot().Requried("Room").ThenWord("RoomName", "Help").End()] = result => ChangesRoom(result["RoomName"]);
-        }
-
-        private void ProgramersWebsiteQuotations(Actions actions, string forumPrefix, IProgrammingSitesAdapter adapter)
-        {
-            var Tag = "TagLiteral";
-            actions[Bot().Requried(forumPrefix).ThenString(Tag, "Java").Requried("Repeat").Requried("Tag").End()] =
-                result => adapter.HotPostsStream(result[Tag]);
-            actions[Bot().Requried("Dont").Requried(forumPrefix).ThenString(Tag, "Java").Requried("Repeat").Requried("Tag").End()] =
-                x => adapter.HotPostsStreamStop(x[Tag]);
-            actions[Bot().Requried(forumPrefix).ThenString(Tag, "Java").End()] =
-                result => adapter.HotPost(result[Tag]);
         }
     }
 }

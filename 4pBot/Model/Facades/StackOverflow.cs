@@ -4,7 +4,7 @@ using pBot.Model.Functions.HighLevel;
 
 namespace pBot.Model.Facades
 {
-    public class SO : IProgrammingSitesAdapter
+    public class StackOverflow : IProgrammingSitesAdapter
     {
         private string NotYetImplemented = "Not implemented yet!";
         public IXmpp Xmpp { get; set; }

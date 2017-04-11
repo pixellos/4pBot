@@ -8,14 +8,22 @@ using pBot.Model.Functions.HighLevel;
 
 namespace pBot.Model.Facades
 {
-    public class P4 : IProgrammingSitesAdapter, ICommand
+    public class _4Programmers : IProgrammingSitesAdapter, ICommand
     {
+        public static string Name = nameof(_4Programmers).Substring(1);
         private Checker Checker { get; }
-        private  Repeater Repeater { get; }
+        private Repeater Repeater { get; }
         private CachedResponse<string, string> Cache = new CachedResponse<string, string>();
-        public Actions AvailableActions => throw new NotImplementedException();
+        public Actions AvailableActions
+        {
+            get
+            {
+                var actions = this.ConstructStandardProgrammingSitesQuotations(_4Programmers.Name);
+                return actions;
+            }
+        }
 
-        public P4(Checker checker, Repeater repeater)
+        public _4Programmers(Checker checker, Repeater repeater)
         {
             this.Checker = checker;
             this.Repeater = repeater;
@@ -28,7 +36,7 @@ namespace pBot.Model.Facades
 
         public string HotPostsStream(string tag)
         {
-            return Repeater.Add(tag, 10, () => Checker.GetLastMessagesByTag(tag,false));
+            return Repeater.Add(tag, 10, () => Checker.GetLastMessagesByTag(tag, false));
         }
 
         public string HotPostsStreamStop(string tag)

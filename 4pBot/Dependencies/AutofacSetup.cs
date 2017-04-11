@@ -17,8 +17,8 @@ namespace pBot.Dependencies
         static AutofacSetup()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterType<P4>().PropertiesAutowired();
-            builder.RegisterType<SO>().PropertiesAutowired();
+            builder.RegisterType<_4Programmers>().PropertiesAutowired();
+            builder.RegisterType<StackOverflow>().PropertiesAutowired();
             builder.RegisterType<Downloader4P>().SingleInstance();
             builder.RegisterType<Downloader>().SingleInstance();
             builder.RegisterType<Repeater>().PropertiesAutowired();
