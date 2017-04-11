@@ -6,43 +6,39 @@ namespace CoreBot.Mask
 {
     public class Mask
     {
-        public readonly string Description;
-        public readonly string SampleInput;
-
-        public readonly IReadOnlyList<Argument> NameOfArgument;
+        public string Description { get; }
+        public string SampleInput { get; }
+        public IReadOnlyList<Argument> NameOfArgument { get; }
 
         public readonly string RegexString;
 
         internal Mask(Block block)
         {
-            RegexString = block.RegexString;
-            Description = block.Description;
-            NameOfArgument = block.Arguments;
-            SampleInput = block.SampleInput;
+            this.RegexString = block.RegexString;
+            this.Description = block.Description;
+            this.NameOfArgument = block.Arguments;
+            this.SampleInput = block.SampleInput;
         }
 
         public override string ToString()
         {
-            return string.Join(", ",NameOfArgument);
+            return String.Join(", ", this.NameOfArgument);
         }
 
         public Result Parse(string author, string text)
         {
-            Regex regex = new Regex(RegexString, RegexOptions.IgnoreCase);
-
+            var regex = new Regex(this.RegexString, RegexOptions.IgnoreCase);
             var result = regex.Match(text);
-
             if (result.Success)
             {
-                var dict = new Dictionary<string,string>();
-                foreach (Argument argument in NameOfArgument)
+                var dict = new Dictionary<string, string>();
+                foreach (var argument in this.NameOfArgument)
                 {
-                    dict.Add(argument.ArgumentName,result.Groups[argument.ArgumentName].Value);
+                    dict.Add(argument.ArgumentName, result.Groups[argument.ArgumentName].Value);
                 }
-                return new Result(this,text,dict);
+                return new SuccededResult(this, text, dict);
             }
-
-            throw new FormatException($"Format of passed {nameof(text)} is invaild");
+            return new Result(this, text);
         }
     }
 }

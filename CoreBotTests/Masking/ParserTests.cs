@@ -18,76 +18,54 @@ namespace CoreBotTests.Masking
             {
                 yield return new TestCaseData(
                     Bot().End(), "Bot ").
-                    Returns(new Dictionary<string,string>()
-                {
-                    ["Bot"] = ""
-                });
-
+                    Returns(new Dictionary<string, string>()
+                    {
+                        ["Bot"] = ""
+                    });
                 yield return new TestCaseData(
                 Bot().ThenEverythingToEndOfLine("All").End(), "Bot 12345 qwerty !@#$%^&").
-                Returns(new Dictionary<string, string>()
-                {
-                    ["Bot"] = "",
-                    ["All"] = "12345 qwerty !@#$%^&"
-                });
-
-                yield return new TestCaseData(Bot().ThenWord("SomeWord", "Example").End(),"Bot test ").
-                    Returns(new Dictionary<string,string>()
-                {
-                    ["Bot"] = "",
-                    ["SomeWord"] = "test"
-                });
-
-
-
-                yield return new TestCaseData(Bot().ThenString("Q","1234").End(), "Bot 8796381147869adsa").
                     Returns(new Dictionary<string, string>()
-                {
-                    ["Bot"] = "",
-                    ["Q"] = "8796381147869adsa"
-                });
-
+                    {
+                        ["Bot"] = "",
+                        ["All"] = "12345 qwerty !@#$%^&"
+                    });
+                yield return new TestCaseData(Bot().ThenWord("SomeWord", "Example").End(), "Bot test ").
+                    Returns(new Dictionary<string, string>()
+                    {
+                        ["Bot"] = "",
+                        ["SomeWord"] = "test"
+                    });
+                yield return new TestCaseData(Bot().ThenString("Q", "1234").End(), "Bot 8796381147869adsa").
+                    Returns(new Dictionary<string, string>()
+                    {
+                        ["Bot"] = "",
+                        ["Q"] = "8796381147869adsa"
+                    });
                 yield return new TestCaseData(Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").End(), "Bot test trata rata").
                     Returns(new Dictionary<string, string>()
-                {
-                    ["Bot"] = "",
-                    ["SomeWord"] = "test",
-                    ["Everything"] = "trata rata"
-                });
+                    {
+                        ["Bot"] = "",
+                        ["SomeWord"] = "test",
+                        ["Everything"] = "trata rata"
+                    });
             }
         }
 
-        
-        [Test,TestCaseSource(nameof(MatchTestData))]
-        public Dictionary<string,string> MatchTest(Mask mask, string TextToParse)
+        [Test, TestCaseSource(nameof(MatchTestData))]
+        public Dictionary<string, string> MatchTest(Mask mask, string TextToParse)
         {
-            Result afterParse = null;
-
-            Assert.DoesNotThrow(() =>
-            {
-                afterParse = mask.Parse("", TextToParse);
-            });
-
-            return afterParse.MatchedResult;
+            var result = (SuccededResult)mask.Parse("", TextToParse);
+            return result.MatchedResult;
         }
-
-
 
         [Test, TestCaseSource(nameof(MatchTestData))]
         public Dictionary<string, string> MatchTestByIndexer(Mask mask, string TextToParse)
         {
-            Result afterParse = null;
-
-            Assert.DoesNotThrow(() =>
-            {
-                afterParse = mask.Parse("", TextToParse);
-            });
-
+            var afterParse = (SuccededResult)mask.Parse("", TextToParse);
             foreach (KeyValuePair<string, string> keyValuePair in afterParse.MatchedResult)
             {
-                Assert.AreEqual(keyValuePair.Value,afterParse[keyValuePair.Key]);
+                Assert.AreEqual(keyValuePair.Value, afterParse[keyValuePair.Key]);
             }
-
             return afterParse.MatchedResult;
         }
 
@@ -96,8 +74,8 @@ namespace CoreBotTests.Masking
         {
             var mask = Bot().End();
             var incorrectInput = "Bo312ts some chat message :D :P#$@#$23k43io2j44";
-
-            Assert.Throws<FormatException>(() => mask.Parse("TES", incorrectInput));
+            var result = mask.Parse("TES", incorrectInput);
+            Assert.IsNotInstanceOf<SuccededResult>(result);
         }
     }
 }

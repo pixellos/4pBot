@@ -18,29 +18,22 @@ namespace pBot.Dependencies
         public CheckerSO CheckerSo { get; set; }
         public Checker4P Checker4P { get; set; }
         public SaveManager SaveManager { get; set; }
-
         public P4Adapter P4Adapter { get; set; }
         public SoAdapter SoAdapter { get; set; }
 
         private Action<string> SendCurrentXmpp => str => Xmpp.SendIfNotNull(str);
 
-        private Func<string, string> ChangesRoom
-            => str => Xmpp.ChangeRoom(str);
+        private Func<string, string> ChangesRoom => str => Xmpp.ChangeRoom(str);
 
         private static Func<CachedResponse<string, string>> CachedResponse => () => new CachedResponse<string, string>();
 
         public Actions ControllerInitialize()
         {
-
-            ProgramersWebsiteQuotations(Actions,"4p",P4Adapter);
-            ProgramersWebsiteQuotations(Actions,"SO",SoAdapter);
-
-            RoomController(Actions);
-
-
-            SaySomethingToController(Actions);
-            InfoController(Actions);
-
+            this.ProgramersWebsiteQuotations(Actions,"4p",P4Adapter);
+            this.ProgramersWebsiteQuotations(Actions,"SO",SoAdapter);
+            this.RoomController(Actions);
+            this.SaySomethingToController(Actions);
+            this.InfoController(Actions);
             return Actions;
         }
 
@@ -70,16 +63,12 @@ namespace pBot.Dependencies
         private void ProgramersWebsiteQuotations(Actions actions, string forumPrefix, IProgrammingSitesAdapter adapter)
         {
             var Tag = "TagLiteral";
-
             actions[Bot().Requried(forumPrefix).ThenString(Tag, "Java").Requried("Repeat").Requried("Tag").End()] =
                 result => adapter.HotPostsStream(result[Tag]);
-
             actions[Bot().Requried("Dont").Requried(forumPrefix).ThenString(Tag, "Java").Requried("Repeat").Requried("Tag").End()] =
                 x => adapter.HotPostsStreamStop(x[Tag]);
-
             actions[Bot().Requried(forumPrefix).ThenString(Tag, "Java").End()] =
                 result => adapter.HotPost(result[Tag]);
-
         }
     }
 }

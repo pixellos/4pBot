@@ -18,10 +18,8 @@ namespace pBot.Model.Functions.Checkers.SOChecker
             {
                 var question = html.DocumentNode
                     .Descendants().First(node => node.GetAttributeValue("class", "").Equals("question-summary"));
-
                 var firstQuestion =
                     question.Descendants().First(x => x.GetAttributeValue("class", "").Equals("question-hyperlink"));
-
                 return $"{HttpUtility.HtmlDecode(firstQuestion.InnerText)} {UrlShortener.GetShortUrl($"www.stackoverflow.com{firstQuestion.Attributes["href"].Value}")}";
             }
             catch (InvalidOperationException exception)

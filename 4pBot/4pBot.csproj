@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>pBot</RootNamespace>
     <AssemblyName>4pBot</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>

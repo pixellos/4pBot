@@ -7,8 +7,8 @@
 
         public Argument(ArgumentOptions argumentOptions, string argumentName)
         {
-            ArgumentOptions = argumentOptions;
-            ArgumentName = argumentName;
+            this.ArgumentOptions = argumentOptions;
+            this.ArgumentName = argumentName;
         }
     }
 }

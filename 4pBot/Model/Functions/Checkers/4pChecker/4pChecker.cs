@@ -126,11 +126,8 @@ namespace pBot.Model.Functions.Checkers._4pChecker
             try
             {
                 var obj = Downloader4P.DownloadData("", ApiKey.ApiKeyForNewPosts);
-
                 var element = obj.Main.First(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
-
                 var forumId = GetForumId(Regex.Unescape(element.forum));
-
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
                        $"przez {element.first_post.user.name}: " +
                        UrlShortener.GetShortUrl(make4pUrlFromJson(forumId, element.topic_id.ToString(), element.subject));
@@ -146,7 +143,6 @@ namespace pBot.Model.Functions.Checkers._4pChecker
                     return "";
                 }
             }
-           
         }
 
         private string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>

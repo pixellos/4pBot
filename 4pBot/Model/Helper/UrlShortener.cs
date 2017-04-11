@@ -9,15 +9,15 @@ namespace pBot.Model.Helper
     {
         public static string GetShortUrl(this string longUrl)
         {
-            var url = new Url();
-            url.LongUrl = longUrl;
-            var returnValue =
-                new UrlshortenerService(new BaseClientService.Initializer
-                {
-                    ApiKey = Identity.GoogleApiKey
-                })
-                .Url.Insert(url).Execute();
-
+            var url = new Url()
+            {
+                LongUrl = longUrl
+            };
+            var clientService = new BaseClientService.Initializer
+            {
+                ApiKey = Identity.GoogleApiKey
+            };
+            var returnValue = new UrlshortenerService(clientService).Url.Insert(url).Execute();
             return returnValue.Id;
         }
     }

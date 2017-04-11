@@ -4,6 +4,7 @@ namespace CoreBot.Mask
 {
     public static class Builder // I'm assuming that every part of command except optional 
     {
+        [Obsolete("Use Bot() instead without Prepare()")]
         public static Block Prepare()
         {
             return new Block() {RegexString = @"^"};
@@ -21,12 +22,11 @@ namespace CoreBot.Mask
 
         public static Block Bot()
         {
-            var block = Prepare();
+            var block = Builder.Prepare();
 #pragma warning disable 618
             return block.Bot();
 #pragma warning restore 618
         }
-
 
         public static Block StartsWith(string startsWith)
         {
@@ -40,8 +40,7 @@ namespace CoreBot.Mask
 
         public static Block Requried(this Block block, string requestedInput)
         {
-            return block.AddToCommandBlock($"{requestedInput}",$"({requestedInput})", requestedInput,
-                requestedInput, ArgumentOptions.Core);
+            return block.AddToCommandBlock($"{requestedInput}",$"({requestedInput})", requestedInput, requestedInput, ArgumentOptions.Core);
         }
 
         public static Block ThenWord(this Block block, string sectionName, string sampleInput)

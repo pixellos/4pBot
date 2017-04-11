@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CoreBot.Mask
-{ 
+{
     public class Result
     {
-        private readonly Mask _commandMask;
-        private readonly string _fromString;
+        public Mask Mask { get; }
+        public string Source { get; }
 
-        public Dictionary<string, string> MatchedResult { get; }
-
-        public Result(Mask commandMask, string fromString, Dictionary<string, string> matchedResult)
+        public Result(Mask commandMask, string fromString)
         {
-            _commandMask = commandMask;
-            _fromString = fromString;
-            MatchedResult = matchedResult;
+            this.Mask = commandMask;
+            this.Source = fromString;
         }
-        public string this[string matchName] => MatchedResult[matchName];
     }
 }

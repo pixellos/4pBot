@@ -45,8 +45,6 @@ namespace pBot.Model.DataStructures
             return Cache.SingleOrDefault(x => x.Key.Equals(TBase)).Value;
         }
 
-
-
         public void InitializeKey(TBase TBase,TResult initializer)
         {
             Cache.Add(TBase, initializer);

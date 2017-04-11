@@ -8,28 +8,28 @@ namespace CoreBot
 {
     public class Actions
     {
-        Dictionary<Mask.Mask,Func<Result, string>> ActionsContainer = new Dictionary<Mask.Mask, Func<Result, string>>();
+        readonly Dictionary<Mask.Mask,Func<SuccededResult, string>> ActionsContainer = new Dictionary<Mask.Mask, Func<SuccededResult, string>>();
+        //Todo: I18N
         public const string HelpHeader = "Description\nSample Input\n";
         public const string HorizontalSeparator = "====================\n";
 
-        public Func<Result, string> this[Mask.Mask mask]
+        public Func<SuccededResult, string> this[Mask.Mask mask]
         {
-            set { ActionsContainer[mask] = value; }
-            get { return ActionsContainer[mask]; }
+            set { this.ActionsContainer[mask] = value; }
+            get { return this.ActionsContainer[mask]; }
         }
 
-        public void Add(Mask.Mask mask, Func<Result, string> func)
+        public void Add(Mask.Mask mask, Func<SuccededResult, string> func)
         {
-            ActionsContainer.Add(mask,func);
+            this.ActionsContainer.Add(mask,func);
         }
 
         public string GetHelpAboutActions()
         {
-            string result = HelpHeader; 
-
-            foreach (var pair in ActionsContainer)
+            var result = Actions.HelpHeader; 
+            foreach (var pair in this.ActionsContainer)
             {
-                result += HorizontalSeparator;
+                result += Actions.HorizontalSeparator;
                 result += $"{pair.Key.Description}\n";
                 result += $"{pair.Key.SampleInput}\n";
             }
@@ -38,21 +38,17 @@ namespace CoreBot
 
         /// <summary>
         /// Return null when result should not be send
-        /// Invoke only first 
+        /// Invokes only first matching action
         /// </summary>
         /// <returns>Status response</returns>
         public string InvokeMatchingAction(string author, string text)
         {
-            foreach (var record in ActionsContainer)
+            foreach (var record in this.ActionsContainer)
             {
-                try
+                var result = record.Key.Parse(author, text);
+                if (result is SuccededResult succeded)
                 {
-                    var result = record.Key.Parse(author, text);
-                    return record.Value(result);
-                }
-                catch (FormatException)
-                {
-                    continue;    
+                    return record.Value(succeded);
                 }
             }
             return null;
