@@ -7,7 +7,7 @@ namespace pBot.Model.Facades
     public class SoAdapter : IProgrammingSitesAdapter
     {
         public IXmpp Xmpp { get; set; }
-        public CheckerSO CheckerSo { get; set; }
+        public Checker CheckerSo { get; set; }
         public Repeater Repeater { get; set; }
 
         public string HotPost(string tag)

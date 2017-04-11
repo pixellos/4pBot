@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,26 +7,11 @@ using System.Threading.Tasks;
 //Excluded from everything coz 
 namespace pBot.Model.Functions
 {
-    public class SaveModel
+    public class StartupSomethingTodoChangeNameDao
     {
-        [Key]
-        public int Key { get; set; }
-        public string Title { get; set; }
-        public string Message { get; set; }
-    }
-
-    public class SaveContext : DbContext
-    {
-        public SaveContext() : base(@"Server=tcp:pixdata.database.windows.net,1433;Data Source=pixdata.database.windows.net;Initial Catalog=Botdatabse;Persist Security Info=False;User ID=myadmin12;Password=Pix123456;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
+        public StartupSomethingTodoChangeNameDao(string database)
         {
-            
         }
-        public DbSet<SaveModel> Table { get; set; } // not virtual to disable lazy loading
-    }
-
-    public class SaveManager
-    {
-        public SaveContext SaveContext = new SaveContext();
 
         public string Get(string title)
         {
@@ -45,11 +27,9 @@ namespace pBot.Model.Functions
         {
             if (SaveContext.Table.Any(x=>x.Title.Equals(title)))
             {
-                SaveContext.Table.Remove(
-                    SaveContext.Table.SingleOrDefault(x => x.Title.Equals(title))
-                    );
+                SaveContext.Table.Remove(SaveContext.Table.SingleOrDefault(x => x.Title.Equals(title)));
             }
-            SaveContext.Table.Add(new SaveModel() {Message = message, Title = title});
+            SaveContext.Table.Add(new UserMessage() {Message = message, User = title});
 
             SaveContext.SaveChanges();
 

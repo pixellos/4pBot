@@ -11,9 +11,9 @@ namespace _4pBotTests.Model.Functions.Checkers.SOChecker
         [Test()]
         public void CheckNewestByTagTest()
         {
-            CheckerSO checkerSo = new CheckerSO();
+            Checker checkerSo = new Checker();
 
-            DownloaderSo downloaderSo = NSubstitute.Substitute.For<DownloaderSo>();
+            Downloader downloaderSo = NSubstitute.Substitute.For<Downloader>();
             downloaderSo.WhenForAnyArgs(x=>x.GetWebString("")).DoNotCallBase();
             downloaderSo.GetWebString("").ReturnsForAnyArgs(Resources.SOHtml);
 
@@ -30,13 +30,13 @@ namespace _4pBotTests.Model.Functions.Checkers.SOChecker
         [Test()]
         public void NoMatchingTest()
         {
-            CheckerSO checkerSo = new CheckerSO()
+            Checker checkerSo = new Checker()
             {
-                DownloaderSo = new DownloaderSo()
+                DownloaderSo = new Downloader()
             };
 
             var response = checkerSo.CheckNewestByTag("I'm pretty sure, that you'll never found this :)");
-            Assert.AreEqual(response, CheckerSO.CantFindRequestMessage);
+            Assert.AreEqual(response, Checker.CantFindRequestMessage);
         }
     }
 }

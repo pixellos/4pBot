@@ -1,19 +1,24 @@
+using System;
+using CoreBot;
 using pBot.Model.ComunicateService;
 using pBot.Model.DataStructures;
+using pBot.Model.Functions;
 using pBot.Model.Functions.Checkers._4pChecker;
 using pBot.Model.Functions.HighLevel;
 
 namespace pBot.Model.Facades
 {
-    public class P4Adapter : IProgrammingSitesAdapter
+    public class P4 : IProgrammingSitesAdapter, ICommand
     {
-        public IXmpp Xmpp { get; set; }
-        public Checker4P Checker4P { get; set; }
+        public Checker Checker4P { get; set; }
 
         public Repeater P4Repeater { get; set; }
+
+        public Actions AvailableActions => throw new NotImplementedException();
+
         private CachedResponse<string, string> Cache = new CachedResponse<string, string>();
 
-        public P4Adapter()
+        public P4()
         {
         }
 

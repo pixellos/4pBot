@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -6,7 +7,7 @@ using CoreBot.Mask;
 
 namespace CoreBot
 {
-    public class Actions
+    public class Actions : IEnumerable<KeyValuePair<Mask.Mask, Func<SuccededResult, string>>>
     {
         readonly Dictionary<Mask.Mask,Func<SuccededResult, string>> ActionsContainer = new Dictionary<Mask.Mask, Func<SuccededResult, string>>();
         //Todo: I18N
@@ -52,6 +53,16 @@ namespace CoreBot
                 }
             }
             return null;
+        }
+
+        public IEnumerator<KeyValuePair<Mask.Mask, Func<SuccededResult, string>>> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

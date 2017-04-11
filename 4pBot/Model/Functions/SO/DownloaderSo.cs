@@ -4,9 +4,8 @@ using HtmlAgilityPack;
 
 namespace pBot.Model.Functions.Checkers.SOChecker
 {
-    public class DownloaderSo
+    public class Downloader
     {
-
         public virtual string GetWebString(string escapedTag)
         {
             return new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}");
@@ -15,7 +14,6 @@ namespace pBot.Model.Functions.Checkers.SOChecker
         {
             var html = new HtmlDocument();
             var escapedTag = HttpUtility.HtmlEncode(unescapedTag);
-
             html.LoadHtml(GetWebString(escapedTag));
             return html;
         }

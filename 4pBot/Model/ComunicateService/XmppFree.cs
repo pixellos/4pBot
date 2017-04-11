@@ -12,11 +12,13 @@ namespace pBot.Model.ComunicateService
     public class XmppFree : IXmpp
     {
         private static string RoomName = "help";
-        
         private readonly XmppClientConnection clientConnection;
         private MucManager mucManager;
         private DateTime startupDate = DateTime.Now;
-        public SaveManager Manager { get; set; }
+        public Actions Actions { get; set; }
+        public StartupSomethingTodoChangeNameDao Manager { get; set; }
+        public void Open() => clientConnection.Open();
+        public void Close() => clientConnection.Close();
         public XmppFree()
         {
             clientConnection = new XmppClientConnection
@@ -26,7 +28,6 @@ namespace pBot.Model.ComunicateService
                 Username = Identity.UserName,
                 Server = "4programmers.net"
             };
-
             clientConnection.Open();
             clientConnection.OnLogin += JoinRoom;
             clientConnection.OnMessage += HandleMessage;
@@ -37,18 +38,8 @@ namespace pBot.Model.ComunicateService
         
         private void ClientConnection_OnPresence(object sender, Presence pres)
         {
-            SendIfNotNull(
-                Manager.Get(pres.From.Resource)
-                );    
-        }
-
-        public Actions Actions { get; set; }
-
-
-        public void Open() => clientConnection.Open();
-        public void Close()
-        {
-            clientConnection.Close();
+            var g = Manager.Get(pres.From.Resource);
+            this.SendIfNotNull(g);    
         }
 
         public void SendIfNotNull(string message)
@@ -74,16 +65,13 @@ namespace pBot.Model.ComunicateService
                     Body = message,
                     To = RoomName + Server() + "/" + user,
                     From = clientConnection.MyJID
-                }
-                );
+                });
         }
 
         public string ChangeRoom(string roomName)
         {
-            mucManager.LeaveRoom(RoomName + "@conference.4programmers.net", "Bot");
-
+            mucManager.LeaveRoom(RoomName + this.Server, "Bot");
             startupDate = DateTime.Now;
-
             RoomName = roomName;
             Task.Delay(1000);
             JoinRoom();
@@ -93,9 +81,7 @@ namespace pBot.Model.ComunicateService
         private void HandleMessage(object sender, Message msg)
         {
             var Stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
-
             var nickName = msg?.From.Resource ?? "Undefined";
-
             if (startupDate < Stamp)
             {
                 

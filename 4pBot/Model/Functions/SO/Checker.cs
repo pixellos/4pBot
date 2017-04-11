@@ -5,11 +5,11 @@ using pBot.Model.Helper;
 
 namespace pBot.Model.Functions.Checkers.SOChecker
 {
-    public class CheckerSO
+    public class Checker
     {
         public const string CantFindRequestMessage = "Sorry, I can't find your request :(";
 
-        public DownloaderSo DownloaderSo { get; set; }
+        public Downloader DownloaderSo { get; set; }
 
         public string CheckNewestByTag(string tagName)
         {

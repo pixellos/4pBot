@@ -58,8 +58,7 @@ namespace pBot.Model.Functions.HighLevel
                 CachedResponse.Remove(key);
                 return "OK";
             }
-                return "There is no entry";
+            return "There is no entry";
         }
     }
-
 }

@@ -7,7 +7,7 @@ using pBot.Model.Helper;
 
 namespace pBot.Model.Functions.Checkers._4pChecker
 {
-    public class Checker4P
+    public class Checker
     {
         public Downloader4P Downloader4P { get; set; } = new Downloader4P();
 
@@ -99,7 +99,7 @@ namespace pBot.Model.Functions.Checkers._4pChecker
                 .Replace('(', '_')
                 .Replace(')', '_')
                 .Replace('[', '_')
-                .Replace("#","")
+                .Replace("#", "")
                 .Replace('@', '_')
                 .Replace('!', '_')
                 .Replace(',', '_')
@@ -153,10 +153,8 @@ namespace pBot.Model.Functions.Checkers._4pChecker
             try
             {
                 var jsonForumId = GetForumId(categoryName);
-                var obj = Downloader4P.DownloadData(jsonForumId,ApiKey.ApiKeyWithForumIdQuotation);
-
+                var obj = Downloader4P.DownloadData(jsonForumId, ApiKey.ApiKeyWithForumIdQuotation);
                 var element = obj.Main.First();
-
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
                        $"przez {element.first_post.user.name}: " +
                        UrlShortener.GetShortUrl(make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
