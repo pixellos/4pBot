@@ -5,30 +5,40 @@ using agsXMPP.protocol.client;
 using agsXMPP.protocol.x.muc;
 using CoreBot;
 using _4PBot.Model.Constants;
+using _4PBot.Model.Functions;
+using CoreBot.Mask;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace _4PBot.Model.ComunicateService
 {
     public class XmppFree : IXmpp
     {
         private static string RoomName = "help";
-        private readonly XmppClientConnection clientConnection;
-        private MucManager mucManager;
-        private DateTime startupDate = DateTime.Now;
-        public Actions Actions { get; set; }
-        public void Open() => this.clientConnection.Open();
-        public void Close() => this.clientConnection.Close();
-        public XmppFree()
+        private XmppClientConnection ClientConnection { get; }
+        private MucManager MucManager { get; set; }
+        private DateTime StartupDate = DateTime.Now;
+        private Actions Actions { get; }
+      
+        public void Open() => this.ClientConnection.Open();
+        public void Close() => this.ClientConnection.Close();
+        public XmppFree(IEnumerable<ICommand> commands)
         {
-            this.clientConnection = new XmppClientConnection
+            var actions = commands.Select(x => x.AvailableActions);
+            foreach (var action in actions)
+            {
+                this.Actions = action;
+            }
+            this.ClientConnection = new XmppClientConnection
             {
                 AutoPresence = true,
                 Password = Identity.Password,
                 Username = Identity.UserName,
                 Server = "4programmers.net"
             };
-            this.clientConnection.Open();
-            this.clientConnection.OnLogin += this.JoinRoom;
-            this.clientConnection.OnMessage += this.HandleMessage;
+            this.ClientConnection.Open();
+            this.ClientConnection.OnLogin += this.JoinRoom;
+            this.ClientConnection.OnMessage += this.HandleMessage;
         }
 
         private void ClientConnection_OnPresence(object sender, Presence pres)
@@ -41,32 +51,31 @@ namespace _4PBot.Model.ComunicateService
         {
             if (message != null)
             {
-                this.clientConnection.Send(new Message
+                this.ClientConnection.Send(new Message
                 {
                     Type = MessageType.groupchat,
                     Body = message,
                     To = XmppFree.RoomName + XmppFree.Server(),
-                    From = this.clientConnection.MyJID
+                    From = this.ClientConnection.MyJID
                 });
             }
         }
 
         public void PrivateSend(string user, string message)
         {
-            this.clientConnection.Send(
-                new Message
-                {
-                    Type = MessageType.chat,
-                    Body = message,
-                    To = XmppFree.RoomName + XmppFree.Server() + "/" + user,
-                    From = this.clientConnection.MyJID
-                });
+            this.ClientConnection.Send(new Message
+            {
+                Type = MessageType.chat,
+                Body = message,
+                To = XmppFree.RoomName + XmppFree.Server() + "/" + user,
+                From = this.ClientConnection.MyJID
+            });
         }
 
         public string ChangeRoom(string roomName)
         {
-            this.mucManager.LeaveRoom(XmppFree.RoomName + XmppFree.Server(), "Bot");
-            this.startupDate = DateTime.Now;
+            this.MucManager.LeaveRoom(XmppFree.RoomName + XmppFree.Server(), "Bot");
+            this.StartupDate = DateTime.Now;
             XmppFree.RoomName = roomName;
             Task.Delay(1000);
             this.JoinRoom();
@@ -77,7 +86,7 @@ namespace _4PBot.Model.ComunicateService
         {
             var Stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
             var nickName = msg?.From.Resource ?? "Undefined";
-            if (this.startupDate < Stamp)
+            if (this.StartupDate < Stamp)
             {
 
                 var response = this.Actions.InvokeMatchingAction(nickName, msg.Body);
@@ -99,8 +108,8 @@ namespace _4PBot.Model.ComunicateService
 
         private void JoinRoom(object sender = null)
         {
-            this.mucManager = new MucManager(this.clientConnection);
-            this.mucManager.JoinRoom(XmppFree.RoomName + XmppFree.Server(), "Bot");
+            this.MucManager = new MucManager(this.ClientConnection);
+            this.MucManager.JoinRoom(XmppFree.RoomName + XmppFree.Server(), "Bot");
         }
 
         private static string Server()

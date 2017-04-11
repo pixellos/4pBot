@@ -24,23 +24,22 @@ namespace BotNet.Controllers
             }
             else
             {
-                MainClass.MessageToInvoke = xmpp => xmpp.Open();
+                MainClass.MessageToInvoke.Enqueue(xmpp => xmpp.Open());
                 CancellationToken.Cancel();
             }
-
             return View("Index");
         }
 
         public ActionResult StopBot()
         {
-            MainClass.MessageToInvoke = xmpp => xmpp.Close();
+            MainClass.MessageToInvoke.Enqueue(xmpp => xmpp.Close());
             CancellationToken.Cancel();
             return View("Index");
         }
 
         public ActionResult ChangeRoom()
         {
-            MainClass.MessageToInvoke = xmpp => xmpp.ChangeRoom("General");
+            MainClass.MessageToInvoke.Enqueue(xmpp => xmpp.ChangeRoom("General"));
             CancellationToken.Cancel();
             return View("Index");
         }
@@ -58,7 +57,6 @@ namespace BotNet.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

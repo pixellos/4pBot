@@ -12,6 +12,7 @@ namespace _4PBot.Model.Facades
         private Checker Checker { get; }
         private Repeater Repeater { get; }
         private CachedResponse<string, string> Cache = new CachedResponse<string, string>();
+
         public Actions AvailableActions
         {
             get

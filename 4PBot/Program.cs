@@ -26,8 +26,6 @@ namespace _4PBot
             {
                 var container = AutofacSetup.GetContainer();
                 var xmpp = container.Resolve<IXmpp>();
-                var controller = container.Resolve<Controllers>();
-                controller.ControllerInitialize();
                 while (true)
                 {
                     await Task.Delay(100);

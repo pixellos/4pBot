@@ -285,17 +285,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dependencies\Controllers.cs" />
+    <Compile Include="Model\ComunicateService\XmppFreeWithCommands.cs" />
     <Compile Include="Model\Facades\ActionExtensions.cs" />
     <Compile Include="Model\Facades\IProgrammingSitesAdapter.cs" />
-    <Compile Include="Model\Facades\4Programmers.cs" />
-    <Compile Include="Model\Facades\StackOverflow.cs" />
+    <Compile Include="Model\Functions\4Programmers.cs" />
+    <Compile Include="Model\Functions\StackOverflow.cs" />
     <Compile Include="Model\DataStructures\CachedResponse.cs" />
     <Compile Include="Model\Functions\4Programmers\Checker.cs" />
     <Compile Include="Model\Constants\ApiKey.cs" />
     <Compile Include="Model\Functions\4Programmers\Downloader4P.cs" />
     <Compile Include="Model\Functions\4Programmers\JSONModel.cs" />
     <Compile Include="Model\Functions\ActionsHelp.cs" />
+    <Compile Include="Model\Functions\Messages.cs" />
     <Compile Include="Model\Functions\StackOverflow\DownloaderSo.cs" />
     <Compile Include="Model\Functions\ICommand.cs" />
     <Compile Include="Model\Functions\UserMessage.cs" />
