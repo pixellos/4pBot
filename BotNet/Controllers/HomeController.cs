@@ -11,36 +11,36 @@ namespace BotNet.Controllers
 {
     public class HomeController : Controller
     {
-        private static Task TaskHandler = null;
+        private static BotContext Context;
+        private static Task TaskHandler;
         private static CancellationTokenSource CancellationToken;
 
         public async Task<ActionResult> StartBot()
         {
-            if (TaskHandler == null)
+            if (HomeController.Context == null)
             {
+                var context = new BotContext();
                 HomeController.CancellationToken = new CancellationTokenSource();
-                HomeController.TaskHandler = MainClass.Start(CancellationToken);
-                await TaskHandler;
+                HomeController.TaskHandler = context.Start(CancellationToken);
+                await HomeController.TaskHandler;
             }
             else
             {
-                MainClass.MessageToInvoke.Enqueue(xmpp => xmpp.Open());
-                CancellationToken.Cancel();
+                HomeController.Context.MessageToInvoke.Enqueue(xmpp => xmpp.Open());
             }
             return View("Index");
         }
 
         public ActionResult StopBot()
         {
-            MainClass.MessageToInvoke.Enqueue(xmpp => xmpp.Close());
+            HomeController.Context.MessageToInvoke.Enqueue(xmpp => xmpp.Close());
             CancellationToken.Cancel();
             return View("Index");
         }
 
         public ActionResult ChangeRoom()
         {
-            MainClass.MessageToInvoke.Enqueue(xmpp => xmpp.ChangeRoom("General"));
-            CancellationToken.Cancel();
+            HomeController.Context.MessageToInvoke.Enqueue(xmpp => xmpp.ChangeRoom("General"));
             return View("Index");
         }
 

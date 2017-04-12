@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace _4PBot
 {
-    internal class BotContext
+    public class BotContext
     {
         public Queue<Action<IXmpp>> MessageToInvoke = new Queue<Action<IXmpp>>();
         private List<ICommand> iListImplementations = new List<ICommand>();
