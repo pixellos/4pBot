@@ -22,10 +22,10 @@ namespace _4pBot.Tests.Model.Functions._4Programmers
         public void GetNewestPostTest()
         {
             var downloader = Substitute.For<TopicsContiniousDownloading>();
-            var deserializer = downloader.Deserialize(Resources._4pJson);
+            var data = downloader.Deserialize(Resources._4pJson);
             var checker4P = new Checker(downloader);
-            downloader.WhenForAnyArgs(x => x.DownloadData("x")).DoNotCallBase();
-            downloader.DownloadData("x").ReturnsForAnyArgs(deserializer.Posts);
+            downloader.WhenForAnyArgs(x => x.DownloadData()).DoNotCallBase();
+            downloader.DownloadData().ReturnsForAnyArgs(data);
             Console.WriteLine(checker4P.GetLastPostAtCategory("Java"));
             Assert.IsTrue(checker4P.GetLastPostAtCategory("Java").StartsWith("Java: Rozszerzenie listy jednokierunkowej, przez Stang: "));
         }
