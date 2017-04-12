@@ -287,7 +287,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BotContext.cs" />
-    <Compile Include="Model\4PCredentials.cs" />
     <Compile Include="Model\ComunicateService\XmppFreeWithCommands.cs" />
     <Compile Include="Model\Facades\ActionExtensions.cs" />
     <Compile Include="Model\Facades\IProgrammingSitesAdapter.cs" />
