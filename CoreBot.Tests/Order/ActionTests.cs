@@ -25,7 +25,7 @@ namespace CoreBot.Tests.Order
         public void IntegrationTest()
         {
             this.actions.Add(this.mask, this.expectedAction);
-            Assert.AreEqual(this.actions.InvokeMatchingAction("", "Bot Test"),"ReturnString");
+            Assert.AreEqual(this.actions.InvokeMatchingAction("", Builder.Name + " Test"), "ReturnString");
         }
 
         [Test]

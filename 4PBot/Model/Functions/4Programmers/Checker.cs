@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using _4PBot.Model.Constants;
 using _4PBot.Model.Helper;
+using System.Configuration;
 
 namespace _4PBot.Model.Functions._4Programmers
 {
@@ -80,8 +80,8 @@ namespace _4PBot.Model.Functions._4Programmers
             {"51", "Python"}
         };
 
-        private Downloader Downloader { get; set; }
-        public Checker(Downloader downloader)
+        private TopicsContiniousDownloading Downloader { get; set; }
+        public Checker(TopicsContiniousDownloading downloader)
         {
             this.Downloader = downloader;
         }
@@ -95,6 +95,9 @@ namespace _4PBot.Model.Functions._4Programmers
         {
             return this.IDToForumString.Single(x => x.Key.Equals(id)).Value;
         }
+
+        private string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
+            $"http://forum.4programmers.net/{this.GetForumUrl(jsonForumId)}/{jsonTopicId}-{this.NormalizeSubject(jsonSubject)}";
 
         private string NormalizeSubject(string subject)
         {
@@ -127,43 +130,31 @@ namespace _4PBot.Model.Functions._4Programmers
 
         public string GetLastMessagesByTag(string requestedTag, bool shouldGiveMessageWhenThereIsNoMatch = true)
         {
-            try
+            var obj = this.Downloader.DownloadData();
+            var post = obj.FirstOrDefault(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
+            if (post != null)
             {
-                var obj = this.Downloader.DownloadData("", ApiKey.ApiKeyForNewPosts);
-                var element = obj.Property1.First(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
-                var forumId = this.GetForumId(Regex.Unescape(element.forum));
-                return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
+                var jsonForumId = this.GetForumId(post.forum);
+                return $"{post.forum}: {Regex.Unescape(post.subject)}, " +
                        // $"przez {element.first_post.user.name}: " +
-                       UrlShortener.GetShortUrl(this.make4pUrlFromJson(forumId, element.topic_id.ToString(), element.subject));
+                       UrlShortener.GetShortUrl(this.make4pUrlFromJson(jsonForumId, post.topic_id.ToString(), post.subject));
             }
-            catch (Exception)
+            else
             {
-                if (shouldGiveMessageWhenThereIsNoMatch)
-                {
-                    return $"I cant find any posts with tag {requestedTag}";
-                }
-                else
-                {
-                    return "";
-                }
+                return Checker.NoMatchingForumMeessage;
             }
         }
 
-        private string make4pUrlFromJson(string jsonForumId, string jsonTopicId, string jsonSubject) =>
-            $"http://forum.4programmers.net/{this.GetForumUrl(jsonForumId)}/{jsonTopicId}-{this.NormalizeSubject(jsonSubject)}";
-
         public string GetLastPostAtCategory(string categoryName)
         {
-            try
+            var data = this.Downloader.DownloadData();
+            var post = data.FirstOrDefault(x => Regex.Unescape(x.forum).Contains(categoryName));
+            if (post != null)
             {
                 var jsonForumId = this.GetForumId(categoryName);
-                var obj = this.Downloader.DownloadData(jsonForumId, ApiKey.ApiKeyWithForumIdQuotation);
-                var element = obj.Property1.First();
-                return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
-                       //$"przez {element.first_post.user.name}: " +
-                       UrlShortener.GetShortUrl(this.make4pUrlFromJson(jsonForumId, element.topic_id.ToString(), element.subject));
+                return $"{post.forum}: {Regex.Unescape(post.subject)}, " + UrlShortener.GetShortUrl(this.make4pUrlFromJson(jsonForumId, post.topic_id.ToString(), post.subject));
             }
-            catch (InvalidOperationException)
+            else
             {
                 return Checker.NoMatchingForumMeessage;
             }

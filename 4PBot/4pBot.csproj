@@ -196,6 +196,7 @@
     <Reference Include="System.Composition.TypedParts, Version=1.0.30.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Composition.1.0.30\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
     </Reference>
@@ -294,7 +295,6 @@
     <Compile Include="Model\Functions\StackOverflow.cs" />
     <Compile Include="Model\DataStructures\CachedResponse.cs" />
     <Compile Include="Model\Functions\4Programmers\Checker.cs" />
-    <Compile Include="Model\Constants\ApiKey.cs" />
     <Compile Include="Model\Functions\4Programmers\Downloader4P.cs" />
     <Compile Include="Model\Functions\4Programmers\JSONModel.cs" />
     <Compile Include="Model\Functions\ActionsHelp.cs" />
@@ -303,7 +303,6 @@
     <Compile Include="Model\Functions\StackOverflow\DownloaderSo.cs" />
     <Compile Include="Model\Functions\UserMessage.cs" />
     <Compile Include="Model\Helper\UrlShortener.cs" />
-    <Compile Include="Model\Constants\Identity.cs" />
     <Compile Include="Model\ComunicateService\IXmpp.cs" />
     <Compile Include="Model\ComunicateService\XmppFree.cs" />
     <Compile Include="Model\Functions\StackOverflow\Checker.cs" />

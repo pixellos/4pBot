@@ -15,34 +15,34 @@ namespace CoreBot.Tests.Masking
             get
             {
                 yield return new TestCaseData(
-                    Builder.Bot().End(), "Bot ").
+                    Builder.Bot().End(), Builder.Name + " ").
                     Returns(new Dictionary<string, string>()
                     {
-                        ["Bot"] = ""
+                        [Builder.Name] = ""
                     });
                 yield return new TestCaseData(
-                Builder.Bot().ThenEverythingToEndOfLine("All").End(), "Bot 12345 qwerty !@#$%^&").
+                Builder.Bot().ThenEverythingToEndOfLine("All").End(), Builder.Name+ " 12345 qwerty !@#$%^&").
                     Returns(new Dictionary<string, string>()
                     {
-                        ["Bot"] = "",
+                        [Builder.Name] = "",
                         ["All"] = "12345 qwerty !@#$%^&"
                     });
-                yield return new TestCaseData(Builder.Bot().ThenWord("SomeWord", "Example").End(), "Bot test ").
+                yield return new TestCaseData(Builder.Bot().ThenWord("SomeWord", "Example").End(), Builder.Name + " test ").
                     Returns(new Dictionary<string, string>()
                     {
-                        ["Bot"] = "",
+                        [Builder.Name] = "",
                         ["SomeWord"] = "test"
                     });
-                yield return new TestCaseData(Builder.Bot().ThenString("Q", "1234").End(), "Bot 8796381147869adsa").
+                yield return new TestCaseData(Builder.Bot().ThenString("Q", "1234").End(), Builder.Name + " 8796381147869adsa").
                     Returns(new Dictionary<string, string>()
                     {
-                        ["Bot"] = "",
+                        [Builder.Name] = "",
                         ["Q"] = "8796381147869adsa"
                     });
-                yield return new TestCaseData(Builder.Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").End(), "Bot test trata rata").
+                yield return new TestCaseData(Builder.Bot().ThenWord("SomeWord", "Example").ThenEverythingToEndOfLine("Everything", "some input").End(), Builder.Name + " test trata rata").
                     Returns(new Dictionary<string, string>()
                     {
-                        ["Bot"] = "",
+                        [Builder.Name] = "",
                         ["SomeWord"] = "test",
                         ["Everything"] = "trata rata"
                     });

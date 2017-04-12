@@ -21,7 +21,7 @@ namespace _4PBot.Dependencies
             builder.RegisterType<Actions>().SingleInstance();
             builder.RegisterType<Model.Functions._4Programmers.Checker>().SingleInstance();
             builder.RegisterType<Model.Functions.StackOverflow.Checker>().SingleInstance();
-            builder.RegisterType<Model.Functions._4Programmers.Downloader>().SingleInstance();
+            builder.RegisterType<Model.Functions._4Programmers.TopicsContiniousDownloading>().SingleInstance();
             builder.RegisterType<_4Programmers>().SingleInstance().AsImplementedInterfaces();
             builder.RegisterType<StackOverflow>().SingleInstance().AsImplementedInterfaces();
             builder.RegisterType<ActionsHelp>().SingleInstance().AsImplementedInterfaces();

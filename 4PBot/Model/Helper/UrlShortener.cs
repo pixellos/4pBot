@@ -1,7 +1,7 @@
 using Google.Apis.Services;
 using Google.Apis.Urlshortener.v1;
 using Google.Apis.Urlshortener.v1.Data;
-using _4PBot.Model.Constants;
+using System.Configuration;
 
 namespace _4PBot.Model.Helper
 {
@@ -15,7 +15,7 @@ namespace _4PBot.Model.Helper
             };
             var clientService = new BaseClientService.Initializer
             {
-                ApiKey = Identity.GoogleApiKey
+                ApiKey = ConfigurationManager.AppSettings["GoogleApiKey"]
             };
             var returnValue = new UrlshortenerService(clientService).Url.Insert(url).Execute();
             return returnValue.Id;

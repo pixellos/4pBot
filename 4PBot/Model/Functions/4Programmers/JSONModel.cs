@@ -4,14 +4,15 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace _4PBot.Model.Functions._4Programmers
 {
+    //Tool generated
     [Serializable]
     public class Rootobject
     {
-        public Class1[] Property1 { get; set; }
+        public Post[] Posts { get; set; }
     }
 
     [Serializable]
-    public class Class1
+    public class Post
     {
         public string topic_id { get; set; }
         public string post_id { get; set; }

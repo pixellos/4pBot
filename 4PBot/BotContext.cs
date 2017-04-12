@@ -8,6 +8,7 @@ using CoreBot;
 using _4PBot.Model.Facades;
 using _4PBot.Model.Functions.HighLevel;
 using System.Linq;
+using System.Configuration;
 
 namespace _4PBot
 {
@@ -21,7 +22,7 @@ namespace _4PBot
             var actions = new Actions();
             var repeater = new Repeater();
             var soDownloader = new Model.Functions.StackOverflow.Downloader();
-            var pDownloader = new Model.Functions._4Programmers.Downloader();
+            var pDownloader = new Model.Functions._4Programmers.TopicsContiniousDownloading(ConfigurationManager.AppSettings["4PStartingWith"]);
             var soChecker = new Model.Functions.StackOverflow.Checker(soDownloader);
             var pChecker = new Model.Functions._4Programmers.Checker(pDownloader);
             var xmpp = new XmppFreeWithCommandsHandling(actions);

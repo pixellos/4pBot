@@ -11,6 +11,7 @@ namespace _4PBot.Model.Facades
             Repeat,
             Dont,
             Java,
+            Category,
         }
 
         public static Actions ConstructStandardProgrammingSitesQuotations(this IProgrammingSitesAdapter adapter, string forumPrefix)
@@ -35,7 +36,13 @@ namespace _4PBot.Model.Facades
                     .Requried(forumPrefix)
                     .ThenString(nameof(Words.Tag), nameof(Words.Java))
                     .End()
-                ] = result => adapter.HotPost(result[nameof(Words.Tag)])
+                ] = result => adapter.HotPost(result[nameof(Words.Tag)]),
+                [Builder.Bot()
+                    .Requried(nameof(Words.Category))
+                    .Requried(forumPrefix)
+                    .ThenString(nameof(Words.Tag), nameof(Words.Java))
+                    .End()
+                ] = result => adapter.NewThreads(result[nameof(Words.Tag)])
             };
             return actions;
         }
