@@ -12,7 +12,8 @@ namespace _4pBot.Tests.Model.Functions._4Programmers
         [Test]
         public void NoMatchingForum()
         {
-            var checker = new Checker();
+            var d = new Downloader();
+            var checker = new Checker(d);
             var response = checker.GetLastPostAtCategory("3iu32o5u9uj");
             Assert.AreEqual(Checker.NoMatchingForumMeessage, response);
         }
@@ -21,13 +22,11 @@ namespace _4pBot.Tests.Model.Functions._4Programmers
         public void GetNewestPostTest()
         {
             var downloader = new Downloader();
+            var checker4P = new Checker(downloader);
             var deserializer = downloader.Deserialize(Resources._4pJson);
             Downloader Downloader4P = Substitute.For<Downloader>();
             Downloader4P.WhenForAnyArgs(x => x.DownloadData("x", "x")).DoNotCallBase();
             Downloader4P.DownloadData("x", "x").ReturnsForAnyArgs(deserializer);
-            var checker4P = new Checker();
-            checker4P.Downloader4P = Downloader4P;
-
             Console.WriteLine(checker4P.GetLastPostAtCategory("Java"));
             Assert.IsTrue(checker4P.GetLastPostAtCategory("Java").StartsWith("Java: Rozszerzenie listy jednokierunkowej, przez Stang: "));
         }

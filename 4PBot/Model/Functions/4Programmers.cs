@@ -9,7 +9,8 @@ namespace _4PBot.Model.Facades
 {
     public class _4Programmers : IProgrammingSitesAdapter, ICommand
     {
-        public static string Name = nameof(_4Programmers).Substring(1);
+        public static string Name = "4P";
+        public Actions Actions => this.ConstructStandardProgrammingSitesQuotations(_4Programmers.Name);
         private Checker Checker { get; }
         private Repeater Repeater { get; }
         private CachedResponse<string, string> Cache = new CachedResponse<string, string>();
@@ -23,7 +24,7 @@ namespace _4PBot.Model.Facades
             }
         }
 
-        public _4Programmers(Checker checker, Repeater repeater)
+        public _4Programmers(Repeater repeater, Checker checker)
         {
             this.Checker = checker;
             this.Repeater = repeater;
@@ -57,14 +58,6 @@ namespace _4PBot.Model.Facades
         public string NewThreadsStreamStop(string forumName)
         {
             return this.Repeater.RemoveRequest(forumName + "Thread");
-        }
-
-        public void Register(Actions actions)
-        {
-            foreach (var item in this.ConstructStandardProgrammingSitesQuotations(_4Programmers.Name))
-            {
-                actions.Add(item.Key, item.Value);
-            }
         }
     }
 }

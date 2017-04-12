@@ -285,6 +285,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BotContext.cs" />
+    <Compile Include="Model\4PCredentials.cs" />
     <Compile Include="Model\ComunicateService\XmppFreeWithCommands.cs" />
     <Compile Include="Model\Facades\ActionExtensions.cs" />
     <Compile Include="Model\Facades\IProgrammingSitesAdapter.cs" />
@@ -297,8 +299,8 @@
     <Compile Include="Model\Functions\4Programmers\JSONModel.cs" />
     <Compile Include="Model\Functions\ActionsHelp.cs" />
     <Compile Include="Model\Functions\Messages.cs" />
-    <Compile Include="Model\Functions\StackOverflow\DownloaderSo.cs" />
     <Compile Include="Model\Functions\ICommand.cs" />
+    <Compile Include="Model\Functions\StackOverflow\DownloaderSo.cs" />
     <Compile Include="Model\Functions\UserMessage.cs" />
     <Compile Include="Model\Helper\UrlShortener.cs" />
     <Compile Include="Model\Constants\Identity.cs" />

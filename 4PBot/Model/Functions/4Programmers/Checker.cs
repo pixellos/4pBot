@@ -9,8 +9,6 @@ namespace _4PBot.Model.Functions._4Programmers
 {
     public class Checker
     {
-        public Downloader Downloader4P { get; set; } = new Downloader();
-
         public const string NoMatchingForumMeessage = "There is no matching forum id! Check your spelling";
         private readonly Dictionary<string, string> NameToID = new Dictionary<string, string>
         {
@@ -82,6 +80,12 @@ namespace _4PBot.Model.Functions._4Programmers
             {"51", "Python"}
         };
 
+        private Downloader Downloader { get; set; }
+        public Checker(Downloader downloader)
+        {
+            this.Downloader = downloader;
+        }
+
         public string GetForumId(string forumName)
         {
             return this.NameToID.First(x => x.Key.ToLower().Contains(forumName.ToLower())).Value;
@@ -125,7 +129,7 @@ namespace _4PBot.Model.Functions._4Programmers
         {
             try
             {
-                var obj = this.Downloader4P.DownloadData("", ApiKey.ApiKeyForNewPosts);
+                var obj = this.Downloader.DownloadData("", ApiKey.ApiKeyForNewPosts);
                 var element = obj.Property1.First(x => x.tags.Contains(requestedTag) || Regex.Unescape(x.forum).Contains(requestedTag));
                 var forumId = this.GetForumId(Regex.Unescape(element.forum));
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
@@ -153,7 +157,7 @@ namespace _4PBot.Model.Functions._4Programmers
             try
             {
                 var jsonForumId = this.GetForumId(categoryName);
-                var obj = this.Downloader4P.DownloadData(jsonForumId, ApiKey.ApiKeyWithForumIdQuotation);
+                var obj = this.Downloader.DownloadData(jsonForumId, ApiKey.ApiKeyWithForumIdQuotation);
                 var element = obj.Property1.First();
                 return $"{element.forum}: {Regex.Unescape(element.subject)}, " +
                        //$"przez {element.first_post.user.name}: " +

@@ -1,6 +1,7 @@
 using System.Net;
 using System.Web;
 using HtmlAgilityPack;
+using System;
 
 namespace _4PBot.Model.Functions.StackOverflow
 {
@@ -8,8 +9,17 @@ namespace _4PBot.Model.Functions.StackOverflow
     {
         public virtual string GetWebString(string escapedTag)
         {
-            return new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}");
+            try
+            {
+                return new WebClient().DownloadString($"http://stackoverflow.com/questions/tagged/{escapedTag}");
+            }
+            catch (WebException we)
+            {
+                Console.WriteLine("User typed some unsupported string. " + escapedTag + we.ToString());
+                return string.Empty;
+            }
         }
+
         public HtmlDocument Download(string unescapedTag)
         {
             var html = new HtmlDocument();

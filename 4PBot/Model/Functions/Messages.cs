@@ -57,10 +57,15 @@ namespace _4PBot.Model.Functions
             };
         }
 
-        public void Register(Actions actions)
+        public Actions Actions
         {
-            this.AppendSave(actions);
-            this.AppendRead(actions);
+            get
+            {
+                var a = new Actions();
+                this.AppendRead(a);
+                this.AppendSave(a);
+                return a;
+            }
         }
     }
 }

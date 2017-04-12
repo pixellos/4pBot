@@ -26,13 +26,12 @@ namespace _4PBot.Model.DataStructures
             this.Cache[TBase] = TResult;
         }
 
-        public void DoWhenResponseIsNotLikeLastResponse(TBase TBase, TResult TResult, Action<TResult> action, TResult baseResult = default(TResult))
+        public void DoWhenResponseDifferentThanPrevious(TBase TBase, TResult TResult, Action<TResult> action, TResult baseResult = default(TResult))
         {
             if (!this.ContainsKey(TBase))
             {
                 this.InitializeKey(TBase,baseResult);
             }
-
             if (this.IsResponseUnique(TBase, TResult))
             {
                 this.SetLastResponse(TBase, TResult);

@@ -11,24 +11,29 @@ namespace _4PBot.Model.ComunicateService
 {
     public class XmppFreeWithCommandsHandling : XmppFree, ICommand
     {
-        public XmppFreeWithCommandsHandling(Actions actions, ICommand[] commands) : base(actions)
-        {
-            foreach (var item in commands)
-            {
-                item.Register(actions);
-            }
-            this.Register(actions);
-        }
-
-        enum Words
+        private enum Words
         {
             Room,
             RoomName,
         }
 
-        public void Register(Actions actions)
+        public Actions Actions
         {
-            actions[Builder.Bot().Requried(nameof(Words.Room)).ThenWord(nameof(Words.RoomName), nameof(Words.Room)).End()] = result => this.ChangeRoom(result[nameof(Words.RoomName)]);
+            get
+            {
+                var actions = new Actions
+                {
+                    [Builder.Bot()
+                        .Requried(nameof(Words.Room))
+                        .ThenWord(nameof(Words.RoomName), nameof(Words.Room))
+                        .End()] = result => this.ChangeRoom(result[nameof(Words.RoomName)])
+                };
+                return actions;
+            }
+        }
+
+        public XmppFreeWithCommandsHandling(Actions actions) : base(actions)
+        {
         }
     }
 }

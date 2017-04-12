@@ -41,7 +41,7 @@ namespace _4pBot.Tests.Model.DataStructures
         [Test()]
         public void DoWhenResponseIsNotLikeLastResponseTest()
         {
-            this.cachedResponse.DoWhenResponseIsNotLikeLastResponse(this.firstKey, "NotLastLike", s => Assert.AreEqual(s, "NotLastLike"));
+            this.cachedResponse.DoWhenResponseDifferentThanPrevious(this.firstKey, "NotLastLike", s => Assert.AreEqual(s, "NotLastLike"));
         }
 
         [Test()]

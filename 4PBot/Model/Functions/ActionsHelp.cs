@@ -8,17 +8,17 @@ namespace _4PBot.Model.Functions
     public class ActionsHelp : ICommand
     {
         public static readonly string BotHelpMessage = "To get help use \"Bot help\" call";
-        private Actions Actions { get; }
+        private Actions InjectedActions { get; }
         public ActionsHelp(Actions actions)
         {
-            this.Actions = actions;
+            this.InjectedActions = actions;
         }
 
         public string BuildHelpString()
         {
             var result = new StringBuilder();
-            result.Append(Actions.HelpHeader);
-            foreach (var pair in this.Actions)
+            result.Append(CoreBot.Actions.HelpHeader);
+            foreach (var pair in this.InjectedActions)
             {
                 result.Append(Actions.HorizontalSeparator);
                 result.AppendLine(pair.Key.Description);
@@ -27,9 +27,18 @@ namespace _4PBot.Model.Functions
             return result.ToString();
         }
 
-        public void Register(Actions actions)
+        public Actions Actions
         {
-            actions[Builder.Bot().Requried("Help").End()] = x => this.BuildHelpString();
+            get
+            {
+                var actions = new Actions
+                {
+                    [Builder.Bot()
+                        .Requried("Help")
+                        .End()] = x => this.BuildHelpString()
+                };
+                return actions;
+            }
         }
     }
 }

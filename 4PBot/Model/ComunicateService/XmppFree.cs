@@ -73,13 +73,12 @@ namespace _4PBot.Model.ComunicateService
             this.MucManager.LeaveRoom(XmppFree.RoomName + XmppFree.Server(), "Bot");
             this.StartupDate = DateTime.Now;
             XmppFree.RoomName = roomName;
-            Task.Delay(1000);
             this.JoinRoom();
             return "Joined";
         }
 
         private void HandleMessage(object sender, Message msg)
-        {   
+        {
             var stamp = msg?.XDelay?.Stamp ?? DateTime.Now;
             var nickName = msg?.From.Resource ?? "Undefined";
             if (this.StartupDate.AddSeconds(2) < stamp)

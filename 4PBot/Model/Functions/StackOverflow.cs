@@ -9,6 +9,7 @@ namespace _4PBot.Model.Facades
     public class StackOverflow : IProgrammingSitesAdapter, ICommand
     {
         private static readonly string NotYetImplemented = "Not implemented yet!";
+        public Actions Actions => this.ConstructStandardProgrammingSitesQuotations("SO");
         private Checker Checker { get; }
         private Repeater Repeater { get; }
 
@@ -48,12 +49,5 @@ namespace _4PBot.Model.Facades
             return StackOverflow.NotYetImplemented;
         }
 
-        public void Register(Actions actions)
-        {
-            foreach (var item in this.ConstructStandardProgrammingSitesQuotations(nameof(StackOverflow)))
-            {
-                actions.Add(item.Key, item.Value);
-            }
-        }
     }
 }
